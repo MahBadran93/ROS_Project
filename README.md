@@ -1,10 +1,11 @@
 <h1 align="center"> Robotics Project </h1> <br>
+<h2 align="center"> University Of Burgundy </h1> <br>
 
 
 <p align="center">
   Planning, Developing, Learning ROS.
   <p align="center">
-  <img src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=700>
+  <img src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
 </p>
 </p>
 
