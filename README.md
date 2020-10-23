@@ -3,6 +3,9 @@
 
 <p align="center">
   Planning, Developing, Learning ROS.
+  <p align="center">
+  <img src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=700>
+</p>
 </p>
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
