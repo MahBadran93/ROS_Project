@@ -1,7 +1,7 @@
 <h1 align="center"> Robotics Project </h1> <br>
 
 <p align="center">
-**University Of Burgundy (VIBOT)**
+University Of Burgundy (VIBOT)
 
   <p align="center">
   <img src = "vibot.png" width=60>
@@ -10,7 +10,7 @@
 
 <h3 align = "center">                       
 Supervisors: <br>
-  <h5 Ralph SEULIN> </h5>
+  Ralph SEULIN
              
 </h3>
 
