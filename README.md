@@ -11,7 +11,7 @@ University Of Burgundy (VIBOT)
 <h3 align = "center">                       
 Supervisors: <br>           
 </h3>
-**rrr**
+**ss**;
 
 <p align="center">
   Planning, Developing, Learning ROS.
