@@ -36,7 +36,8 @@ Students: <br>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Introduction
-Robotics Operating System (ROS), is a middleware, framework to write a robotics softwares. It can be cosidered as an API to make the process of developing a robotic related projects more flexible, with no need of an extensive knowledge and configuration of the hardware which saves much effort and time in the development phase. It includes many libraries and tool which semplify the development environment.
+Robotics Operating System (ROS), is a middleware low level framework to write robotic softwares. It can be cosidered as an API to make the process of developing a robotic related projects more flexible, and simplified where there is no need for an extensive knowledge of the hardware in which it saves much effort and time in the development phase. It includes many libraries and tools which connects and control the robot manipulators to interact with the world around it. <br>
+ROS is supported by many operating systems like ubunto, windows. But ubunto is the more stable operating system working with ROS. However, for the development of this project we are using the construct web plaform, which is an online robotics working environmant. this platform has a simulation of the turtlebot 3 robot where we will be able to apply some of the techniques in navigation and localization.  
 
 **Available for both iOS and Android.**
 
