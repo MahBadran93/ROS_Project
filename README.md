@@ -11,16 +11,13 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-## Project Management
+## Project Management(Technical Report)
 
-- [Technical Report](#introduction)
-- [Features](#features)
-- [Feedback](#feedback)
-- [Contributors](#contributors)
-- [Build Process](#build-process)
-- [Backers](#backers-)
-- [Sponsors](#sponsors-)
-- [Acknowledgments](#acknowledgments)
+- [Introduction](#introduction)
+- [Analysis OF Studied Techniques](#Analysis)
+- [ROS Packages](#Packages)
+- [Work Plan](#Plan)
+- [Conclusion](#Conclusion)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
