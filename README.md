@@ -3,7 +3,6 @@
 <p align="center">
 <h2 University Of Burgundy (VIBOT) </h2>
 
-  Mahmoud Badran
   <p align="center">
   <img src = "vibot.png" width=60>
 </p>
