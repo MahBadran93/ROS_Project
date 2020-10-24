@@ -25,9 +25,9 @@ Supervisors: <br>
 ## Project Management (Technical Report)
 
 - [Introduction](#introduction)
-- [Analysis OF Studied Techniques](#Analysis)
-- [ROS Packages](#Packages)
-- [Work Plan](#Plan)
+- [Analysis OF Studied Techniques](#Analysis OF Studied Techniques)
+- [ROS Packages](#ROS Packages)
+- [Work Plan](#Work Plan)
 - [Conclusion](#Conclusion)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -49,7 +49,7 @@ View repository and user information, control your notifications and even manage
   <img src = "http://i.imgur.com/HowF6aM.png" width=350>
 </p>
 
-## Features
+## Analysis OF Studied Techniques
 
 A few of the things you can do with GitPoint:
 
@@ -71,17 +71,17 @@ A few of the things you can do with GitPoint:
   <img src = "http://i.imgur.com/0iorG20.png" width=700>
 </p>
 
-## Feedback
+## ROS Packages
 
 Feel free to send us feedback on [Twitter](https://twitter.com/gitpointapp) or [file an issue](https://github.com/gitpoint/git-point/issues/new). Feature requests are always welcome. If you wish to contribute, please take a quick look at the [guidelines](./CONTRIBUTING.md)!
 
 If there's anything you'd like to chat about, please feel free to join our [Gitter chat](https://gitter.im/git-point)!
 
-## Contributors
+## Work Plan
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification and is brought to you by these [awesome contributors](./CONTRIBUTORS.md).
 
-## Build Process
+## Conclusion
 
 - Follow the [React Native Guide](https://facebook.github.io/react-native/docs/getting-started.html) for getting started building a project with native code. **A Mac is required if you wish to develop for iOS.**
 - Clone or download the repo
