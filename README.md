@@ -22,7 +22,7 @@ Supervisors: <br>
 </p>
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-## Project Management(Technical Report)
+## Project Management (Technical Report)
 
 - [Introduction](#introduction)
 - [Analysis OF Studied Techniques](#Analysis)
