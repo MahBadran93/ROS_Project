@@ -7,10 +7,8 @@
   <img src = "vibot.png" width=60>
 </p>
 </p>
-**Students**
 
-Mahmoud Badran
-<p align = "center>                       
+<p align = "center">                       
 **Supervisors**
 Ralph SEULIN
              
