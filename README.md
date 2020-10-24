@@ -25,9 +25,9 @@ Supervisors: <br>
 ## Project Management (Technical Report)
 
 - [Introduction](#introduction)
-- [Analysis OF Studied Techniques](#Analysis OF Studied Techniques)
-- [ROS Packages](#ROS Packages)
-- [Work Plan](#Work Plan)
+- [Analysis OF Studied Techniques](#AnalysisOFStudiedTechniques)
+- [ROS Packages](#ROSPackages)
+- [Work Plan](#WorkPlan)
 - [Conclusion](#Conclusion)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
