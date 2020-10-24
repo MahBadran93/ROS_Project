@@ -10,13 +10,11 @@
 **Students**
 
 Mahmoud Badran
-<p alighn = "center>
-                          
+<p align = "center>                       
 **Supervisors**
-
 Ralph SEULIN
              
-             </p>
+</p>
 
 
 
