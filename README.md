@@ -12,7 +12,7 @@ Supervisors: <br>
 <p align="center">
   Planning, Developing, Learning ROS.
  
-  <img src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
+  <img align = "center" src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
   
 </p>
 
