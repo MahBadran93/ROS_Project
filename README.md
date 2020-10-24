@@ -1,7 +1,7 @@
 <h1 align="center"> Robotics Project </h1> <br>
 
 <p align="center">
-<h2 University Of Burgundy (VIBOT) </h2>
+University Of Burgundy (VIBOT) 
 
   <p align="center">
   <img src = "vibot.png" width=60>
