@@ -3,7 +3,7 @@
 <p align="center">
   University Of Burgundy (VIBOT)
   <p align="center">
-  <img src = "https://images.app.goo.gl/Je5ubpisXrNUSmRv8" width=60>
+  <img src = "vibot.png" width=60>
 </p>
 </p>
 
