@@ -1,4 +1,15 @@
 <h1 align="center"> Robotics Project </h1> <br>
+<p align="center">
+University Of Burgundy (VIBOT)
+  <p align="center">
+      <img src = "vibot.png" width=60>
+  </p>
+</p>
+
+<h3 align="center">                       
+Supervisors: <br>   
+</h3>
+
 
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
