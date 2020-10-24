@@ -36,15 +36,7 @@ Students: <br>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Introduction
-
-[![Build Status](https://img.shields.io/travis/gitpoint/git-point.svg?style=flat-square)](https://travis-ci.org/gitpoint/git-point)
-[![Coveralls](https://img.shields.io/coveralls/github/gitpoint/git-point.svg?style=flat-square)](https://coveralls.io/github/gitpoint/git-point)
-[![All Contributors](https://img.shields.io/badge/all_contributors-73-orange.svg?style=flat-square)](./CONTRIBUTORS.md)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
-[![Gitter chat](https://img.shields.io/badge/chat-on_gitter-008080.svg?style=flat-square)](https://gitter.im/git-point)
-
-View repository and user information, control your notifications and even manage your issues and pull requests. Built with React Native, GitPoint is one of the most feature-rich unofficial GitHub clients that is 100% free.
+Robotics Operating System (ROS), is a middleware, framework to write a robotics softwares. It can be cosidered as an API to make the process of developing a robotic related projects more flexible, with no need of an extensive knowledge and configuration of the hardware which saves much effort and time in the development phase. It includes many libraries and tool which semplify the development environment.
 
 **Available for both iOS and Android.**
 
