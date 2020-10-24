@@ -8,11 +8,11 @@
 </p>
 </p>
 
-<p align = "center">                       
+<h3 align = "center">                       
 **Supervisors**
 Ralph SEULIN
              
-</p>
+</h3>
 
 
 
