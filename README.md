@@ -7,8 +7,13 @@ University Of Burgundy (VIBOT)
 </p>
 
 <h3 align="center">                       
-Supervisors: <br>   
+Supervisors: <br>  
+ Ralph SEULIN
 </h3>
+<h4 align="center">                       
+Students: <br>  
+ Mahmoud Badran
+</h4>
 <p align="center">
   Planning, Developing, Learning ROS.
   <p align = "center">
