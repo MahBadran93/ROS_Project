@@ -9,7 +9,8 @@ University Of Burgundy (VIBOT)
 </p>
 
 <h3 align="center">                       
-Supervisors: <br>           
+Supervisors: <br>   
+  ###### ggggggg
 </h3>
 
 
@@ -19,7 +20,6 @@ Supervisors: <br>
   <img src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
 </p>
 </p>
-## ssss
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Project Management(Technical Report)
