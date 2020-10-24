@@ -9,8 +9,8 @@
 </p>
 
 <h3 align = "center">                       
-**Supervisors**
-Ralph SEULIN
+Supervisors: <br>
+  <h5 Ralph SEULIN> </h5>
              
 </h3>
 
