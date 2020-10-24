@@ -1,12 +1,20 @@
 <h1 align="center"> Robotics Project </h1> <br>
 
 <p align="center">
-University Of Burgundy (VIBOT) 
+**University Of Burgundy (VIBOT)**
 
   <p align="center">
   <img src = "vibot.png" width=60>
 </p>
 </p>
+**Students**
+
+Mahmoud Badran
+
+**Supervisors**
+
+Ralph SEULIN
+
 
 <p align="center">
   Planning, Developing, Learning ROS.
