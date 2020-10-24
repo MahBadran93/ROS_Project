@@ -10,7 +10,7 @@ University Of Burgundy (VIBOT)
 
 <h3 align="center">                       
 Supervisors: <br>   
-  <h6 Ralph SEULIN> </h6>
+  Ralph SEULIN
 </h3>
 
 
