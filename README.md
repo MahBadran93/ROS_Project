@@ -1,4 +1,5 @@
 <h1 align="center"> Robotics Project </h1> <br>
+<h3 align="center"> Planning, Developing, Learning ROS </h3> <br>
 <p align="center">
 University Of Burgundy (VIBOT)
   <p align="center">
@@ -14,12 +15,11 @@ Supervisors: <br>
 Students: <br>  
  Mahmoud Badran
 </h4>
-<h4 align="center">
-  Planning, Developing, Learning ROS.
+<p align="center">
   <p align = "center">
      <img  src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
   </p>
-</h4>
+</p>
 
 
 
