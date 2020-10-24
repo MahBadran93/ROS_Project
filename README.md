@@ -14,12 +14,12 @@ Supervisors: <br>
 Students: <br>  
  Mahmoud Badran
 </h4>
-<p align="center">
+<h4 align="center">
   Planning, Developing, Learning ROS.
   <p align = "center">
      <img  src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
   </p>
-</p>
+</h4>
 
 
 
