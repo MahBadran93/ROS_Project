@@ -2,15 +2,13 @@
 
 <p align="center">
 University Of Burgundy (VIBOT)
-
   <p align="center">
-  <img src = "vibot.png" width=60>
-</p>
+      <img src = "vibot.png" width=60>
+  </p>
 </p>
 
 <h3 align="center">                       
 Supervisors: <br>   
-
 </h3>
 
 
@@ -18,7 +16,7 @@ Supervisors: <br>
   Planning, Developing, Learning ROS.
   <p align="center">
   <img src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
-</p>
+  </p>
 </p>
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
