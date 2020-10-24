@@ -7,13 +7,7 @@ University Of Burgundy (VIBOT)
   <img src = "vibot.png" width=60>
 </p>
 </p>
-<p align="center">
-<p Students:> 
 
-  <p align="center">
-  <img src = "vibot.png" width=60>
-</p>
-</p>
 <p align="center">
   Planning, Developing, Learning ROS.
   <p align="center">
