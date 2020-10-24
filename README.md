@@ -1,7 +1,9 @@
 <h1 align="center"> Robotics Project </h1> <br>
 
 <p align="center">
-  University Of Burgundy (VIBOT)
+<h2 University Of Burgundy (VIBOT) </h2>
+<h3 Students: </h3>
+  Mahmoud Badran
   <p align="center">
   <img src = "vibot.png" width=60>
 </p>
