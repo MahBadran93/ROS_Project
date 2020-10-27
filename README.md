@@ -1,81 +1,62 @@
 <h1 align="center"> Robotics Project </h1> <br>
-
+<h3 align="center"> Planning, Developing, Learning ROS </h3> <br>
 <p align="center">
-  University Of Burgundy (VIBOT)
+University Of Burgundy (VIBOT)
   <p align="center">
-  <img src = "vibot.png" width=60>
-</p>
+      <img src = "vibot.png" width=60>
+  </p>
 </p>
 
+<h3 align="center">                       
+Supervisors: <br>  
+ Ralph SEULIN
+</h3>
+<h4 align="center">                       
+Students: <br>  
+ Mahmoud Badran
+</h4>
 <p align="center">
-  Planning, Developing, Learning ROS.
-  <p align="center">
-  <img src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
+  <p align = "center">
+     <img  src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
+  </p>
 </p>
-</p>
+
+
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-## Project Management(Technical Report)
+## Project Management (Technical Report)
 
 - [Introduction](#introduction)
-- [Analysis OF Studied Techniques](#Analysis)
-- [ROS Packages](#Packages)
-- [Work Plan](#Plan)
+- [Analysis OF Studied Techniques](#Analysis-OF-Studied-Techniques)
+- [ROS Packages](#ROS-Packages)
+- [Work Plan](#Work-Plan)
 - [Conclusion](#Conclusion)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Introduction
+Robotics Operating System (ROS), is a middleware, low level framework, to write robotic softwares. It can be cosidered as an API to make the process of developing a robotic related projects more flexible, and simplified. There will be no need for an extensive knowledge of the hardware in which it saves much effort and time in the development phase. It includes many libraries and tools which connects and control the robot manipulators, handle the comunication between multiple devices in a a working space. <br>
+ROS is supported by many operating systems like ubunto, windows. Ubunto is the more stable operating system working with ROS. However, for the development of this project we are using the construct web plaform, which is an online robotics working environmant. The platform uses ubunto as the main operating system with ROS kinetic and uses the simulation of turtlebot 3, where we will be able to apply some of the techniques we have have learned to apply navigation and localization with map construction.  
 
-[![Build Status](https://img.shields.io/travis/gitpoint/git-point.svg?style=flat-square)](https://travis-ci.org/gitpoint/git-point)
-[![Coveralls](https://img.shields.io/coveralls/github/gitpoint/git-point.svg?style=flat-square)](https://coveralls.io/github/gitpoint/git-point)
-[![All Contributors](https://img.shields.io/badge/all_contributors-73-orange.svg?style=flat-square)](./CONTRIBUTORS.md)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
-[![Gitter chat](https://img.shields.io/badge/chat-on_gitter-008080.svg?style=flat-square)](https://gitter.im/git-point)
+## Analysis OF Studied Techniques
 
-View repository and user information, control your notifications and even manage your issues and pull requests. Built with React Native, GitPoint is one of the most feature-rich unofficial GitHub clients that is 100% free.
-
-**Available for both iOS and Android.**
-
-<p align="center">
-  <img src = "http://i.imgur.com/HowF6aM.png" width=350>
-</p>
-
-## Features
-
-A few of the things you can do with GitPoint:
-
-* View user activity feed
-* Communicate on your issue and pull request conversations
-* Close or lock issues
-* Apply labels and assignees
-* Review and merge pull requests
-* Create new issues
-* Star, watch and fork repositories
-* Control your unread and participating notifications
-* Easily search for any user or repository
-
-<p align="center">
-  <img src = "http://i.imgur.com/IkSnFRL.png" width=700>
-</p>
-
-<p align="center">
-  <img src = "http://i.imgur.com/0iorG20.png" width=700>
-</p>
-
-## Feedback
+Let's explain some important concepts that have been studied and will be important in developing the project : <br>
+**Nodes**: One of the most important concepts in ROS. We can describe nodes as a program (python, c++) to enable ROS to make communication tasks. A node can subscribe or publish to a topic, which will be explained. <br>
+**Topic**: The process of transmitting data between nodes. Some nodes are responsible for publishing some data to a specific topic where other nodes (subscribers) will be able to request these data ( messages ) from the topic.<br>
+**Messages** : Data structure which describes the data that ROS nodes publish or recieve. the nodes communicate, send messages, receive messages through topics.<br> 
+**Services** : another way to transmit the data between nodes. it is a synchronous operation where the robot has to stop processing while waiting for a service response.<br>
+## ROS Packages
 
 Feel free to send us feedback on [Twitter](https://twitter.com/gitpointapp) or [file an issue](https://github.com/gitpoint/git-point/issues/new). Feature requests are always welcome. If you wish to contribute, please take a quick look at the [guidelines](./CONTRIBUTING.md)!
 
 If there's anything you'd like to chat about, please feel free to join our [Gitter chat](https://gitter.im/git-point)!
 
-## Contributors
+## Work Plan
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification and is brought to you by these [awesome contributors](./CONTRIBUTORS.md).
 
-## Build Process
+## Conclusion
 
 - Follow the [React Native Guide](https://facebook.github.io/react-native/docs/getting-started.html) for getting started building a project with native code. **A Mac is required if you wish to develop for iOS.**
 - Clone or download the repo
