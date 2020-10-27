@@ -41,7 +41,8 @@ ROS is supported by many operating systems like ubunto, windows. Ubunto is the m
 
 ## Project Tasks 
 **Task1:** <br>
-1 - Use **/cmd_vel** topic to move turtlebot3 around the environment. This topic is responsible for the **angular** and the **linear** velocity of the robot.
+1 - Use **/cmd_vel** topic to move turtlebot3 around the environment. This topic is responsible for the **angular** and the **linear** velocity of the robot.<br>
+    we use **rostopic info /cmd_vel** to get information about the topic, after running the command we can see that this topic uses **Twist** type message. So, this topic recieves data of type Twist(angular and linear velocities ,(x,y,z)).  
 
 ## Analysis OF Studied Techniques
 
