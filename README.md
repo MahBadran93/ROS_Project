@@ -41,7 +41,7 @@ ROS is supported by many operating systems like ubunto, windows. Ubunto is the m
 
 ## Project Tasks 
 **Task1:** <br>
-Use topic **\cmd-vel** to move turtlebot3 around the environment. 
+1 - Use topic **/cmd_vel** to move turtlebot3 around the environment. 
 
 ## Analysis OF Studied Techniques
 
