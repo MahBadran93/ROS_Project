@@ -72,7 +72,15 @@ Let's explain some important concepts that have been studied and will be import
 **Task1** <br>
 Use **/cmd_vel** topic to move turtlebot3 around the environment. This topic is responsible for the **angular** and the **linear** velocity of the robot.<br>
 we use **rostopic info /cmd_vel** to get information about the topic, after running the command we can see that this topic uses **Twist** type message. So, this topic recieves data of type Twist(angular and linear velocities ,(x,y,z)). <br> 
-1- Create a node that subscribe to **/scan** topic to get distance information from objects, walls. Also it publishes tarnslation and rotation data to **cmd** topic to rotate and move the robot. 
+1- Create a node that subscribe to **/scan** topic to get distance information from objects, walls. Also it publishes tarnslation and rotation data to **cmd** topic to rotate and move the robot. <br>
+<p align="center">
+  <p align = "center">
+     <img  src = "resources/r1.png" width=350>
+    <img  src = "resources/r2.png" width=350>
+    <img  src = "resources/r3.png" width=350>
+    <img  src = "resources/r4.png" width=350>
+  </p>
+</p>
 
 
 
