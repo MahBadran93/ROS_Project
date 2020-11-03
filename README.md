@@ -41,7 +41,6 @@ ROS is supported by many operating systems like ubunto, windows. Ubunto is the m
 
 ## Project Tasks 
 The project goal is to apply the learned **ROS** techniques and pakages to apply the navigation task on Turtlebot3:  
-**Task1:** <br>
 1- Create a script that moves the robot around with simple **/cmd_vel** publishing. See the range of
 movement of this new robot model. <br>
 2- Create the mapping launches, and map the whole environment. You have to finish with a clean map of
@@ -70,7 +69,7 @@ Let's explain some important concepts that have been studied and will be import
 
 
 ## Work Plan
-**Task1**
+**Task1** <br>
 Use **/cmd_vel** topic to move turtlebot3 around the environment. This topic is responsible for the **angular** and the **linear** velocity of the robot.<br>
 we use **rostopic info /cmd_vel** to get information about the topic, after running the command we can see that this topic uses **Twist** type message. So, this topic recieves data of type Twist(angular and linear velocities ,(x,y,z)). <br> 
 1- Create a node that subscribe to **/scan** topic to get distance information from objects, walls. Also it publishes tarnslation and rotation data to **cmd** topic to rotate and move the robot. 
