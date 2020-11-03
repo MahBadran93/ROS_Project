@@ -96,12 +96,17 @@ In order to construct a map : <br>
        <img  src = "resources/screen.png" width=600>
     </p>
     </p>
-You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are: <br><br> 1- **Map**: visulize the map.<br>
-2- **LaserScreen**:  visualze what the Lazer on the robot is detecting.<br>
-3- **RobotModel**:  localize the Robot on the map.<br><br>
+You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are: <br><br> a- **Map**: visulize the map.<br>
+b- **LaserScreen**:  visualze what the Lazer on the robot is detecting.<br>
+c- **RobotModel**:  localize the Robot on the map.<br><br>
 
 3- After launnching **slam_gmapping** and **RViz**, we can start moving the robot by executing Kerbord control command:<br> 
-  <**roslaunch turtlebot_teleop keyboard_teleop.launch**>
+  <**roslaunch turtlebot_teleop keyboard_teleop.launch**>. After moving the robot around all the placed needed we should see the map fully occupied in **Rvis**<br>
+    <p align="center">
+    <p align = "center">
+       <img  src = "resources/screen2.png" width=600>
+    </p>
+    </p> 
 
      
 
