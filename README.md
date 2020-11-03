@@ -107,7 +107,17 @@ c- **RobotModel**:  localize the Robot on the map.<br><br>
        <img  src = "resources/screen2.png" width=600>
     </p>
     </p> 
-
+4- The map can be saved using **map_server** package, it includes **map_savor** node  which will allow us to access the map data. <br> 
+    Execute this command : <br> 
+    **rosrun map_server map_savor -f <map_file_name>** <br>
+    After executing it will generate two files: <br><br>
+    - **map_file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. if we download the file and open it, it will look like this:  <br>
+      <p align="center">
+      <p align = "center">
+         <img  src = "resources/mahmap.pgm" width=600>
+      </p>
+      </p> 
+    mahmap.pgm
      
 
 
