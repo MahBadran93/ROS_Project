@@ -69,7 +69,7 @@ Let's explain some important concepts that have been studied and will be import
 
 
 ## Work Plan
-**Task1** <br>
+**Task1:** <br><br>
 Use **/cmd_vel** topic to move turtlebot3 around the environment. This topic is responsible for the **angular** and the **linear** velocity of the robot.<br>
 we use **rostopic info /cmd_vel** to get information about the topic, after running the command we can see that this topic uses **Twist** type message. So, this topic recieves data of type Twist(angular and linear velocities ,(x,y,z)). <br> 
 1- Create a node that subscribe to **/scan** topic to get distance information from objects, walls. Also it publishes tarnslation and rotation data to      **/cmd_vel** topic to rotate and move the robot. <br>
@@ -83,11 +83,11 @@ we use **rostopic info /cmd_vel** to get information about the topic, after runn
 </p>
 <br><br>
 
-**Task2 Mapping** <br>
+**Task2: Mapping** <br><br>
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
 In order to construct a map : <br> 
 1- We need to use **gmapping** package and run **slam_gmapping** node. 
-    This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data, in which it will be transformed to an Occumaoncy Grid Map (GOM) data format (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free). <br>
+    This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data, in which it will be transformed to an Occumaoncy Grid Map (OGM) data format (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free). <br>
     Start the mapping process by executing this command: <br>
     <**rosrun gmapping slam_gmapping**> <br><br>
 2- In the mapping process, an important tool is used called **RViz**. It will help us in visulising th map creation process, it will allow us to see what the robot is covoring from the environment. <br>   
@@ -96,12 +96,12 @@ In order to construct a map : <br>
        <img  src = "resources/screen.png" width=600>
     </p>
     </p>
-You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are: <br><br> a- **Map**: visulize the map.<br>
-b- **LaserScreen**:  visualze what the Lazer on the robot is detecting.<br>
+You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are: <br><br> a- **Map**: visulize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, (**nav_msgs/OccupancyGrid.msg**)  <br> 
+b- **LaserScreen**:  visualze what the Lazer on the robot is detecting. Topic is **/scan**<br>
 c- **RobotModel**:  localize the Robot on the map.<br><br>
 
 3- After launnching **slam_gmapping** and **RViz**, we can start moving the robot by executing Kerbord control command:<br> 
-  <**roslaunch turtlebot_teleop keyboard_teleop.launch**>. After moving the robot around all the placed needed we should see the map fully occupied in **Rvis**<br>
+  <**roslaunch turtlebot_teleop keyboard_teleop.launch**>.<br> After moving the robot around all the places needed we should see the map fully occupied in **Rvis**<br>
     <p align="center">
     <p align = "center">
        <img  src = "resources/screen2.png" width=600>
