@@ -81,15 +81,23 @@ we use **rostopic info /cmd_vel** to get information about the topic, after runn
     <img  src = "resources/r4.png" width=350>
   </p>
 </p>
-
-**Task2-Mapping** 
+<br><br>
+**Task2-Mapping** <br>
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognise objects, walls where it will allow the robot to plann trajectories through environment. <br> 
 In order to construct a map : <br> 
 1- We need to use **gmapping** package and run **slam_gmapping** node. 
-    This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data in which will be transformed to an Occumaoncy Grid Map (GOM) data formay (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free).
-    
-   
-
+    This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data, in which it will be transformed to an Occumaoncy Grid Map (GOM) data format (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free). <br>
+    Start the mapping process by executing this command: <br>
+    **> rosrun gmapping slam_gmapping** <br><br>
+2- In the mapping process, an important tool is used called **RViz**. It will help us in visulising th map creation process, it will allow us to see what the robot is covoring from the environment. <br>   
+   <p align="center">
+  <p align = "center">
+     <img  src = "resources/screen.png" width=600>
+  </p>
+</p>
+You can see in the figure above, **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are: <br><br> 1- **Map**: to visulize the map.<br>
+2- **LaserScreen**: to visualze what the Lazer on the robot is detecting.
+3- **RobotModel**: to localize the Robot on the map.
      
 
 
