@@ -97,8 +97,8 @@ In order to construct a map : <br>
   </p>
 </p>
 You can see in the figure above, **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are: <br><br> 1- **Map**: to visulize the map.<br>
-2- **LaserScreen**: to visualze what the Lazer on the robot is detecting.
-3- **RobotModel**: to localize the Robot on the map.
+2- **LaserScreen**: to visualze what the Lazer on the robot is detecting.<br>
+3- **RobotModel**: to localize the Robot on the map.<br>
      
 
 
