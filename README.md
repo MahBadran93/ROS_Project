@@ -72,7 +72,7 @@ Let's explain some important concepts that have been studied and will be import
 **Task1** <br>
 Use **/cmd_vel** topic to move turtlebot3 around the environment. This topic is responsible for the **angular** and the **linear** velocity of the robot.<br>
 we use **rostopic info /cmd_vel** to get information about the topic, after running the command we can see that this topic uses **Twist** type message. So, this topic recieves data of type Twist(angular and linear velocities ,(x,y,z)). <br> 
-1- Create a node that subscribe to **/scan** topic to get distance information from objects, walls. Also it publishes tarnslation and rotation data to **cmd** topic to rotate and move the robot. <br>
+1- Create a node that subscribe to **/scan** topic to get distance information from objects, walls. Also it publishes tarnslation and rotation data to      **/cmd_vel** topic to rotate and move the robot. <br>
 <p align="center">
   <p align = "center">
      <img  src = "resources/r1.png" width=350>
@@ -82,6 +82,15 @@ we use **rostopic info /cmd_vel** to get information about the topic, after runn
   </p>
 </p>
 
+**Task2-Mapping** 
+To start the autonomus navigation process, the robot must have a map of the environment to be able to recognise objects, walls where it will allow the robot to plann trajectories through environment. <br> 
+In order to construct a map : <br> 
+1- We need to use **gmapping** package and run **slam_gmapping** node. 
+    This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data in which will be transformed to an Occumaoncy Grid Map (GOM) data formay (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free).
+    
+   
+
+     
 
 
 ## Conclusion
