@@ -91,12 +91,12 @@ In order to construct a map : <br>
     Start the mapping process by executing this command: <br>
     **rosrun gmapping slam_gmapping** <br><br>
 2- In the mapping process, an important tool is used called **RViz**. It will help us in visulising th map creation process, it will allow us to see what the robot is covoring from the environment. <br>   
-   <p align="center">
-  <p align = "center">
-     <img  src = "resources/screen.png" width=600>
-  </p>
-</p>
-You can see in the figure above, **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are: <br><br> 1- **Map**: to visulize the map.<br>
+    <p align="center">
+    <p align = "center">
+       <img  src = "resources/screen.png" width=600>
+    </p>
+    </p>
+You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are: <br><br> 1- **Map**: to visulize the map.<br>
 2- **LaserScreen**: to visualze what the Lazer on the robot is detecting.<br>
 3- **RobotModel**: to localize the Robot on the map.<br>
      
