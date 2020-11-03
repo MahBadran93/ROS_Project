@@ -85,7 +85,7 @@ we use **rostopic info /cmd_vel** to get information about the topic, after runn
 
 **Task2: Mapping** <br><br>
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
-In order to construct a map : <br> 
+In order to construct a map : <br> <br>
 **1-** We need to use **gmapping** package and run **slam_gmapping** node. 
     This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data, in which it will be transformed to an Occumaoncy Grid Map (OGM) data format (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free). <br>
     Start the mapping process by executing this command: <br>
@@ -101,7 +101,7 @@ b- **LaserScreen**:  visualze what the Lazer on the robot is detecting. Topic is
 c- **RobotModel**:  localize the Robot on the map.<br><br>
 
 **3-** After launnching **slam_gmapping** and **RViz**, we can start moving the robot by executing Kerbord control command:<br> 
-  <**roslaunch turtlebot_teleop keyboard_teleop.launch**>.<br> After moving the robot around all the places needed we should see the map fully occupied in **Rvis**<br>
+  (**roslaunch turtlebot_teleop keyboard_teleop.launch**).<br> After moving the robot around all the places needed we should see the map fully occupied in **Rvis**<br>
     <p align="center">
     <p align = "center">
        <img  src = "resources/screen2.png" width=600>
@@ -109,15 +109,16 @@ c- **RobotModel**:  localize the Robot on the map.<br><br>
     </p> 
 **4-** The map can be saved using **map_server** package, it includes **map_savor** node  which will allow us to access the map data. <br> 
     Execute this command : <br> 
-    **rosrun map_server map_savor -f <map_file_name>** <br>
+    (**rosrun map_server map_savor -f <file_name>**)  <br>
     After executing it will generate two files: <br><br>
-    - **map_file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. if we download the file and open it, it will look like this:  <br>
+    a- **file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. if we download the file and open it, it will look like this:  <br>
       <p align="center">
       <p align = "center">
          <img  src = "resources/mahmap.png" width=600>
       </p>
-      </p> 
-    mahmap.pgm
+      </p> <br>
+    Each cell ranges from 0 to 100 integer value where 0 means completely free and not occupied, 100 is completely occupied. <br>br>
+    b- **file_name.yaml:** This file contains the meta data of the generated map which contains these parametrs, image,resoulution, origin, occupied_thresh, free_thresh,negate. 
      
 
 
