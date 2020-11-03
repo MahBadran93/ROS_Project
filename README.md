@@ -40,9 +40,16 @@ Robotics Operating System (ROS), is a middleware, low level framework, to write 
 ROS is supported by many operating systems like ubunto, windows. Ubunto is the more stable operating system working with ROS. However, for the development of this project we are using the construct web plaform, which is an online robotics working environmant. The platform uses ubunto as the main operating system with ROS kinetic and uses the simulation of turtlebot 3, where we will be able to apply some of the techniques we have have learned to apply navigation and localization with map construction.  
 
 ## Project Tasks 
+The project goal is to apply the learned **ROS** techniques and pakages to apply the navigation task on Turtlebot3:  
 **Task1:** <br>
-1 - Use **/cmd_vel** topic to move turtlebot3 around the environment. This topic is responsible for the **angular** and the **linear** velocity of the robot.<br>
-    we use **rostopic info /cmd_vel** to get information about the topic, after running the command we can see that this topic uses **Twist** type message. So, this topic recieves data of type Twist(angular and linear velocities ,(x,y,z)).  
+1- Create a script that moves the robot around with simple **/cmd_vel** publishing. See the range of
+movement of this new robot model. <br>
+2- Create the mapping launches, and map the whole environment. You have to finish with a clean map of
+the full cafeteria. Setup the launch to be able to localize the Turtlebot3 robot. <br>
+3- Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach
+that goal without colliding with obstacles. <br> 
+4- Create a program that allows the Turtlebot3 to navigate within the environment following a set of
+waypoints.
 
 ## Analysis OF Studied Techniques
 
@@ -66,26 +73,9 @@ If there's anything you'd like to chat about, please feel free to join our [Gitt
 
 ## Work Plan
 
-This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification and is brought to you by these [awesome contributors](./CONTRIBUTORS.md).
+
 
 ## Conclusion
-
-- Follow the [React Native Guide](https://facebook.github.io/react-native/docs/getting-started.html) for getting started building a project with native code. **A Mac is required if you wish to develop for iOS.**
-- Clone or download the repo
-- `yarn` to install dependencies
-- `yarn run link` to link react-native dependencies
-- `yarn start:ios` to start the packager and run the app in the iOS simulator (`yarn start:ios:logger` will boot the application with [redux-logger](<https://github.com/evgenyrodionov/redux-logger>))
-- `yarn start:android` to start the packager and run the app in the the Android device/emulator (`yarn start:android:logger` will boot the application with [redux-logger](https://github.com/evgenyrodionov/redux-logger))
-
-Please take a look at the [contributing guidelines](./CONTRIBUTING.md) for a detailed process on how to build your application as well as troubleshooting information.
-
-**Development Keys**: The `CLIENT_ID` and `CLIENT_SECRET` in `api/index.js` are for development purposes and do not represent the actual application keys. Feel free to use them or use a new set of keys by creating an [OAuth application](https://github.com/settings/applications/new) of your own. Set the "Authorization callback URL" to `gitpoint://welcome`.
-
-## Backers [![Backers on Open Collective](https://opencollective.com/git-point/backers/badge.svg)](#backers)
-
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/git-point#backer)]
-
-<a href="https://opencollective.com/git-point#backers" target="_blank"><img src="https://opencollective.com/git-point/backers.svg?width=890"></a>
 
 ## Sponsors [![Sponsors on Open Collective](https://opencollective.com/git-point/sponsors/badge.svg)](#sponsors)
 
