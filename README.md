@@ -43,13 +43,13 @@ ROS is supported by many operating systems like ubunto, windows. Ubunto is the m
 
 ## Project Tasks 
 The project goal is to apply the learned **ROS** techniques and pakages to apply the navigation task on Turtlebot3:  
-1- Create a script that moves the robot around with simple **/cmd_vel** publishing. See the range of
+- Create a script that moves the robot around with simple **/cmd_vel** publishing. See the range of
 movement of this new robot model. <br>
-2- Create the mapping launches, and map the whole environment. You have to finish with a clean map of
+- Create the mapping launches, and map the whole environment. You have to finish with a clean map of
 the full cafeteria. Setup the launch to be able to localize the Turtlebot3 robot. <br>
-3- Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach
+- Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach
 that goal without colliding with obstacles. <br> 
-4- Create a program that allows the Turtlebot3 to navigate within the environment following a set of
+- Create a program that allows the Turtlebot3 to navigate within the environment following a set of
 waypoints.
 
 ## Analysis OF Studied Techniques
@@ -136,13 +136,13 @@ After creating the map, the next step is to locate the robot in the environment 
 
 - To apply localization, we use **amcl** package. It is a localization system that implements Kullback-Leibler algorithm which uses an adaptive practicale filters to track the position of the robot in repect with the environment.  
 
-
+---
 Subscribed Topics (message type) | published Topics (message type) 
 ------------ | -------------
 **map** (nav_msgs/OccupancyGrid) | **amcl_pose** (geometry_msgs/PoseWithCovarianceStamped)
 **scan** (sensor_msgs/LaserScan) | **particlecloud** (geometry_msgs/PoseArray)
 **tf** (tf/tfMessage) | **tf** (tf/tfMessage)
-
+---
 - **map topic:** amcl subscribe to map topic to get the map data (OGM), to used it for localization. 
 - **scan topic:** To have the updated scan readings. 
 - **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser coordinate frame to base_link coordinate frame. 
