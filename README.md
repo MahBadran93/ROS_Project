@@ -85,7 +85,8 @@ we use **rostopic info /cmd_vel** to get information about the topic, after runn
   </p>
 </p>
 <br><br>
- <hr /> 
+
+ 
 #### Task 2: Mapping & localization <br><br>
 #### <ins> *Mapping* </ins>
 
