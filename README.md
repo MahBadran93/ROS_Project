@@ -18,6 +18,8 @@ Students: <br>
 <p align="center">
   <p align = "center">
      <img  src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
+     <img  src = "resources/turtlebot3.jpg" width=400>
+    
   </p>
 </p>
 
@@ -115,7 +117,7 @@ In order to construct a map : <br> <br>
        - **file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. if we download the file and open it, it will look like this: 
       <p align="center">
       <p align = "center">
-         <img  src = "resources/mahmap.png" width=600>
+         <img  src = "resources/mahmap.png" width=600> <br>
         <em>Each cell ranges from 0 to 100 integer value where 0 means completely free and not occupied, 100 is completely occupied</em>
       </p>
       </p>
