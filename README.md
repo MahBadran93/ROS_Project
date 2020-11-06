@@ -133,7 +133,7 @@ After creating the map, the next step is to locate the robot in the environment 
 
 Subscribed Topics(message type) | published Topics(message type) 
 ------------ | -------------
-**map**(nav_msgs/OccupancyGrid) | **amcl_pose**(geometry_msgs/PoseWithCovarianceStamped)
+**map**(<span style="color:red">nav_msgs/OccupancyGrid</span>) | **amcl_pose**(geometry_msgs/PoseWithCovarianceStamped)
 **scan**(sensor_msgs/LaserScan | **particlecloud**(geometry_msgs/PoseArray)
 **tf**(tf/tfMessage) | **tf**(tf/tfMessage)
 
