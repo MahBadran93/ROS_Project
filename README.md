@@ -116,9 +116,10 @@ In order to construct a map : <br> <br>
       <p align="center">
       <p align = "center">
          <img  src = "resources/mahmap.png" width=600>
+        <em>Each cell ranges from 0 to 100 integer value where 0 means completely free and not occupied, 100 is completely occupied</em>
       </p>
-      </p> <br>
-    Each cell ranges from 0 to 100 integer value where 0 means completely free and not occupied, 100 is completely occupied. <br><br>
+      </p>
+    
        - **file_name.yaml:** This file contains the meta data of the generated map which contains these parametrs, image,resoulution, origin, occupied_thresh, free_thresh,negate. 
      
 
