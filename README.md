@@ -143,8 +143,8 @@ Subscribed Topics (message type) | published Topics (message type)
 **scan** (sensor_msgs/LaserScan) | **particlecloud** (geometry_msgs/PoseArray)
 **tf** (tf/tfMessage) | **tf** (tf/tfMessage)
 ---
-- **map topic:** amcl subscribe to map topic to get the map data (OGM), to used it for localization. 
-- **scan topic:** To have the updated scan readings. 
+- **map:** amcl subscribe to map topic to get the map data (OGM), to used it for localization. 
+- **scan:** To have the updated scan readings. 
 - **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser coordinate frame to base_link coordinate frame. 
 - **amcl_pose:** amcl node publishes the position of the robot in the environment to the amcl_pose topic.
 - **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. see the figure below (red arrows displayed using Rviz)  
@@ -154,7 +154,9 @@ Subscribed Topics (message type) | published Topics (message type)
       </p>
       </p>
      
-
+``` 
+Task 2: Path Planning
+```
 
 ## Conclusion
 
