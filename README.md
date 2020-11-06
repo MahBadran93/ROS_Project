@@ -86,7 +86,7 @@ we use **rostopic info /cmd_vel** to get information about the topic, after runn
 <br><br>
 
 #### Task 2: Mapping & localization <br><br>
-<span style="color:blue">some *This is Blue italic.* text</span>
+<span style="color:blue">*Mapping*</span>
 
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
 In order to construct a map : <br> <br>
