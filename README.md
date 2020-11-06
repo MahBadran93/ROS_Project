@@ -53,10 +53,10 @@ waypoints.
 ## Analysis OF Studied Techniques
 
 Let's explain some important concepts that have been studied and will be important in developing the project : <br><br>
-**Nodes**: One of the most important concepts in ROS. We can describe nodes as a program (python, c++) to enable ROS to make communication tasks. A node can subscribe or publish to a topic, which will be explained. <br><br>
-**Topic**: The process of transmitting data between nodes. Some nodes are responsible for publishing some data to a specific topic where other nodes (subscribers) will be able to request these data ( messages ) from the topic.<br><br>
-**Messages** : Data structure which describes the data that ROS nodes publish or recieve. the nodes communicate, send messages, receive messages through topics.<br><br>
-**Services** : another way to transmit the data between nodes. it is a synchronous operation where the robot has to stop processing while waiting for a service response.<br><br>
+- **Nodes**: One of the most important concepts in ROS. We can describe nodes as a program (python, c++) to enable ROS to make communication tasks. A node can subscribe or publish to a topic, which will be explained. <br><br>
+- **Topic**: The process of transmitting data between nodes. Some nodes are responsible for publishing some data to a specific topic where other nodes (subscribers) will be able to request these data ( messages ) from the topic.<br><br>
+- **Messages** : Data structure which describes the data that ROS nodes publish or recieve. the nodes communicate, send messages, receive messages through topics.<br><br>
+- **Services** : another way to transmit the data between nodes. it is a synchronous operation where the robot has to stop processing while waiting for a service response.<br><br>
 
 <p align="center">
   <p align = "center">
@@ -72,7 +72,7 @@ Let's explain some important concepts that have been studied and will be import
 #### Task 1: Robot Control <br><br>
 Use **/cmd_vel** topic to move turtlebot3 around the environment. This topic is responsible for the **angular** and the **linear** velocity of the robot.<br>
 we use **rostopic info /cmd_vel** to get information about the topic, after running the command we can see that this topic uses **Twist** type message. So, this topic recieves data of type Twist(angular and linear velocities ,(x,y,z)). <br> 
--Create a node that subscribe to **/scan** topic to get distance information from objects, walls. Also it publishes tarnslation and rotation data to      **/cmd_vel** topic to rotate and move the robot. <br>
+- Create a node that subscribe to **/scan** topic to get distance information from objects, walls. Also it publishes tarnslation and rotation data to      **/cmd_vel** topic to rotate and move the robot. <br>
 <p align="center">
   <p align = "center">
      <img  src = "resources/r1.png" width=350>
@@ -87,28 +87,27 @@ we use **rostopic info /cmd_vel** to get information about the topic, after runn
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
 In order to construct a map : <br> <br>
 
--We need to use **gmapping** package and run **slam_gmapping** node. 
+- We need to use **gmapping** package and run **slam_gmapping** node. 
     This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data, in which it will be transformed to an Occumaoncy Grid Map (OGM) data format (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free). <br>
     Start the mapping process by executing this command: <br>
     <**rosrun gmapping slam_gmapping**> <br><br>
--In the mapping process, an important tool is used called **RViz**. It will help us in visulising th map creation process, it will allow us to see what the robot is covoring from the environment. <br>   
+- In the mapping process, an important tool is used called **RViz**. It will help us in visulising th map creation process, it will allow us to see what the robot is covoring from the environment. <br>   
     <p align="center">
     <p align = "center">
        <img  src = "resources/screen.png" width=600>
     </p>
     </p>
-You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are: <br><br> a- **Map**: visulize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, (**nav_msgs/OccupancyGrid.msg**)  <br> 
-b- **LaserScreen**:  visualze what the Lazer on the robot is detecting. Topic is **/scan**<br>
-c- **RobotModel**:  localize the Robot on the map.<br><br>
-
-**3-** After launnching **slam_gmapping** and **RViz**, we can start moving the robot by executing Kerbord control command:<br> 
+You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are: <br><br>   - **Map**: visulize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, (**nav_msgs/OccupancyGrid.msg**)  <br> 
+  - **LaserScreen**:  visualze what the Lazer on the robot is detecting. Topic is **/scan**<br>
+  - **RobotModel**:  localize the Robot on the map.<br><br>
+- After launnching **slam_gmapping** and **RViz**, we can start moving the robot by executing Kerbord control command:<br> 
   (**roslaunch turtlebot_teleop keyboard_teleop.launch**).<br> After moving the robot around all the places needed we should see the map fully occupied in **Rvis**<br>
     <p align="center">
     <p align = "center">
        <img  src = "resources/screen2.png" width=600>
     </p>
     </p> 
-**4-** The map can be saved using **map_server** package, it includes **map_savor** node  which will allow us to access the map data. <br> 
+- The map can be saved using **map_server** package, it includes **map_savor** node  which will allow us to access the map data. <br> 
     Execute this command : <br> 
     (**rosrun map_server map_savor -f <file_name>**)  <br>
     After executing it will generate two files: <br><br>
