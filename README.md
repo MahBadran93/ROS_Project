@@ -112,14 +112,14 @@ In order to construct a map : <br> <br>
     Execute this command : <br> 
     - **rosrun map_server map_savor -f <file_name>**  <br>
  After executing it will generate two files: <br><br>
-    - **file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. if we download the file and open it, it will look like this:  <br>
+       - **file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. if we download the file and open it, it will look like this: 
       <p align="center">
       <p align = "center">
          <img  src = "resources/mahmap.png" width=600>
       </p>
       </p> <br>
     Each cell ranges from 0 to 100 integer value where 0 means completely free and not occupied, 100 is completely occupied. <br><br>
-    - **file_name.yaml:** This file contains the meta data of the generated map which contains these parametrs, image,resoulution, origin, occupied_thresh, free_thresh,negate. 
+       - **file_name.yaml:** This file contains the meta data of the generated map which contains these parametrs, image,resoulution, origin, occupied_thresh, free_thresh,negate. 
      
 
 
