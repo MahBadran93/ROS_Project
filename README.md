@@ -86,7 +86,7 @@ we use **rostopic info /cmd_vel** to get information about the topic, after runn
 <br><br>
 
 #### Task 2: Mapping & localization <br><br>
-<span style="color:blue">*Mapping*</span>
+#### *Mapping* 
 
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
 In order to construct a map : <br> <br>
@@ -123,8 +123,11 @@ In order to construct a map : <br> <br>
         <em>Each cell ranges from 0 to 100 integer value where 0 means completely free and not occupied, 100 is completely occupied</em>
       </p>
       </p>
-    
+      
        - **file_name.yaml:** This file contains the meta data of the generated map which contains these parametrs, image,resoulution, origin, occupied_thresh, free_thresh,negate. 
+       
+#### *Localization* 
+
      
 
 
