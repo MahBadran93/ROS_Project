@@ -72,7 +72,7 @@ Let's explain some important concepts that have been studied and will be import
 
 
 ## Work Plan
-#### Task 1: Robot Control <br><br>
+### Task 1: Robot Control <br><br>
 Use **/cmd_vel** topic to move turtlebot3 around the environment. This topic is responsible for the **angular** and the **linear** velocity of the robot.<br>
 we use **rostopic info /cmd_vel** to get information about the topic, after running the command we can see that this topic uses **Twist** type message. So, this topic recieves data of type Twist(angular and linear velocities ,(x,y,z)). <br> 
 - Create a node that subscribe to **/scan** topic to get distance information from objects, walls. Also it publishes tarnslation and rotation data to      **/cmd_vel** topic to rotate and move the robot. <br>
@@ -87,7 +87,7 @@ we use **rostopic info /cmd_vel** to get information about the topic, after runn
 <br><br>
 
  
-#### Task 2: Mapping & localization <br><br>
+### Task 2: Mapping & localization <br><br>
 #### <ins> *Mapping* </ins>
 
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
@@ -133,11 +133,8 @@ After creating the map, the next step is to locate the robot in the environment 
 
 - To apply localization, we use **amcl** package. It is a localization system that implements Kullback-Leibler algorithm which uses an adaptive practicale filters to track the position of the robot in repect with the environment.  
 
-```json
-   // gg()
-```
 
-Subscribed Topics(message type) | published Topics(message type) 
+Subscribed Topics (message type) | published Topics (message type) 
 ------------ | -------------
 **map** (nav_msgs/OccupancyGrid) | **amcl_pose** (geometry_msgs/PoseWithCovarianceStamped)
 **scan** (sensor_msgs/LaserScan) | **particlecloud** (geometry_msgs/PoseArray)
