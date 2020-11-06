@@ -97,10 +97,10 @@ In order to construct a map : <br> <br>
        <img  src = "resources/screen.png" width=600>
     </p>
     </p>
-    You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are: <br><br>
-   - **Map**: visulize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, (**nav_msgs/OccupancyGrid.msg**)  <br> 
-   - **LaserScreen**:  visualze what the Lazer on the robot is detecting. Topic is **/scan**<br>
-   - **RobotModel**:  localize the Robot on the map.<br><br>
+- You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are:
+    - **Map**: visulize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, (**nav_msgs/OccupancyGrid.msg**)  <br> 
+    - **LaserScreen**:  visualze what the Lazer on the robot is detecting. Topic is **/scan**<br>
+    - **RobotModel**:  localize the Robot on the map.<br><br>
 - After launnching **slam_gmapping** and **RViz**, we can start moving the robot by executing Kerbord control command:<br> 
   (**roslaunch turtlebot_teleop keyboard_teleop.launch**).<br> After moving the robot around all the places needed we should see the map fully occupied in **Rvis**<br>
     <p align="center">
