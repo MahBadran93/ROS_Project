@@ -24,8 +24,15 @@ Students: <br>
   </p>
 </p>
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+[![Generic badge](https://img.shields.io/badge/Report-50-red.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Development-20-red.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Ros-kinetic-green.svg)](http://wiki.ros.org/kinetic/Installation)
+[![Generic badge](https://img.shields.io/badge/Platform-IgniteAcademy-blue.svg)](https://www.theconstructsim.com/)
+
+
+
+
+
 ## Project Management (Technical Report)
 
 - [Introduction](#introduction)
@@ -155,7 +162,7 @@ Subscribed Topics (message type) | published Topics (message type)
       </p>
      
 ``` 
-Task 2: Path Planning
+Task 3: Path Planning
 ```
 
 ## Conclusion
