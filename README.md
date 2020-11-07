@@ -104,7 +104,6 @@ To start the autonomus navigation process, the robot must have a map of the envi
 In order to construct a map : <br> <br>
 
 - First of all, before the start of the mapping process, it is necesseary to start and launch our turtlebot3. It is done using the **turtlebot3_bringup** package and starting **turtlebot3_remote.launch**. file. <br> 
-
  ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />``` <br> 
  This code is included inside the luanch file in our current package.
 
