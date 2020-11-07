@@ -147,6 +147,7 @@ After creating the map, the next step is to locate the robot in the environment 
 - To apply localization, we use **amcl** package. It is a localization system that implements Kullback-Leibler algorithm which uses an adaptive practicale filters to track the position of the robot in repect with the environment.  
 
 <br> 
+
 Subscribed Topics (message type) | published Topics (message type) 
 ------------ | -------------
 **map** (nav_msgs/OccupancyGrid) | **amcl_pose** (geometry_msgs/PoseWithCovarianceStamped)
@@ -154,6 +155,7 @@ Subscribed Topics (message type) | published Topics (message type)
 **tf** (tf/tfMessage) | **tf** (tf/tfMessage)
 
 <br>
+
 - **map:** amcl subscribe to map topic to get the map data (OGM), to used it for localization. 
 - **scan:** To have the updated scan readings. 
 - **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser coordinate frame to base_link coordinate frame. 
