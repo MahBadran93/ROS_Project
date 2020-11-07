@@ -98,7 +98,7 @@ we use **rostopic info /cmd_vel** to get information about the topic, after runn
 ``` 
 Task 2: Mapping & localization 
 ```
-<p align="center"> <ins> Mapping </ins> 
+<h4 align="center"> <ins> Mapping </ins> </h4>
 
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
 In order to construct a map : <br> <br>
@@ -138,7 +138,8 @@ In order to construct a map : <br> <br>
       
        - **file_name.yaml:** This file contains the meta data of the generated map which contains these parametrs, image,resoulution, origin, occupied_thresh, free_thresh,negate. 
        
-#### <ins> *Localization* </ins>
+<h4 align="center">  <ins> Localization </ins> </h4>
+
 After creating the map, the next step is to locate the robot in the environment (created map). We can define localization as the process of finding the location of the robot in respect with the environment. For now, we have the map of the environment created, and we have sensors located on the robot which will observe the environment then we do localization to estimate the coordinates and angles of where the robot is located in the environment. 
 
 - To apply localization, we use **amcl** package. It is a localization system that implements Kullback-Leibler algorithm which uses an adaptive practicale filters to track the position of the robot in repect with the environment.  
