@@ -188,7 +188,14 @@ After creating a map, localize the robot, we need to plan a path, trajectory for
      <img  src = "resources/navtask.png" width=900> <br>
   </p>
   </p>
-      
+  
+ The figure shows how the **move_base** node interact with other system compnents. The node implements **SimpleActionServer** with message of type **gemetry_msgs/PosemapStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. 
+ 
+ Topics | Message |Description  
+------------ | ------------ | -------------
+**/goal** (``` subscribed```)| ``` gemetry_msgs/PosemapStamped``` | Provide goal position to **/move_base**. 
+**/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  publish velocity information to the robot. 
+
 
 
 ## Conclusion
