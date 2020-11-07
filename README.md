@@ -106,7 +106,7 @@ In order to construct a map : <br> <br>
 - We need to use **gmapping** package and run **slam_gmapping** node. 
     This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data, in which it will be transformed to an Occumaoncy Grid Map (OGM) data format (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free). <br>
     Start the mapping process by executing this command: <br>
-    <**rosrun gmapping slam_gmapping**> <br><br>
+    ``` rosrun gmapping slam_gmapping ``` <br><br>
 - In the mapping process, an important tool is used called **RViz**. It will help us in visulising th map creation process, it will allow us to see what the robot is covoring from the environment. <br>   
     <p align="center">
     <p align = "center">
@@ -114,11 +114,11 @@ In order to construct a map : <br> <br>
     </p>
     </p>
 - You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are:
-    - **Map**: visulize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, (**nav_msgs/OccupancyGrid.msg**)  <br> 
+    - **Map**: visulize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, ```nav_msgs/OccupancyGrid.msg ```  <br> 
     - **LaserScreen**:  visualze what the Lazer on the robot is detecting. Topic is **/scan**<br>
     - **RobotModel**:  localize the Robot on the map.<br><br>
 - After launnching **slam_gmapping** and **RViz**, we can start moving the robot by executing Kerbord control command:<br> 
-  (**roslaunch turtlebot_teleop keyboard_teleop.launch**).<br> After moving the robot around all the places needed we should see the map fully occupied in **Rvis**<br>
+  ```roslaunch turtlebot_teleop keyboard_teleop.launch ```.<br> After moving the robot around all the places needed we should see the map fully occupied in **Rvis**<br>
     <p align="center">
     <p align = "center">
        <img  src = "resources/screen2.png" width=600>
@@ -126,7 +126,7 @@ In order to construct a map : <br> <br>
     </p> 
 - The map can be saved using **map_server** package, it includes **map_savor** node  which will allow us to access the map data. 
     Execute this command : <br> 
-    - **rosrun map_server map_savor -f <file_name>**  <br>
+    - ``` rosrun map_server map_savor -f <file_name> ```
  After executing it will generate two files: <br><br>
        - **file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. If we download the file and open it, it will look like this: 
       <p align="center">
@@ -150,9 +150,9 @@ After creating the map, the next step is to locate the robot in the environment 
 
 Subscribed Topics (message type) | published Topics (message type) 
 ------------ | -------------
-**map** (nav_msgs/OccupancyGrid) | **amcl_pose** (geometry_msgs/PoseWithCovarianceStamped)
-**scan** (sensor_msgs/LaserScan) | **particlecloud** (geometry_msgs/PoseArray)
-**tf** (tf/tfMessage) | **tf** (tf/tfMessage)
+**map** (``` nav_msgs/OccupancyGrid```) | **amcl_pose** (```geometry_msgs/PoseWithCovarianceStamped```)
+**scan** (```sensor_msgs/LaserScan```) | **particlecloud** (```geometry_msgs/PoseArray```)
+**tf** (```tf/tfMessage```) | **tf** (```tf/tfMessage```)
 
 <br>
 
