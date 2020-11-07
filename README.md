@@ -128,7 +128,7 @@ In order to construct a map : <br> <br>
     Execute this command : <br> 
     - **rosrun map_server map_savor -f <file_name>**  <br>
  After executing it will generate two files: <br><br>
-       - **file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. if we download the file and open it, it will look like this: 
+       - **file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. If we download the file and open it, it will look like this: 
       <p align="center">
       <p align = "center">
          <img  src = "resources/mahmap.png" width=600> <br>
@@ -137,20 +137,23 @@ In order to construct a map : <br> <br>
       </p>
       
        - **file_name.yaml:** This file contains the meta data of the generated map which contains these parametrs, image,resoulution, origin, occupied_thresh, free_thresh,negate. 
-       
+ 
+--- 
+ 
 <h4 align="center">  <ins> Localization </ins> </h4>
 
 After creating the map, the next step is to locate the robot in the environment (created map). We can define localization as the process of finding the location of the robot in respect with the environment. For now, we have the map of the environment created, and we have sensors located on the robot which will observe the environment then we do localization to estimate the coordinates and angles of where the robot is located in the environment. 
 
 - To apply localization, we use **amcl** package. It is a localization system that implements Kullback-Leibler algorithm which uses an adaptive practicale filters to track the position of the robot in repect with the environment.  
 
----
+<br> 
 Subscribed Topics (message type) | published Topics (message type) 
 ------------ | -------------
 **map** (nav_msgs/OccupancyGrid) | **amcl_pose** (geometry_msgs/PoseWithCovarianceStamped)
 **scan** (sensor_msgs/LaserScan) | **particlecloud** (geometry_msgs/PoseArray)
 **tf** (tf/tfMessage) | **tf** (tf/tfMessage)
----
+
+<br>
 - **map:** amcl subscribe to map topic to get the map data (OGM), to used it for localization. 
 - **scan:** To have the updated scan readings. 
 - **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser coordinate frame to base_link coordinate frame. 
