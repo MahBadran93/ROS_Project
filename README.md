@@ -182,6 +182,14 @@ Subscribed Topics (message type) | published Topics (message type)
 ``` 
 Task 3: Path Planning
 ```
+After creating a map, localize the robot, we need to plan a path, trajectory for the robot to follow to reach a specific goal while avoiding obstacles along the way. To achieve this, we need to use **move_base** node which will be resposible for managing this task. See the figure below: 
+  <p align="center">
+  <p align = "center">
+     <img  src = "resources/navtask.png" width=900> <br>
+  </p>
+  </p>
+      
+
 
 ## Conclusion
 
