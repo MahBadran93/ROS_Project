@@ -165,13 +165,20 @@ Subscribed Topics (message type) | published Topics (message type)
 - **scan:** To have the updated scan readings. 
 - **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser coordinate frame to base_link coordinate frame. 
 - **amcl_pose:** amcl node publishes the position of the robot in the environment to the amcl_pose topic.
-- **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. see the figure below (red arrows displayed using Rviz)  
-    <p align="center">
-      <p align = "center">
-         <img  src = "resources/particles.png" width=600> <br>
-      </p>
-      </p>
-     
+- **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. see the figure below (red arrows displayed using Rviz).
+ To launch amcl and call the generated map file, we create a launch file which includes: <br> 
+ ```
+ <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />
+  <arg name="map_file" default="$(find pkg_name)/maps/map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  <node pkg="amcl" type="amcl" name="amcl">
+  ```
+  <p align="center">
+  <p align = "center">
+     <img  src = "resources/particles.png" width=600> <br>
+  </p>
+  </p>
+      
 ``` 
 Task 3: Path Planning
 ```
