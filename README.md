@@ -165,7 +165,7 @@ After creating the map, the next step is to locate the robot in the environment 
  To launch amcl and call the generated map file, we create a launch file which includes: <br> 
  
    
-    - Lunch TurtleBot3 applications: ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />```
+    - Lunch TurtleBot3 applications: <br> ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />```
     - Call our generated map file: ```<arg name="map_file" default="$(find pkg_name)/maps/map.yaml"/>```
     - run map server node with our generated map:<br> ```<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />```
     - launch amcl node: ```<node pkg="amcl" type="amcl" name="amcl">```
@@ -197,7 +197,7 @@ Task 3: Path Planning
 
 
 - As you can see in the Navigation Task Figure above, there are parameters required to be loaded to the **/move_base** node: 
-   - **Costmap paremeters(local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global cost map is used to store information about the whole map (global planning) where local costmap is used to store local information which means the small area surrounding the robot position(local planning). 
+   - **Costmap paremeters (local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global cost map is used to store information about the whole map (global planning) where local costmap is used to store local information which means the small area surrounding the robot position(local planning). 
      <p align="center">
     <p align = "center">
        <img  src = "resources/globalcostmap.png" width=400> 
@@ -209,7 +209,7 @@ Task 3: Path Planning
 - To implement path planning we create a launch file where it includes the map server(config. explained), amcl(config. explained) , and move base packages with its parameter dependences. As explained, move base node requires some parameters to be loaded. To configure and add move base node, see the following code:  
    -  To launch the node:<br>
    ```  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">" ```
-   - Load the required parameters(local & global costmaps): 
+   - Load the required parameters (local & global costmaps): 
    ```  <!-- rosparam is used to load parameters from yaml file-->
         <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
         <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
