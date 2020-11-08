@@ -182,6 +182,7 @@ Task 3: Path Planning
   <p align="center">
   <p align = "center">
      <img  src = "resources/navtask.png" width=900> <br>
+     <em>Navigation Task</em>
   </p>
   </p>
   
@@ -194,12 +195,13 @@ Task 3: Path Planning
     **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  publish velocity information to the robot. 
 
 
-- As you can see in the diagram, there are parameters required to be loaded to the **/move_base** node: 
+- As you can see in the Navigation Task Figure above, there are parameters required to be loaded to the **/move_base** node: 
    - **Costmap paremeters(local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global cost map is used to store information about the whole map (global planning) where local costmap is used to store local information which means the small area surrounding the robot position(local planning). 
      <p align="center">
     <p align = "center">
        <img  src = "resources/globalcostmap.png" width=400> 
-       <img  src = "resources/localcostmap.png" width=400> 
+       <img  src = "resources/localcostmap.png" width=400> <br>
+       <em>Global Planning - Local Planning</em>
   </p>
   </p>
 
