@@ -166,9 +166,9 @@ After creating the map, the next step is to locate the robot in the environment 
  
    
     - Lunch TurtleBot3 applications: <br> ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />```
-    - Call our generated map file: ```<arg name="map_file" default="$(find pkg_name)/maps/map.yaml"/>```
+    - Call our generated map file:<br> ```<arg name="map_file" default="$(find pkg_name)/maps/map.yaml"/>```
     - run map server node with our generated map:<br> ```<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />```
-    - launch amcl node: ```<node pkg="amcl" type="amcl" name="amcl">```
+    - launch amcl node:<br> ```<node pkg="amcl" type="amcl" name="amcl">```
     
   <p align="center">
   <p align = "center">
