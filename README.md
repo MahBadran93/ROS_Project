@@ -197,7 +197,13 @@ Task 3: Path Planning
 **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  publish velocity information to the robot. 
 
 - As you can see in the diagram, there are parameters required to be loaded to the **/move_base** node: 
-   - **Costmap paremeters(local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global cost map is used to store information about the whole map (global planning) where local costmap is used to store local information which means the small area surrounding the robot position(local planning).  
+   - **Costmap paremeters(local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global cost map is used to store information about the whole map (global planning) where local costmap is used to store local information which means the small area surrounding the robot position(local planning). 
+     <p align="center">
+    <p align = "center">
+       <img  src = "resources/globalcostmap.png.png" width=500> <br>
+       <img  src = "resources/localcostmap.png.png.png" width=500> <br>
+  </p>
+  </p>
 
 - To implement path planning we create a launch file where it includes the map server(config. explained), amcl(config. explained) , and move base packages with its parameter dependences. As explained, move base node requires some parameters to be loaded. To configure and add move base node, see the following code:  
    -  To launch the node:<br>
