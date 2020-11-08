@@ -151,15 +151,11 @@ After creating the map, the next step is to locate the robot in the environment 
 
 - To apply localization, we use **amcl** package. It is a localization system that implements Kullback-Leibler algorithm which uses an adaptive practicale filters to track the position of the robot in repect with the environment.  
 
-<br> 
-
-Subscribed Topics (message type) | published Topics (message type) 
------------- | -------------
-**map** (``` nav_msgs/OccupancyGrid```) | **amcl_pose** (```geometry_msgs/PoseWithCovarianceStamped```)
-**scan** (```sensor_msgs/LaserScan```) | **particlecloud** (```geometry_msgs/PoseArray```)
-**tf** (```tf/tfMessage```) | **tf** (```tf/tfMessage```)
-
-<br>
+    Subscribed Topics (message type) | published Topics (message type) 
+    ------------ | -------------
+    **map** (``` nav_msgs/OccupancyGrid```) | **amcl_pose** (```geometry_msgs/PoseWithCovarianceStamped```)
+    **scan** (```sensor_msgs/LaserScan```) | **particlecloud** (```geometry_msgs/PoseArray```)
+    **tf** (```tf/tfMessage```) | **tf** (```tf/tfMessage```)
 
 - **map:** amcl subscribe to map topic to get the map data (OGM), to used it for localization. 
 - **scan:** To have the updated scan readings. 
@@ -175,7 +171,7 @@ Subscribed Topics (message type) | published Topics (message type)
   ```
   <p align="center">
   <p align = "center">
-     <img  src = "resources/particles.png" width=600> <br>
+     <img  src = "resources/particles.png" width=500> <br>
   </p>
   </p>
       
@@ -191,17 +187,19 @@ Task 3: Path Planning
   
  - The figure shows how the **move_base** node interact with other system compnents. The node implements **SimpleActionServer** with message of type **gemetry_msgs/PosemapStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. 
  
- Topics | Message |Description  
------------- | ------------ | -------------
-**/goal** (``` subscribed```)| ``` gemetry_msgs/PosemapStamped``` | Provide goal position to **/move_base**. 
-**/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  publish velocity information to the robot. 
+
+     Topics | Message |Description  
+    ------------ | ------------ | -------------
+    **/goal** (``` subscribed```)| ``` gemetry_msgs/PosemapStamped``` | Provide goal position to **/move_base**. 
+    **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  publish velocity information to the robot. 
+
 
 - As you can see in the diagram, there are parameters required to be loaded to the **/move_base** node: 
    - **Costmap paremeters(local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global cost map is used to store information about the whole map (global planning) where local costmap is used to store local information which means the small area surrounding the robot position(local planning). 
      <p align="center">
     <p align = "center">
-       <img  src = "resources/globalcostmap.png.png" width=500> <br>
-       <img  src = "resources/localcostmap.png.png.png" width=500> <br>
+       <img  src = "resources/globalcostmap.png" width=400> 
+       <img  src = "resources/localcostmap.png" width=400> 
   </p>
   </p>
 
