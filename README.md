@@ -163,12 +163,13 @@ After creating the map, the next step is to locate the robot in the environment 
 - **amcl_pose:** amcl node publishes the position of the robot in the environment to the amcl_pose topic.
 - **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. see the figure below (red arrows displayed using Rviz,add **PoseArray** display which subscribe to **PointCloud** topic).
  To launch amcl and call the generated map file, we create a launch file which includes: <br> 
- ```
- <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />
-  <arg name="map_file" default="$(find pkg_name)/maps/map.yaml"/>
-  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
-  <node pkg="amcl" type="amcl" name="amcl">
-  ```
+ 
+   
+    - Lunch TurtleBot3 applications: ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />```
+    - Call our generated map file: ```<arg name="map_file" default="$(find pkg_name)/maps/map.yaml"/>```
+    - run map server node with our generated map:<br> ```<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />```
+    - launch amcl node: ```<node pkg="amcl" type="amcl" name="amcl">```
+    
   <p align="center">
   <p align = "center">
      <img  src = "resources/particles.png" width=500> <br>
