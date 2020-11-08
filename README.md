@@ -165,7 +165,7 @@ Subscribed Topics (message type) | published Topics (message type)
 - **scan:** To have the updated scan readings. 
 - **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser coordinate frame to base_link coordinate frame. 
 - **amcl_pose:** amcl node publishes the position of the robot in the environment to the amcl_pose topic.
-- **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. see the figure below (red arrows displayed using Rviz).
+- **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. see the figure below (red arrows displayed using Rviz,add **PoseArray** display which subscribe to **PointCloud** topic).
  To launch amcl and call the generated map file, we create a launch file which includes: <br> 
  ```
  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />
@@ -182,21 +182,39 @@ Subscribed Topics (message type) | published Topics (message type)
 ``` 
 Task 3: Path Planning
 ```
-After creating a map, localize the robot, we need to plan a path, trajectory for the robot to follow to reach a specific goal while avoiding obstacles along the way. To achieve this, we need to use **move_base** node which will be resposible for managing this task. See the figure below: 
+- After creating a map, localize the robot, we need to plan a path, trajectory for the robot to follow to reach a specific goal while avoiding obstacles along the way. To achieve this, we need to use **move_base** node which will be resposible for managing this task. See the figure below: 
   <p align="center">
   <p align = "center">
      <img  src = "resources/navtask.png" width=900> <br>
   </p>
   </p>
   
- The figure shows how the **move_base** node interact with other system compnents. The node implements **SimpleActionServer** with message of type **gemetry_msgs/PosemapStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. 
+ - The figure shows how the **move_base** node interact with other system compnents. The node implements **SimpleActionServer** with message of type **gemetry_msgs/PosemapStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. 
  
  Topics | Message |Description  
 ------------ | ------------ | -------------
 **/goal** (``` subscribed```)| ``` gemetry_msgs/PosemapStamped``` | Provide goal position to **/move_base**. 
 **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  publish velocity information to the robot. 
 
+- As you can see in the diagram, there are parameters required to be loaded to the **/move_base** node: 
+   - **Costmap paremeters(local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global cost map is used to store information about the whole map (global planning) where local costmap is used to store local information which means the small area surrounding the robot position(local planning).  
 
+- To implement path planning we create a launch file where it includes the map server(config. explained), amcl(config. explained) , and move base packages with its parameter dependences. As explained, move base node requires some parameters to be loaded. To configure and add move base node, see the following code:  
+   -  To launch the node:<br>
+   ```  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">" ```
+   - Load the required parameters(local & global costmaps): 
+   ```  <!-- rosparam is used to load parameters from yaml file-->
+        <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
+        <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find t3_navigation)/param/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find t3_navigation)/param/global_costmap_params.yaml" command="load" />
+        <rosparam file="$(find t3_navigation)/param/move_base_params.yaml" command="load" />
+        <rosparam file="$(find t3_navigation)/param/dwa_local_planner_params.yaml" command="load" />
+        ```
+   
+ - After creating the launch file, we need to visulize the path planning process, we run Rviz 
+  
+  
 
 ## Conclusion
 
