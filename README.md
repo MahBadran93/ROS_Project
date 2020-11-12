@@ -45,19 +45,16 @@ Students: <br>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Introduction
-Robotics Operating System (ROS), is a middleware, low level framework, to write robotic softwares. It can be cosidered as an API to make the process of developing a robotic related projects more flexible, and simplified. There will be no need for an extensive knowledge of the hardware in which it saves much effort and time in the development phase. It includes many libraries and tools which connects and control the robot manipulators, handle the comunication between multiple devices in a a working space. <br>
-ROS is supported by many operating systems like ubunto, windows. Ubunto is the more stable operating system working with ROS. However, for the development of this project we are using the construct web plaform, which is an online robotics working environmant. The platform uses ubunto as the main operating system with ROS kinetic and uses the simulation of turtlebot 3, where we will be able to apply some of the techniques we have have learned to apply navigation and localization with map construction.  
+Robotics Operating System (ROS), is a middleware, low level framework, to write robotic softwares. It can be cosidered as an API to make the process of developing a robotic related projects more flexible, and simplified. There will be no need for an extensive knowledge of the hardware in which it saves much effort and time in the development phase. It includes many libraries and tools which connects and control the robot manipulators, handle the communication between multiple devices in a a working space. <br>
+ROS is supported by many operating systems like ubunto, windows. Ubunto is the more stable operating system working with ROS. However, for the development of this project we are using the construct web plaform, which is an online robotics working environmant. The platform uses ubunto as the main operating system with ROS kinetic and uses the **Gazebo** as real world simulator with many robot model simulations like turtlebot 3. The platform will enable us to learn some of ROS basic techniques to be able to apply Robot Control, Mapping, Robot Localization, Path planning and setting up some goals to navigate through the environment.  
 
 ## Project Tasks 
 The project goal is to apply the learned **ROS** techniques and pakages to apply the navigation task on Turtlebot3:  
-- Create a script that moves the robot around with simple **/cmd_vel** publishing. See the range of
-movement of this new robot model. <br>
-- Create the mapping launches, and map the whole environment. You have to finish with a clean map of
-the full cafeteria. Setup the launch to be able to localize the Turtlebot3 robot. <br>
-- Set up the move base system so that you can publish a goal to move_base and Turtlebot3 can reach
-that goal without colliding with obstacles. <br> 
-- Create a program that allows the Turtlebot3 to navigate within the environment following a set of
-waypoints.
+- Moveing the robot around the environment using **/cmd_vel** topic. <br>
+- Construct a map of the whole environment. We need to fully occupy the whole environment, then we need to localize the Robot. <br>
+- Path planning, we need to publish a goal to move base navigation system in which Turtlebot3 can reach
+that goal without colliding with any obstacles. <br> 
+- Create a waypoints that allows the Turtlebot3 to navigate within the environment. 
 
 ## Analysis OF Studied Techniques
 
@@ -82,8 +79,32 @@ Let's explain some important concepts that have been studied and will be import
 ```
 Task 1: Robot Control
 ```
-Use **/cmd_vel** topic to move turtlebot3 around the environment. This topic is responsible for the **angular** and the **linear** velocity of the robot.<br>
-we use **rostopic info /cmd_vel** to get information about the topic, after running the command we can see that this topic uses **Twist** type message. So, this topic recieves data of type Twist(angular and linear velocities ,(x,y,z)). <br> 
+To control TurtleBot3, which is a mobile robot with small size and low price but still have the same quality that other mobile robots have. The first thing we need to know is the topics that make the Robot move in the environment. One important command we can use to know what are the topics that got published by the environment. <br> 
+```rostopic list``` <br> 
+By executing this command, we can see all the topics provide by the environment. One of the topics that should be provided to move the robot is **/cmd_vel**:   
+
+- With this topic we can publish velocity information to the robot. if we want to know more information about this topic we can execute this command: <br> 
+   - ```rostopic info /cmd_vel ``` <br> 
+       After running the command we can see that this topic uses **Twist** type messages. So, this topic recieves data of type Twist (angular and linear         velocities ,(x,y,z)). To know more information about the message we execute this command: <br> 
+       ```rosmsg show geometry_msgs/Twist``` <br> 
+       See the Figure below : <br> 
+       <p align="center">
+          <p align = "center">
+             <img  src = "resources/twistmsg.png" width=200>
+          </p>
+        </p>
+         
+- TurtleBot3 revieves the velocity information by subscribing to this topic. It will be provided with translation and rotation information. 
+- We can publish to this topic by running this command: 
+  ```rostopic pub /cmd_vel  TAB TAB```
+  And then in the terminal we can edit the values of the two vectors. 
+- Otherwise, we can create a launch file to run a node responsible for publishing velocity information to the robot. see the code below: <br> 
+   ```self.pubNode = rospy.Publisher('/cmd_vel', Twist, queue_size=1)``` <br> 
+   Here, we create a vairable called pubNode that is responsible to publish Twist information to cmd_vel topic. <br> 
+   
+   
+   
+
 - Create a node that subscribe to **/scan** topic to get distance information from objects, walls. Also it publishes tarnslation and rotation data to      **/cmd_vel** topic to rotate and move the robot. <br>
 <p align="center">
   <p align = "center">
