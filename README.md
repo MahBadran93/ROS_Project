@@ -100,7 +100,9 @@ By executing this command, we can see all the topics provide by the environment.
   And then in the terminal we can edit the values of the two vectors. 
 - Otherwise, we can create a launch file to run a node responsible for publishing velocity information to the robot. see the code below: <br> 
    ```self.pubNode = rospy.Publisher('/cmd_vel', Twist, queue_size=1)``` <br> 
-   Here, we create a vairable called pubNode that is responsible to publish Twist information to cmd_vel topic. <br> 
+   ```self.laserMsg = LaserScan()``` <br> 
+   ```self.msgTwistObj.linear.x = 0.2 ```<br> 
+   Here, we create a vairable called **pubNode** that is responsible to publish Twist information to cmd_vel topic. And another variable called **laserMsg** that holds Twist values. AS you can see in the last command , we added 0.2 value the x linear position of the robot. <br> 
    
    
    
