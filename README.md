@@ -152,7 +152,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
     - **LaserScreen**:  visualze what the Lazer on the robot is detecting. Topic is **/scan**<br>
     - **RobotModel**:  localize the Robot on the map.<br><br>
 - After launnching **slam_gmapping** and **RViz**, we can start moving the robot by executing Kerbord control command:<br> 
-  ```roslaunch turtlebot_teleop keyboard_teleop.launch ```.<br> After moving the robot around all the places needed we should see the map fully occupied in **Rvis**<br>
+  ```roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch ```.<br> After moving the robot around all the places needed we should see the map fully occupied in **Rvis**<br>
     <p align="center">
     <p align = "center">
        <img  src = "resources/screen2.png" width=600>
@@ -229,6 +229,12 @@ Task 3: Path Planning
     **move_base/goal** (``` subscribed```)|  ```move_base_msgs/MoveBaseActionGoal ``` | Provide goal position to **/move_base** node directly without using **SimpleActionServer**. 
     **move_base_simple/goal** (``` subscribed```) |   ``` gemetry_msgs/PosemapStamped```  | Provide goal position using **SimpleActionServer** which will allow us to track the current goal position status. 
     **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  publish velocity information to the robot. 
+    
+- **SimpleActionServer** provides topics like goal(**move_base_simple/goal**), Feedback (**/move_base/feedback**), Result(**/move_base/result**). 
+    - **FeedBack**: Keeps updating the server about the current information of the robot along the path (current position, laser information).For example, if we create a goal and the robot start to move toward the goal. If we display the message from the FeedBack topic we will see real time updated information in the teminal. Execute this command. <br> 
+      ```rostopic echo move_base/feedback```
+    - **Result**: It is sent only once, a final pose of the robot is sent by the server to the move_base node When the robot reaches the goal.
+       
    
 - As you can see in the Navigation Task Figure above, there are parameters required to be loaded to the **/move_base** node: 
    - **Costmap paremeters (local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global cost map is used to store information about the whole map (global planning) where local costmap is used to store local information which means the small area surrounding the robot position(local planning). 
@@ -247,7 +253,7 @@ Task 3: Path Planning
    - Run Rviz and add add all necessary desiplays to visualize the navigation process. 
    - To visualize the **local costmap**, **global costmap**, we add two **Map** display elements and attach them to **/move_base/local_costmap/costmap** and      **/move_base/global_costmap/costmap**  topics respectively. 
    - To visualize the **local plan**, **global plan**, we add two **Path** display elements and attach them to **/move_base/DWAPlannerROS/local_plan** and **/move_base/NavfnROS/plan** topics respectively.  
-   - In Rviz, choose the **2D Nav Goal** tab and then click on the position where we want our turtlebot3 robot to move to (goal). 
+   - In Rviz, choose the **2D Nav Goal** tab and then click on the position where we want our turtlebot3 robot to move(goal). 
    - After creating a goal, a goal message (**gemetry_msgs/PosemapStamped**) will be published to **/move_base/goal** topic. 
    - The goal message we published to **/move_base/goal** topic will be recieved by **SimpleActionServer** which is implemented in the move-base node. So, the      goal information will be recieved by the move_base node with goal topic provided by **SimpleActionServer** with message type **move_base_msgs/MoveBaseActionGoal** 
    - we can run this command to see what has been published to goal topic: <br> 
@@ -255,11 +261,9 @@ Task 3: Path Planning
 - we can create a goal by directly publishing to the goal topic. By executing this command: 
    -  ```rostopic pub /move_base/goal/ move_base_msgs/MoveBaseActionGoal```
    
-- **SimpleActionServer** provides other topics like, Feedback (**/move_base/feedback**), Result(**/move_base/result**). 
-    - **FeedBack**: Keeps updating the server about the current information of the robot along the path (current position, laser information).For example, if we create a goal and the robot start to move toward the goal. If we display the message from the FeedBack topic we will see real time updated information in the teminal. Execute this command. <br> 
-      ```rostopic echo move_base/feedback```
-   - **Result**: It is sent only once, a final pose of the robot is sent by the server to the move_base node When the robot reaches the goal.
-   
+- Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. 
+
+
 - To implement path planning we create a launch file where it includes the map server(config. explained) package, amcl(config. explained) package, and move base package with its parameter dependences. As explained, move base node requires some parameters to be loaded. To configure and add move base node, see the following code:  
    -  To launch the node:<br>
    ```  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">" ```
