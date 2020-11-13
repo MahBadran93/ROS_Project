@@ -221,12 +221,13 @@ Task 3: Path Planning
   </p>
   </p>
   
- - The figure shows how the **move_base** node interact with other system compnents. The node implements **SimpleActionServer** with message of type **gemetry_msgs/PosemapStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. 
- 
+ - The figure shows how the **move_base** node interact with other system compnents. The node implements **SimpleActionServer** from **actionlib** package with message of type **gemetry_msgs/PosemapStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. See table below to see description of some topics move_base node subscribe to and publishes. 
 
+  
      Topics | Message |Description  
     ------------ | ------------ | -------------
-    **/goal** (``` subscribed```)| ``` gemetry_msgs/PosemapStamped``` | Provide goal position to **/move_base** node. 
+    **move_base/goal** (``` subscribed```)|  ```move_base_msgs/MoveBaseActionGoal ``` | Provide goal position to **/move_base** node directly without using **SimpleActionServer**. 
+    **move_base_simple/goal** (``` subscribed```) |   ``` gemetry_msgs/PosemapStamped```  | Provide goal position using **SimpleActionServer** which will allow us to track the current goal position status. 
     **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  publish velocity information to the robot. 
    
 - As you can see in the Navigation Task Figure above, there are parameters required to be loaded to the **/move_base** node: 
@@ -248,11 +249,11 @@ Task 3: Path Planning
    - To visualize the **local plan**, **global plan**, we add two **Path** display elements and attach them to **/move_base/DWAPlannerROS/local_plan** and **/move_base/NavfnROS/plan** topics respectively.  
    - In Rviz, choose the **2D Nav Goal** tab and then click on the position where we want our turtlebot3 robot to move to (goal). 
    - After creating a goal, a goal message (**gemetry_msgs/PosemapStamped**) will be published to **/move_base/goal** topic. 
-   - The goal message we published to **/move_base/goal** topic will be recieved by **SimpleActionServer** which is implemented in the move-base node. So, the      goal information will be recieved by the move_base node. 
+   - The goal message we published to **/move_base/goal** topic will be recieved by **SimpleActionServer** which is implemented in the move-base node. So, the      goal information will be recieved by the move_base node with goal topic provided by **SimpleActionServer** with message type **move_base_msgs/MoveBaseActionGoal** . 
    - we can run this command to see what has been published to goal topic: <br> 
      ```rostopic echo /move-base/goal```
 
-- **SimpleActionServer** subscibes to other topics like Feedback (**/move_base/feedback**), Result(**/move_base/result**). 
+- **SimpleActionServer** provides topics like, Feedback (**/move_base/feedback**), Result(**/move_base/result**). 
    - **FeedBack**: Keeps updating the server about the current information of the robot along the path (current position, laser information).
    - **Result**: It is sent only once, a final pose of the robot is sent by the server to the client move_base node When the robot reaches the goal.
    
