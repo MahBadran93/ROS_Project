@@ -100,14 +100,20 @@ By executing this command, we can see all the topics provide by the environment.
   And then in the terminal we can edit the values of the two vectors. 
 - Otherwise, we can create a launch file to run a node responsible for publishing velocity information to the robot. see the code below: <br> 
    ```self.pubNode = rospy.Publisher('/cmd_vel', Twist, queue_size=1)``` <br> 
-   ```self.laserMsg = LaserScan()``` <br> 
+   ```self.msgTwistObj = Twist()``` <br> 
    ```self.msgTwistObj.linear.x = 0.2 ```<br> 
-   Here, we create a vairable called **pubNode** that is responsible to publish Twist information to cmd_vel topic. And another variable called **laserMsg** that holds Twist values. AS you can see in the last command , we added 0.2 value the x linear position of the robot. <br> 
-   
-   
-   
+   ```self.pubNode.publish(self.msgTwistObj)``` <br> 
+   Here, we create a vairable called **pubNode** that is responsible to publish Twist information to cmd_vel topic. And another variable called **laserMsg** that holds Twist values. AS you can see in the last command , we added 0.2 value the x linear position of the robot.The last command, we used publish function to publish the new updated message values. <br> 
+- Another topic we use is **/scan** topic, we use this topic to get the laser information, readings from the robot. For example, the distance between the robot nad a wall in the environment. The message used is of type **LaserScan**. See the commands below:<br> 
+```self.subNode = rospy.Subscriber('/scan', LaserScan, self.callback)```<br> 
+```self.laserMsg = LaserScan()```<br> 
+    In our node, we create another variable called **subNode** to subsicribe to **scan** topic. And another variable called **laserMsg** which holds a laser information and readings.  The **callback** parameter in the Subscriber function is a function that have the updated laser information. see command bellow:<br> 
+    ```def callback(self, msg):
+        self.laserMsg = msg```<br> 
+    ```self.laserMsg.ranges``` <br> 
+   So, whenever the robot moves, the variable **laserMasg** will be updated. One of the useful information we can obtain from **laserMsg** is the **ranges** parameter. we use **ranges** parameter to know the distance between the robot and an object in the environment. <br> 
+   See the Figure below. It shows different frames of the robot after launching the node.  
 
-- Create a node that subscribe to **/scan** topic to get distance information from objects, walls. Also it publishes tarnslation and rotation data to      **/cmd_vel** topic to rotate and move the robot. <br>
 <p align="center">
   <p align = "center">
      <img  src = "resources/r1.png" width=350>
