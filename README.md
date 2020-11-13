@@ -256,7 +256,7 @@ Task 3: Path Planning
    -  ```rostopic pub /move_base/goal/ move_base_msgs/MoveBaseActionGoal```
    
 - **SimpleActionServer** provides other topics like, Feedback (**/move_base/feedback**), Result(**/move_base/result**). 
-    - **FeedBack**: Keeps updating the server about the current information of the robot along the path (current position, laser information).For example, if we create a goal and the robot start to move toward the goal. If we run the FeedBack topic we will see real time updated information in the teminal. Execute this command. <br> 
+    - **FeedBack**: Keeps updating the server about the current information of the robot along the path (current position, laser information).For example, if we create a goal and the robot start to move toward the goal. If we display the message from the FeedBack topic we will see real time updated information in the teminal. Execute this command. <br> 
       ```rostopic echo move_base/feedback```
    - **Result**: It is sent only once, a final pose of the robot is sent by the server to the move_base node When the robot reaches the goal.
    
