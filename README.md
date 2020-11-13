@@ -178,33 +178,38 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
 
 After creating the map, the next step is to locate the robot in the environment (created map). We can define localization as the process of finding the location of the robot in respect with the environment. For now, we have the map of the environment created, and we have sensors located on the robot which will observe the environment then we do localization to estimate the coordinates and angles of where the robot is located in the environment. 
 
-- To apply localization, we use **amcl** package. It is a localization system that implements Kullback-Leibler algorithm which uses an adaptive practicale filters to track the position of the robot in repect with the environment.  
+- To apply localization, we use **AMCL (Adaptive Monte Carlo Localization)** package which provides **amcl** node. It is a localization system that implements Kullback-Leibler(Monte Carlo) algorithm which uses an adaptive practicale filters to track the position of the robot in repect with the environment. <bR> 
+  
+    **What is Monte Carlo Algorithm ?** <br>
+    An algorithm which is responsible for generating many future guesses (Particles) of the robot expected movements in the environment. When the robot starts moving, the algorithm starts generating Particles and then uses the obtained sensor information (**/scan**) to create an optimised robot movement ( make all the created Particles head to the right direction). <br> 
 
+    See below Table which describes the topics subscribed and published by AMCL. 
     Subscribed Topics (message type) | published Topics (message type) 
     ------------ | -------------
     **map** (``` nav_msgs/OccupancyGrid```) | **amcl_pose** (```geometry_msgs/PoseWithCovarianceStamped```)
     **scan** (```sensor_msgs/LaserScan```) | **particlecloud** (```geometry_msgs/PoseArray```)
     **tf** (```tf/tfMessage```) | **tf** (```tf/tfMessage```)
 
-- **map:** amcl subscribe to map topic to get the map data (OGM), to used it for localization. 
-- **scan:** To have the updated scan readings. 
-- **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser coordinate frame to base_link coordinate frame. 
-- **amcl_pose:** amcl node publishes the position of the robot in the environment to the amcl_pose topic.
-- **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. see the figure below (red arrows displayed using Rviz,add **PoseArray** display which subscribe to **PointCloud** topic).
- To launch amcl and call the generated map file, we create a launch file which includes: <br> 
- 
-   
+    - **map:** amcl subscribe to map topic to get the map data (OGM), to used it for localization. 
+    - **scan:** To have the updated scan readings. 
+    - **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser coordinate frame to base_link coordinate frame. 
+    - **amcl_pose:** amcl node publishes the position of the robot in the environment to the amcl_pose topic.
+    - **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. see the figure below (red arrows displayed using Rviz,add **PoseArray** display which subscribe to **PointCloud** topic). <br>
+- To launch amcl and call the generated map file, we create a launch file which includes:
+
     - Lunch TurtleBot3 applications: <br> ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />```
     - Call our generated map file:<br> ```<arg name="map_file" default="$(find pkg_name)/maps/map.yaml"/>```
     - run map server node with our generated map:<br> ```<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />```
-    - launch amcl node:<br> ```<node pkg="amcl" type="amcl" name="amcl">```
-    
-  <p align="center">
-  <p align = "center">
-     <img  src = "resources/particles.png" width=500> <br>
-  </p>
-  </p>
-      
+    - launch amcl node:<br> ```<node pkg="amcl" type="amcl" name="amcl">``` <br>
+
+        <p align="center">
+        <p align = "center">
+        <img  src = "resources/particles.png" width=500> <br>
+        <em> Generated Particles</em>
+
+        </p>
+        </p>
+
 ``` 
 Task 3: Path Planning
 ```
