@@ -108,10 +108,9 @@ By executing this command, we can see all the topics provide by the environment.
 ```self.subNode = rospy.Subscriber('/scan', LaserScan, self.callback)```<br> 
 ```self.laserMsg = LaserScan()```<br> 
     In our node, we create another variable called **subNode** to subsicribe to **scan** topic. And another variable called **laserMsg** which holds a laser information and readings.  The **callback** parameter in the Subscriber function is a function that have the updated laser information. see command bellow:<br> 
-    ```def callback(self, msg):
-        self.laserMsg = msg
-        ``` <br> 
-    ```self.laserMsg.ranges```  <br> 
+    ```def callback(self, msg):```<br>
+        ```self.laserMsg = msg```<br>   
+    ```self.laserMsg.ranges```   <br> 
    So, whenever the robot moves, the variable **laserMasg** will be updated. One of the useful information we can obtain from **laserMsg** is the **ranges** parameter. we use **ranges** parameter to know the distance between the robot and an object in the environment. <br> 
    See the Figure below. It shows different frames of the robot after launching the node which is responsible for moving the robot. **Explain More About Ranges**
 
