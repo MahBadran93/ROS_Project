@@ -316,8 +316,8 @@ Task 3: Path Planning
 - We can create a goal by directly publishing to the goal topic. By executing this command: 
    -  ```rostopic pub /move_base/goal/ move_base_msgs/MoveBaseActionGoal```
    
-- Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. <br><br>
-- Now Turtlebot3 is able to navigate through the environment and follow a safe path without any obstacle collisions. 
+- Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. 
+- Now Turtlebot3 is able to navigate through the environment and follow a safe path without any obstacle collisions.<br><br>
 
 ``` 
 Task 4 : Create WayPoints  
