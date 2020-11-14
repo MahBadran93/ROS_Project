@@ -323,8 +323,21 @@ Task 3: Path Planning
 Task 4 : Create WayPoints  
 ```
 <br>
-
 <h4 align="center"> <ins> WayPoints  </ins> </h4>
+
+If we want the robot to pass multiple waypoints(goals) before reaching its destination, we need to use a package called **follow_waypoints** where it will be responsible for storing these waypoints. This package will publish the stored waypoints to **move_base** node as a sequence and then the robot will reach the goal by navigating through all the waypoints.
+
+- To install this package, we need to clone its [GITHUB](https://github.com/danielsnider/follow_waypoints) repository into our catkin src folder : <br> 
+   ```git clone https://github.com/danielsnider/follow_waypoints.git``` <br>
+   After installing the package we need to be build our catkin_ws working space again, so we change the current directory to catkin_ws and then we execute: 
+   ```catkin_make```
+   ```source /devel/setup.bash``` <br> 
+   Now, we have **follow_waypoints** package ready. 
+   
+
+
+
+
 
     
   
