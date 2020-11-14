@@ -254,8 +254,8 @@ Task 3: Path Planning
   
      Topics | Message |Description  
     ------------ | ------------ | -------------
-    **move_base/goal** (``` subscribed```)|  ```move_base_msgs/MoveBaseActionGoal ``` | Provide goal position to **/move_base** node directly without using **SimpleActionServer**. 
-    **move_base_simple/goal** (``` subscribed```) |   ``` gemetry_msgs/PosemapStamped```  | Provide goal position using **SimpleActionServer** which will allow us to track the current goal position status. 
+    **move_base/goal** (``` subscribed```)|  ```move_base_msgs/MoveBaseActionGoal ``` |  Provide goal position using **SimpleActionServer** which will allow us to track the current goal position status. 
+    **move_base_simple/goal** (``` subscribed```) |   ``` gemetry_msgs/PosemapStamped```  | Provide goal position to **/move_base** node directly without using **SimpleActionServer**.
     **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  Publish velocity information to the robot (base controller to make transformation). 
     <br> 
 - **SimpleActionServer** provides topics like goal(**move_base_simple/goal**), Feedback (**/move_base/feedback**), Result(**/move_base/result**). 
