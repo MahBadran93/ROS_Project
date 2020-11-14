@@ -39,7 +39,6 @@ Students: <br>
 - [Project Tasks](#Project-Tasks)
 - [Analysis OF Studied Techniques](#Analysis-OF-Studied-Techniques)
 - [Work Plan](#Work-Plan)
-   - [Task 2: Mapping & localization](#Task-2-:-Mapping-&-localization)
 - [Conclusion](#Conclusion)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -77,9 +76,13 @@ that goal without colliding with any obstacles. <br>
       - **launch** folder which contains all the launch files
       - **package.xml** file which contains other packages dependencies and url paths. In case we want to be able to call other packages from this package. 
       - **CMakeLists.txt** file which contains some cpp compilations and building commands. 
-  
-   - ROS programs(nodes) can be executed using launch files, with launch files we can run multiple nodes in one file. A launch file can be run using **roslaunch** package: <br> 
+    - The main working space in ROS is called **catkin_ws**. It is a directory where all our ROS packages are installed.  
+    - We can move to any package using **roscd** <br> 
+     ```roscd <package_name>```
+    - ROS programs(nodes) can be executed using launch files, with launch files we can run multiple nodes in one file. A launch file can be run using **roslaunch**  command: <br> 
     ```roslaunch <package_name> <launch_file>```
+    - If we want to create a package in the working space **catkin_ws**, we use this command: 
+      ``` catkin_create_pkg <package_name> <package_dependecies> ```
 
 ## Work Plan
 
