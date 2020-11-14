@@ -140,11 +140,12 @@ By executing this command, we can see all the topics provide by the environment.
     <img  src = "resources/r4.png" width=350>
   </p>
 </p>
-<br><br>
+<br><br><br>
 
 ``` 
 Task 2: Mapping & localization 
 ```
+<br>
 <h4 align="center"> <ins> Mapping </ins> </h4>
 
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
@@ -200,15 +201,15 @@ After creating the map, the next step is to locate the robot in the environment 
 - To apply localization, we use **AMCL (Adaptive Monte Carlo Localization)** package which provides **amcl** node. It is a localization system that implements Kullback-Leibler(Monte Carlo) algorithm which uses an adaptive practicale filters to track the position of the robot in repect with the environment. <bR> 
   
     **What is Monte Carlo Algorithm ?** <br>
-    An algorithm which is responsible for generating many future guesses (Particles) of the robot expected movements in the environment. When the robot starts moving, the algorithm starts generating Particles and then uses the obtained sensor information (**/scan**) to create an optimised robot movement ( make all the created Particles head to the right direction). <br> 
-
-    See below Table which describes the topics subscribed and published by AMCL. 
+    An algorithm which is responsible for generating many future guesses (Particles) of the robot expected movements in the environment. When the robot starts moving, the algorithm starts generating Particles and then uses the obtained sensor information (**/scan**) to create an optimised robot movement ( make all the created Particles head to the right direction). See below Table which describes the topics subscribed and published by AMCL.<br><br> 
     Subscribed Topics (message type) | published Topics (message type) 
     ------------ | -------------
     **map** (``` nav_msgs/OccupancyGrid```) | **amcl_pose** (```geometry_msgs/PoseWithCovarianceStamped```)
     **scan** (```sensor_msgs/LaserScan```) | **particlecloud** (```geometry_msgs/PoseArray```)
     **tf** (```tf/tfMessage```) | **tf** (```tf/tfMessage```)
-
+    
+     <br>
+     
     - **map:** amcl subscribe to map topic to get the map data (OGM), to used it for localization. 
     - **scan:** To have the updated scan readings. 
     - **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser (reference frame of the laser) coordinate frame to base_link(reference frame for the center of the robot) coordinate frame. 
@@ -232,11 +233,13 @@ After creating the map, the next step is to locate the robot in the environment 
         </p>
         </p>
         
-     - We use Rviz **2D Pose Estimate** button to send the navigation system an initial pose of the robot. The last thing is to start moving the robot around the environment by using **turtlebot3_teleop** package.   
+     - We use Rviz **2D Pose Estimate** button to send the navigation system an initial pose of the robot. The last thing is to start moving the robot around the environment by using **turtlebot3_teleop** package. <br><br>  
       
 ``` 
 Task 3: Path Planning
 ```
+<br> 
+
 - After creating a map, localize the robot, we need to plan a path, trajectory for the robot to follow to reach a specific goal while avoiding obstacles along the way. To achieve this, we need to use **move_base** package which provides **move_base** node. This package is the base of the navigation task where it connects all the navigation components. See the figure below: 
   <p align="center">
   <p align = "center">
@@ -245,7 +248,7 @@ Task 3: Path Planning
   </p>
   </p>
   
- - The figure shows how the **move_base** node interact with other system compnents. The node implements **SimpleActionServer** from **actionlib** package with message of type **gemetry_msgs/PosemapStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. See table below to see description of some topics move_base node subscribe to and publishes. 
+ - The figure shows how the **move_base** node interact with other system compnents. The node implements **SimpleActionServer** from **actionlib** package with message of type **gemetry_msgs/PosemapStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. See table below to see description of some topics move_base node subscribe to and publishes. <br><br>
 
   
      Topics | Message |Description  
@@ -253,7 +256,7 @@ Task 3: Path Planning
     **move_base/goal** (``` subscribed```)|  ```move_base_msgs/MoveBaseActionGoal ``` | Provide goal position to **/move_base** node directly without using **SimpleActionServer**. 
     **move_base_simple/goal** (``` subscribed```) |   ``` gemetry_msgs/PosemapStamped```  | Provide goal position using **SimpleActionServer** which will allow us to track the current goal position status. 
     **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  Publish velocity information to the robot (base controller to make transformation). 
-    
+    <br> 
 - **SimpleActionServer** provides topics like goal(**move_base_simple/goal**), Feedback (**/move_base/feedback**), Result(**/move_base/result**). 
     - **FeedBack**: Keeps updating the server about the current information of the robot along the path (current position, laser information).For example, if we create a goal and the robot start to move toward the goal. If we display the message from the FeedBack topic we will see real time updated information in the teminal. Execute this command. <br> 
       ```rostopic echo move_base/feedback```
@@ -313,11 +316,13 @@ Task 3: Path Planning
 - We can create a goal by directly publishing to the goal topic. By executing this command: 
    -  ```rostopic pub /move_base/goal/ move_base_msgs/MoveBaseActionGoal```
    
-- Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. 
+- Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. <br><br>
 
 ``` 
 Task 4 : Create WayPoints  
 ```
+<br>
+
 <h4 align="center"> <ins> WayPoints  </ins> </h4>
 
     
