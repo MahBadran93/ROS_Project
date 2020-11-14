@@ -84,12 +84,12 @@ that goal without colliding with any obstacles. <br>
     - If we want to create a package in the working space **catkin_ws**, we use this command: <br>
       ``` catkin_create_pkg <package_name> <package_dependecies> ```
     - If we want to know some information about a specific node, we use this **rosnode** command: <br> 
-      ``` rosnode info <node_name>
+      ``` rosnode info <node_name>``` 
     - If we want to know some information about a specific topic, we use this **rostopic** command: <br> 
-      ``` rostopic info <topic_name>  
+      ``` rostopic info <topic_name>```  
     - If we want to know some information about a specific message, we use this **rosmsg** command: <br> 
-    ``` rosmsg show info <msg_name>``` 
-    -An importan command needed to be running before start working with any ros project called **roscore**. It contains all the necessary files for ROS systems.  build all the required nodes and files for the  
+    ``` rosmsg show info <msg_name>```  <br> 
+    -An important command needed to be running before start working with any ros project called **roscore**. It contains all the necessary files for ROS systems.  build all the required nodes and files for the  
       
 
 ## Work Plan
