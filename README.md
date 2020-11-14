@@ -71,6 +71,9 @@ Let's explain some important concepts that have been studied and will be import
 </p>
 
 ## ROS Packages
+  Important ROS Packages will be used during the project developments: 
+  
+
 
 
 
@@ -138,8 +141,9 @@ In order to construct a map : <br> <br>
 
 - We need to use **gmapping** package and run **slam_gmapping** node. 
     This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data, in which it will be transformed to an Occumaoncy Grid Map (OGM) data format (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free). <br>
-    Start the mapping process by executing this command: <br>
-    ``` rosrun gmapping slam_gmapping ``` <br><br>
+    Start the mapping process by adding this command to the launch file: <br>
+    ```   <node pkg="gmapping" type="slam_gmapping" name="turtlebot3_slam_gmapping" output="screen">``` <br><br>
+    
 - In the mapping process, an important tool is used called **RViz**. It will help us in visulising th map creation process, it will allow us to see what the robot is covoring from the environment. <br>   
 To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
     <p align="center">
