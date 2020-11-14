@@ -50,7 +50,7 @@ ROS is supported by many operating systems like ubunto, windows. Ubunto is the m
 
 ## Project Tasks 
 The project goal is to apply the learned **ROS** techniques and pakages to apply the navigation task on Turtlebot3:  
-- Moveing the robot around the environment using **/cmd_vel** topic. <br>
+- Moving the robot around the environment using **/cmd_vel** topic. <br>
 - Construct a map of the whole environment. We need to fully occupy the whole environment, then we need to localize the Robot. <br>
 - Path planning, we need to publish a goal to move base navigation system in which Turtlebot3 can reach
 that goal without colliding with any obstacles. <br> 
@@ -58,17 +58,28 @@ that goal without colliding with any obstacles. <br>
 
 ## Analysis OF Studied Techniques
 
-Let's explain some important concepts that have been studied and will be important in developing the project : <br><br>
-- **Nodes**: One of the most important concepts in ROS. We can describe nodes as a program (python, c++) to enable ROS to make communication tasks. A node can subscribe or publish to a topic, which will be explained. <br><br>
-- **Topic**: The process of transmitting data between nodes. Some nodes are responsible for publishing some data to a specific topic where other nodes (subscribers) will be able to request these data ( messages ) from the topic.<br><br>
-- **Messages** : Data structure which describes the data that ROS nodes publish or recieve. the nodes communicate, send messages, receive messages through topics.<br><br>
-- **Services** : another way to transmit the data between nodes. it is a synchronous operation where the robot has to stop processing while waiting for a service response.<br><br>
+- Important concepts that have been studied and will be important in developing the project : <br><br>
+   - **Nodes**: One of the most important concepts in ROS. We can describe nodes as a program (python, c++) to enable ROS to make communication tasks. A node can subscribe or publish to a topic, which will be explained. <br><br>
+   - **Topic**: The process of transmitting data between nodes. Some nodes are responsible for publishing some data to a specific topic where other nodes (subscribers) will be able to request these data ( messages ) from the topic.<br><br>
+   - **Messages** : Data structure which describes the data that ROS nodes publish or recieve. the nodes communicate, send messages, receive messages through topics.<br><br>
+   - **Services** : another way to transmit the data between nodes. it is a synchronous operation where the robot has to stop processing while waiting for a service response.<br><br>
 
-<p align="center">
-  <p align = "center">
-     <img  src = "XCndTVvlwmaG.png" width=700>
+  <p align="center">
+    <p align = "center">
+       <img  src = "XCndTVvlwmaG.png" width=700>
+    </p>
   </p>
-</p>
+  
+- ROS Packages: <br>
+   - A package in ROS is a working directory which contains all the necessary ROS files like executable python and cpp files, configuration and combilation files and launch files. 
+   - The structure of the package directory:<br> 
+      - **src** folder which contains all the executable files 
+      - **launch** folder which contains all the launch files
+      - **package.xml** file which contains other packages dependencies and url paths. In case we want to be able to call other packages from this package. 
+      - **CMakeLists.txt** file which contains some cpp compilations and building commands. 
+  
+   - ROS programs(nodes) can be executed using launch files, with launch files we can run multiple nodes in one file. A launch file can be run using **roslaunch** package: <br> 
+    ```roslaunch <package_name> <launch_file>```
 
 ## ROS Packages
   Important ROS Packages will be used during the project developments: 
