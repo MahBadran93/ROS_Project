@@ -89,7 +89,7 @@ that goal without colliding with any obstacles. <br>
       ``` rostopic info <topic_name>```  
     - If we want to know some information about a specific message, we use this **rosmsg** command: <br> 
     ``` rosmsg show info <msg_name>```  <br> 
-    - An important command needed to be running before start working with any ros project called **roscore**. It contains all the necessary files for ROS systems.  build all the required nodes and files for the  
+    - An important command needed to be running before start working with any ROS project called **roscore**. It contains all the necessary files for any ROS system.
       
 
 ## Work Plan
