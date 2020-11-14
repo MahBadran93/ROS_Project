@@ -293,7 +293,7 @@ Task 3: Path Planning
    - In Rviz, choose the **2D Nav Goal** tab and then click on the position where we want our turtlebot3 robot to move(goal). 
    - After creating a goal, a goal message (**gemetry_msgs/PosemapStamped**) will be published to **/move_base/goal** topic. 
    - The goal message we published to **/move_base/goal** topic will be recieved by **SimpleActionServer** which is implemented in the move-base node. So, the      goal information will be recieved by the move_base node with goal topic provided by **SimpleActionServer** with message type **move_base_msgs/MoveBaseActionGoal** 
-   - we can run this command to see what has been published to goal topic: <br> 
+   - We can run this command to see what has been published to goal topic: <br> 
      ```rostopic echo /move-base/goal```
      <p align="center">
         <p align = "center">
@@ -310,7 +310,7 @@ Task 3: Path Planning
         </p>
       </p>
      
-- we can create a goal by directly publishing to the goal topic. By executing this command: 
+- We can create a goal by directly publishing to the goal topic. By executing this command: 
    -  ```rostopic pub /move_base/goal/ move_base_msgs/MoveBaseActionGoal```
    
 - Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. 
