@@ -38,7 +38,7 @@ Students: <br>
 - [Introduction](#introduction)
 - [Project Tasks](#Project-Tasks)
 - [Analysis OF Studied Techniques](#Analysis-OF-Studied-Techniques)
-- [ROS Packages](#ROS-Packages)
+   - [Mapping](#Mapping)
 - [Work Plan](#Work-Plan)
 - [Conclusion](#Conclusion)
 
@@ -70,7 +70,7 @@ that goal without colliding with any obstacles. <br>
     </p>
   </p>
   
-- ROS Packages: <br>
+- ROS Packages & Basic Commands : <br>
    - A package in ROS is a working directory which contains all the necessary ROS files like executable python and cpp files, configuration and combilation files and launch files. 
    - The structure of the package directory:<br> 
       - **src** folder which contains all the executable files 
@@ -80,13 +80,6 @@ that goal without colliding with any obstacles. <br>
   
    - ROS programs(nodes) can be executed using launch files, with launch files we can run multiple nodes in one file. A launch file can be run using **roslaunch** package: <br> 
     ```roslaunch <package_name> <launch_file>```
-
-## ROS Packages
-  Important ROS Packages will be used during the project developments: 
-  
-
-
-
 
 ## Work Plan
 
