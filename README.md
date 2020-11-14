@@ -363,11 +363,11 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
         <p align = "center">
            <img  src = "resources/waypoint3.png" width=250>
           <img  src = "resources/waypoint5.png" width=250><br>
-          <em>3- WayPoint 2 | WayPoint 3 </em>
+          <em> WayPoint 2 | WayPoint 3(The last waypoint we choose should be in the same position as the initial Robot pose) </em>
         </p>
       </p>
       
-      The last waypoint we choose should be in the same position as the initial Robot pose. 
+       
       
  - Now that we added our waypoints . We should start the **path_ready** topic (**follow_waypoints** subscribes to this topic to initaize the process to follow our waypoint), then it will start sending the waypoints we created to move_base node. This topic has message of type ```std_msgs/Empty```. To start the **path_ready topic**, we execute: <br> 
  ```rostopic pub /path_ready std_msgs/Empty -1```    
