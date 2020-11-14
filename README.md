@@ -276,12 +276,30 @@ Task 3: Path Planning
    - The goal message we published to **/move_base/goal** topic will be recieved by **SimpleActionServer** which is implemented in the move-base node. So, the      goal information will be recieved by the move_base node with goal topic provided by **SimpleActionServer** with message type **move_base_msgs/MoveBaseActionGoal** 
    - we can run this command to see what has been published to goal topic: <br> 
      ```rostopic echo /move-base/goal```
+     <p align="center">
+        <p align = "center">
+           <img  src = "resources/1.png" width=350>
+          <img  src = "resources/2.png" width=350><br>
+           <em>Initialize Robot Pose Using 2D Pose Estimate </em>
+        </p>
+      </p>
+       <p align="center">
+        <p align = "center">
+           <img  src = "resources/3.png" width=350>
+          <img  src = "resources/4.png" width=350><br>
+          <em>Set A Goal Using 2D Nav Goal And Start Moving Toward The Goal </em>
+        </p>
+      </p>
+     
 - we can create a goal by directly publishing to the goal topic. By executing this command: 
    -  ```rostopic pub /move_base/goal/ move_base_msgs/MoveBaseActionGoal```
    
 - Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. 
 
-
+``` 
+Task 2: Create WayPoints  
+```
+<h4 align="center"> <ins> WayPoints  </ins> </h4>
 
     
   
