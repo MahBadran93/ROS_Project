@@ -338,9 +338,16 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
 - Now we launch **follw_waypoints**: <br> 
   ```roslaunch follow_waypoints follow_waypoints.launch```  <br> 
 - The waypoint server listen to **initialpose** (**amcl** adn **follow_waypoints** subscribe to this topic) that is used to initialize the robot with message type    ```geometry_msgs/PoseWithCovarianceStamped```. The server will store all the specified waypoints (got waypoints position information from **initialpose** topic) and then will provide it to **move_base** node to start navigating through all the specified waypoints. 
-- After launching all the necessary packages, we can start creating waypoints using **Rviz** and we add **PoseArray** element and we add **waypoints** topic to this display. We run **Rviz** tool with already implemented configuration at this time. 
-   ```rosrun rviz rviz -d `rospack find turtlebot3_navigation`/rviz/turtlebot3_nav.rviz```. 
-
+- After launching all the necessary packages, we can start creating waypoints using **Rviz** and we add **PoseArray** display element(see Figure below) and we add **waypoints** topic to this display. We run **Rviz** tool with already implemented configuration this time .<br> 
+   ```rosrun rviz rviz -d `rospack find turtlebot3_navigation`/rviz/turtlebot3_nav.rviz```. <br> 
+    <p align="center">
+        <p align = "center">
+           <img  src = "resources/posearray.png" width=250> <br> 
+           <em> PoseArray Display Element</em>
+        </p>
+      </p>
+   
+    
    - Use **2D pose Estimate** to localize the Robot. 
    - Use **2D Nav Goal** to add goals (waypoints). 
        <br> 
@@ -348,17 +355,22 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
         <p align = "center">
            <img  src = "resources/initRobotPose_WayPoint1.png" width=250>
           <img  src = "resources/waypoint2.png" width=250><br>
-           <em>1- Initial Pose Of the Robot | 2- WayPoint1</em>
+           <em> Initial Pose Of the Robot | WayPoint 1</em>
         </p>
       </p>
        <p align="center">
         <p align = "center">
            <img  src = "resources/waypoint3.png" width=250>
           <img  src = "resources/waypoint5.png" width=250><br>
-          <em>3- WayPoint2 | 4- WayPoint3 </em>
+          <em>3- WayPoint 2 | WayPoint 3 </em>
         </p>
       </p>
-    
+      
+      The last waypoint we choose should be in the same position as the initial Robot pose. 
+      
+ - Now that we added our waypoints . We should start the **path_ready** topic (**follow_waypoints** subscribes to this topic to initaize the process to follow our waypoint), then it will start sending the waypoints we created to move_base node. This topic has message of type ```std_msgs/Empty```. To start the **path_ready topic**, we execute: <br> 
+ ```rostopic pub /path_ready std_msgs/Empty -1```    
+  After that, our Robot will start following the created waypoints. 
   
    
   
