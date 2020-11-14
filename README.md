@@ -38,8 +38,8 @@ Students: <br>
 - [Introduction](#introduction)
 - [Project Tasks](#Project-Tasks)
 - [Analysis OF Studied Techniques](#Analysis-OF-Studied-Techniques)
-   - [Mapping](#Mapping)
 - [Work Plan](#Work-Plan)
+   - [Task 2: Mapping & localization](#Task-2-:-Mapping-&-localization)
 - [Conclusion](#Conclusion)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -132,9 +132,9 @@ By executing this command, we can see all the topics provide by the environment.
 <br><br>
 
 ``` 
-Task 2: Mapping & localization 
+## Task 2: Mapping & localization 
 ```
-<h4 align="center"> <ins> ## Mapping </ins> </h4>
+<h4 align="center"> <ins> Mapping </ins> </h4>
 
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
 In order to construct a map : <br> <br>
