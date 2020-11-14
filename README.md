@@ -97,7 +97,10 @@ that goal without colliding with any obstacles. <br>
 ```
 Task 1: Robot Control
 ```
-To control TurtleBot3, which is a mobile robot with small size and low price but still have the same quality that other mobile robots have. The first thing we need to know is the topics that make the Robot move in the environment. One important command we can use to know what are the topics that got published by the environment. <br> 
+We use TurtleBot3, which is a mobile robot with small size and low price but still have the same quality that other mobile robots have.
+- First of all, it is necesseary to start and launch our turtlebot3. It is done using the **turtlebot3_bringup** package and starting **turtlebot3_remote.launch**. file. <br> 
+ ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />``` <br> 
+- One important command we can use to know what are the topics that got published by the environment. <br> 
 ```rostopic list``` <br> 
 By executing this command, we can see all the topics provide by the environment. One of the topics that should be provided to move the robot is **/cmd_vel**:   
 
@@ -151,11 +154,9 @@ Task 2: Mapping & localization
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
 In order to construct a map : <br> <br>
 
-- First of all, before the start of the mapping process, it is necesseary to start and launch our turtlebot3. It is done using the **turtlebot3_bringup** package and starting **turtlebot3_remote.launch**. file. <br> 
- ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />``` <br> 
- This code is included inside the luanch file in our current package.
 
-- We need to use **gmapping** package and run **slam_gmapping** node. 
+- Launch TurtleBot3 (Explained in Task1) 
+- To start of the mapping process we need to use **gmapping** package that provides **slam_gmapping** node. 
     This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data, in which it will be transformed to an Occumaoncy Grid Map (OGM) data format (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free). <br>
     Start the mapping process by adding this command to the launch file: <br>
     ```   <node pkg="gmapping" type="slam_gmapping" name="turtlebot3_slam_gmapping" output="screen">``` <br><br>
