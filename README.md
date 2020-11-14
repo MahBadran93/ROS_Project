@@ -269,10 +269,10 @@ Task 3: Path Planning
 - Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. 
 
 
-- To implement path planning with obstacle avoidance, we create a launch file where it includes the map server(config. explained) package to get the map data, amcl(config. explained) package to localize the robot , and move base package with its parameter configuration. As explained, move base node requires some parameters to be loaded. To configure and add move base node, we execute the following code:  
+- To implement path planning with obstacle avoidance, we create a launch file where it includes the map_server package to get the map data, amcl package to localize the robot , and move_base package with its parameter configuration. As explained, move base node requires some parameters to be loaded. To configure and add move base node, we execute the following commands:  
    -  To launch the node:<br>
    ```  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">" ```
-   - Load the required parameters (local & global costmaps | local & global planners): 
+   - Load the required parameter files (local & global costmaps | local & global planners): 
    ```  <!-- rosparam is used to load parameters from yaml file-->
         <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
         <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
@@ -281,9 +281,7 @@ Task 3: Path Planning
         <rosparam file="$(find t3_navigation)/param/move_base_params.yaml" command="load" />
         <rosparam file="$(find t3_navigation)/param/dwa_local_planner_params.yaml" command="load" />
         ```
-   
- - After creating the launch file, we need to visulize the path planning process, we run Rviz 
-  
+    
   
 
 ## Conclusion
