@@ -333,6 +333,20 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
    ```catkin_make```
    ```source /devel/setup.bash``` <br> 
    Now, we have **follow_waypoints** package ready. 
+- To start the waypoint server, we first start the navigation task process we implemented before: <br> 
+  ```roslaunch <our navigation package> <our launch file.launch>```
+- Now we launch **follw_waypoints**: <br> 
+  ```roslaunch follow_waypoints follow_waypoints.launch```  <br> 
+- The waypoint server listen to **initialpose** (**amcl** adn **follow_waypoints** subscribe to this topic) that is used to initialize the robot with message type    ```geometry_msgs/PoseWithCovarianceStamped```. The server will store all the specified waypoints (got waypoints position information from **initialpose** topic) and then will provide it to **move_base** node to start navigating through all the specified waypoints. 
+- After launching all the necessary packages, we can start creating waypoints using **Rviz** and we add **PoseArray** element and we add **waypoints** topic to this display  
+- We run **Rviz** tool with already implemented configuration at this time. 
+   ```rosrun rviz rviz -d `rospack find turtlebot3_navigation`/rviz/turtlebot3_nav.rviz``` 
+   
+   - Use **2D pose Estimate** to localize the Robot. 
+   - Use **2D Nav Goal** to add goals and send to the Robot. 
+  
+
+
    
 
 
