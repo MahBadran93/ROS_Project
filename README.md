@@ -244,12 +244,12 @@ Task 3: Path Planning
 - As you can see in the Navigation Task Figure above, there are parameters required to be loaded to the **/move_base** node: 
    - **Global Planner:** The new goal, when recieved by move_base node, will be sent to the Global Planner. It will be responsible for building a safe plan for the robot to avoid collisions, obstacles along the way to the goal. It is called global because it starts planing the path from the begining for the whole map and it doesn't depend on the current laser information provided by the robot. <br> 
    - **Local Planner:** The local planner uses only the information currently prvided by the robot sensor reaings and plans a path within a small area surrounding the robot position. When the next set of information come in it plans a new piece of the path. 
-   - **Costmap paremeters (local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global cost map is used to store information about the whole map to use for global planning where local costmap is used to store local information which means the small area surrounding the robot position to use for local planning. 
+   - **Costmap paremeters (local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global costmap is a static map used to store information about the whole map to be used for global planning where local costmap is used to store local information (the small area surrounding the robot position) to be used for local planning. 
      <p align="center">
     <p align = "center">
        <img  src = "resources/globalcostmap.png" width=400> 
        <img  src = "resources/localcostmap.png" width=400> <br>
-       <em>Global Planning - Local Planning</em>
+       <em>Global Costmap - Local Costmap</em>
   </p>
   </p>
   
