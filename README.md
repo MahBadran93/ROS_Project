@@ -134,7 +134,7 @@ By executing this command, we can see all the topics provide by the environment.
 ``` 
 Task 2: Mapping & localization 
 ```
-<h4 align="center"> <ins> Mapping </ins> </h4>
+<h4 align="center"> <ins> ## Mapping </ins> </h4>
 
 To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
 In order to construct a map : <br> <br>
