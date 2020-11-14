@@ -143,7 +143,7 @@ By executing this command, we can see all the topics provide by the environment.
 <br><br>
 
 ``` 
-## Task 2: Mapping & localization 
+Task 2: Mapping & localization 
 ```
 <h4 align="center"> <ins> Mapping </ins> </h4>
 
@@ -316,7 +316,7 @@ Task 3: Path Planning
 - Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. 
 
 ``` 
-Task 2: Create WayPoints  
+Task 4 : Create WayPoints  
 ```
 <h4 align="center"> <ins> WayPoints  </ins> </h4>
 
