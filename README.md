@@ -213,7 +213,7 @@ After creating the map, the next step is to locate the robot in the environment 
         </p>
         </p>
         
-     - The last thing is to start moving the robot around the environment. We use **turtlebot3_teleop** package as seen before.   
+     - We use Rviz **2D Pose Estimate** button to send the navigation system an initial pose of the robot. The last thing is to start moving the robot around the environment by using **turtlebot3_teleop** package.   
       
 ``` 
 Task 3: Path Planning
