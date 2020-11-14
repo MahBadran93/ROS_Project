@@ -192,15 +192,18 @@ After creating the map, the next step is to locate the robot in the environment 
 
     - **map:** amcl subscribe to map topic to get the map data (OGM), to used it for localization. 
     - **scan:** To have the updated scan readings. 
-    - **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser coordinate frame to base_link coordinate frame. 
+    - **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser (reference frame of the laser) coordinate frame to base_link(reference frame for the center of the robot) coordinate frame. 
     - **amcl_pose:** amcl node publishes the position of the robot in the environment to the amcl_pose topic.
     - **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. see the figure below (red arrows displayed using Rviz,add **PoseArray** display which subscribe to **PointCloud** topic). <br>
-- To launch amcl and call the generated map file, we create a launch file which includes:
+- To launch amcl and start the localization process, we create a launch file which includes:
 
-    - Lunch TurtleBot3 applications: <br> ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />```
+    - Launch TurtleBot3 applications: <br> ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />```
     - Call our generated map file:<br> ```<arg name="map_file" default="$(find pkg_name)/maps/map.yaml"/>```
-    - run map server node with our generated map:<br> ```<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />```
-    - launch amcl node:<br> ```<node pkg="amcl" type="amcl" name="amcl">``` <br>
+    - Run map server node with our generated map:<br> ```<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />```
+    - Launch amcl node:<br> ```<node pkg="amcl" type="amcl" name="amcl">``` <br>
+    - AMCL node depends on some parameters like **min_particles**, **max_particles**. These parameters decide the number of particles used in the localization   process. We add the parameters in the launch file: <br>
+       ```<param name="min_particles" value="500"/>``` <br>
+       ```<param name="max_particles" value="3000"/>```
 
         <p align="center">
         <p align = "center">
@@ -209,7 +212,9 @@ After creating the map, the next step is to locate the robot in the environment 
 
         </p>
         </p>
-
+        
+     - The last thing is to start moving the robot around the environment. We use **turtlebot3_teleop** package as seen before.   
+      
 ``` 
 Task 3: Path Planning
 ```
@@ -228,7 +233,7 @@ Task 3: Path Planning
     ------------ | ------------ | -------------
     **move_base/goal** (``` subscribed```)|  ```move_base_msgs/MoveBaseActionGoal ``` | Provide goal position to **/move_base** node directly without using **SimpleActionServer**. 
     **move_base_simple/goal** (``` subscribed```) |   ``` gemetry_msgs/PosemapStamped```  | Provide goal position using **SimpleActionServer** which will allow us to track the current goal position status. 
-    **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  publish velocity information to the robot. 
+    **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  Publish velocity information to the robot (base controller to make transformation). 
     
 - **SimpleActionServer** provides topics like goal(**move_base_simple/goal**), Feedback (**/move_base/feedback**), Result(**/move_base/result**). 
     - **FeedBack**: Keeps updating the server about the current information of the robot along the path (current position, laser information).For example, if we create a goal and the robot start to move toward the goal. If we display the message from the FeedBack topic we will see real time updated information in the teminal. Execute this command. <br> 
@@ -237,7 +242,9 @@ Task 3: Path Planning
        
    
 - As you can see in the Navigation Task Figure above, there are parameters required to be loaded to the **/move_base** node: 
-   - **Costmap paremeters (local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global cost map is used to store information about the whole map (global planning) where local costmap is used to store local information which means the small area surrounding the robot position(local planning). 
+   - **Global Planner:** The new goal, when recieved by move_base node, will be sent to the Global Planner. It will be responsible for building a safe plan for the robot to avoid collisions, obstacles along the way to the goal. It is called global because it starts planing the path from the begining for the whole map and it doesn't depend on the current laser information provided by the robot. <br> 
+   - **Local Planner:** The local planner uses only the information currently prvided by the robot sensor reaings and plans a path within a small area surrounding the robot position. When the next set of information come in it plans a new piece of the path. 
+   - **Costmap paremeters (local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global cost map is used to store information about the whole map to use for global planning where local costmap is used to store local information which means the small area surrounding the robot position to use for local planning. 
      <p align="center">
     <p align = "center">
        <img  src = "resources/globalcostmap.png" width=400> 
@@ -245,9 +252,7 @@ Task 3: Path Planning
        <em>Global Planning - Local Planning</em>
   </p>
   </p>
-  
-   - **Planner paremeters (local & global):**
-  
+    
 - To create a goal, we can use Rviz. <br> 
    - Launch move_base node. The map should be created and the robot localized. (Turtlebot3)  
    - Run Rviz and add add all necessary desiplays to visualize the navigation process. 
@@ -264,10 +269,10 @@ Task 3: Path Planning
 - Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. 
 
 
-- To implement path planning we create a launch file where it includes the map server(config. explained) package, amcl(config. explained) package, and move base package with its parameter dependences. As explained, move base node requires some parameters to be loaded. To configure and add move base node, see the following code:  
+- To implement path planning with obstacle avoidance, we create a launch file where it includes the map server(config. explained) package to get the map data, amcl(config. explained) package to localize the robot , and move base package with its parameter configuration. As explained, move base node requires some parameters to be loaded. To configure and add move base node, we execute the following code:  
    -  To launch the node:<br>
    ```  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">" ```
-   - Load the required parameters (local & global costmaps): 
+   - Load the required parameters (local & global costmaps | local & global planners): 
    ```  <!-- rosparam is used to load parameters from yaml file-->
         <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
         <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
