@@ -124,7 +124,7 @@ By executing this command, we can see all the topics provide by the environment.
    ```self.msgTwistObj = Twist()``` <br> 
    ```self.msgTwistObj.linear.x = 0.2 ```<br> 
    ```self.pubNode.publish(self.msgTwistObj)``` <br> 
-   Here, we create a vairable called **pubNode** that is responsible for publishing Twist information to **cmd_vel** topic. And another variable called **laserMsg** that holds Twist message values. As you can see in the last command , we added 0.2 value to the x linear position of the robot.The last command, we used 'publish()' function to publish the new updated message values. <br> 
+   Here, we create a vairable called **pubNode** that is responsible for publishing Twist information to **cmd_vel** topic. And another variable called **msgTwistObj** that holds Twist message values. As you can see in the last command , we added 0.2 value to the x linear position of the robot.The last command, we used 'publish()' function to publish the new updated message values. <br> 
 - Another topic we use is **/scan** topic, we use this topic to get the laser information, readings from the robot. For example, the distance between the robot and a wall in the environment. The message used is of type **LaserScan**. See the commands below:<br> 
 ```self.subNode = rospy.Subscriber('/scan', LaserScan, self.callback)```<br> 
 ```self.laserMsg = LaserScan()```<br> 
@@ -249,13 +249,13 @@ Task 3: Path Planning
   </p>
   </p>
   
- - The figure shows how the **move_base** node interact with other system compnents. The node implements **SimpleActionServer** from **actionlib** package with message of type **gemetry_msgs/PosemapStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. See table below to see description of some topics move_base node subscribe to and publishes. <br><br>
+ - The figure shows how the **move_base** node interact with other system compnents. The node implements **SimpleActionServer** from **actionlib** package with message of type **gemetry_msgs/PoseStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. See table below to see description of some topics move_base node subscribe to and publishes. <br><br>
 
   
      Topics | Message |Description  
     ------------ | ------------ | -------------
     **move_base/goal** (``` subscribed```)|  ```move_base_msgs/MoveBaseActionGoal ``` |  Provide goal position using **SimpleActionServer** which will allow us to track the current goal position status. 
-    **move_base_simple/goal** (``` subscribed```) |   ``` gemetry_msgs/PosemapStamped```  | Provide goal position to **/move_base** node directly without using **SimpleActionServer**.
+    **move_base_simple/goal** (``` subscribed```) |   ``` gemetry_msgs/PoseStamped```  | Provide goal position to **/move_base** node directly without using **SimpleActionServer**.
     **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  Publish velocity information to the robot (base controller to make transformation). 
     <br> 
 - **SimpleActionServer** provides topics like goal(**move_base_simple/goal**), Feedback (**/move_base/feedback**), Result(**/move_base/result**). 
@@ -295,7 +295,7 @@ Task 3: Path Planning
    - To visualize the **local costmap**, **global costmap**, we add two **Map** display elements and attach them to **/move_base/local_costmap/costmap** and      **/move_base/global_costmap/costmap**  topics respectively. 
    - To visualize the **local plan**, **global plan**, we add two **Path** display elements and attach them to **/move_base/DWAPlannerROS/local_plan** and **/move_base/NavfnROS/plan** topics respectively.  
    - In Rviz, we choose **2D Pose Estimate** button to initialize the robot pose. Then we choose the **2D Nav Goal** button and click on the position where we want our turtlebot3 robot to move (goal). 
-   - After creating a goal, a goal message (**gemetry_msgs/PosemapStamped**) will be published to **/move_base/goal** topic. 
+   - After creating a goal, a goal message (**gemetry_msgs/PoseStamped**) will be published to **/move_base/goal** topic. 
    - The goal message we published to **/move_base/goal** topic will be recieved by **SimpleActionServer** which is implemented in the move-base node. So, the      goal information will be recieved by the move_base node with goal topic provided by **SimpleActionServer** with message type **move_base_msgs/MoveBaseActionGoal** 
    - We can run this command to see what has been published to goal topic: <br> 
      ```rostopic echo /move-base/goal```
@@ -331,6 +331,7 @@ Task 3: Path Planning
               goal.goal.target_pose.pose.position.y = -5
               publisher.publish(goal)
             ```  
+          The **MoveBaseActionGoal** has a **goal** parameter of type **MoveBaseGoal.msg** which has *target_pose* parameter of msg type *geometry_msgs/PoseStamped.msg*   
         
       
 - Now Turtlebot3 is able to navigate through the environment and follow a safe path without any obstacle collisions.<br><br>
