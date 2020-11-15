@@ -349,9 +349,9 @@ Task 3: Path Planning
           import actionlib
           from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
        ```   
-   - Create an action server. So we Initialize a client parameter from **SimpleActionClient** named **action_move_base** for example. <br> 
+   - Initialize an action server. So we create a move_base action client (**SimpleActionClient**). <br> 
       ```
-      client = actionlib.SimpleActionClient('action_move_base',MoveBaseAction) 
+      client = actionlib.SimpleActionClient('move_base',MoveBaseAction) 
       # this command to wait for the server to start listening for goals.
       client.wait_for_server()
       ```
@@ -437,8 +437,45 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
  ```rostopic pub /path_ready std_msgs/Empty -1```    
   After that, our Robot will start following the created waypoints. 
   
-   
-  
+- To create a custom program to create a sequence of waypoints and implement the navigation through all the points. 
+   - Initialize an action client. <br> 
+      ```
+      import actionlib, rospy
+      from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
+      from geometry_msgs.msg import PoseWithCovarianceStamped, PoseArray
+
+      client = actionlib.SimpleActionClient('action_move_base',MoveBaseAction) 
+      # this command to wait for the server to start listening for goals.
+      client.wait_for_server()   
+      ```
+   - Create a function to publish waypoints to PoseArray Display element in RViz. <br> 
+     ```
+       def PublishToRViz(custom_waypoints_list):
+          poses = PoseArray()
+          poses.header.frame_id = 'map'
+          poses.poses = [pose.pose.pose for pose in custom_waypoints_list]
+          return poses 
+      ```
+    - Create a function to iterate over all the custom waypoints. 
+        ```
+            def execute(custom_waypoints_list):
+                # Iterate over all the custom waypoints
+                for waypoint in custom_waypoints_list:
+                    # Create a goal(MoveBaseGoal) to be publushed to move_base 
+                    goal = MoveBaseGoal()
+                    goal.target_pose.header.frame_id = rospy.get_param('~goal_frame_id','map')
+                    goal.target_pose.pose.position = custom_waypoints_list.pose.pose.position
+                    goal.target_pose.pose.orientation = custom_waypoints_list.pose.pose.orientation
+                    self.client.send_goal(goal)
+                    self.client.wait_for_result()
+                 return 'success'
+        ```  
+   - Publish custom waypoints to path_ready topic. 
+       ```
+        client = actionlib.SimpleActionClient('action_move_base',MoveBaseAction) 
+        # this command to wait for the server to start listening for goals.
+        client.wait_for_server()
+      ```
 
 
    
