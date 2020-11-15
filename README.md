@@ -402,7 +402,7 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
   ```roslaunch <our navigation package> <our launch file.launch>```
 - Now we launch **follow_waypoints**: <br> 
   ```roslaunch follow_waypoints follow_waypoints.launch```  <br> 
-- The waypoint server listen to **initialpose** (**amcl** adn **follow_waypoints** subscribe to this topic) that is used to initialize the robot with message type    ```geometry_msgs/PoseWithCovarianceStamped```. The server will store all the specified waypoints (got waypoints position information from **initialpose** topic) and then will provide it to **move_base** node to start navigating through all the specified waypoints. 
+- The waypoint server listen to **initialpose** (**amcl** and **follow_waypoints** subscribe to this topic) that is used to initialize the robot with message type    ```geometry_msgs/PoseWithCovarianceStamped```. The server will store all the specified waypoints (got waypoints position information from **initialpose** topic) and then will provide it to **move_base** node to start navigating through all the specified waypoints. 
 - After launching all the necessary packages, we can start creating waypoints using **Rviz** and we add **PoseArray** display element(see Figure below) and we add **waypoints** topic to this display. We run **Rviz** tool with already implemented configuration this time .<br> 
    ```rosrun rviz rviz -d `rospack find turtlebot3_navigation`/rviz/turtlebot3_nav.rviz```. <br> 
     <p align="center">
@@ -437,7 +437,7 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
  ```rostopic pub /path_ready std_msgs/Empty -1```    
   After that, our Robot will start following the created waypoints. 
   
-- To create a custom program to create a sequence of waypoints and implement the navigation through all the points. 
+- To create a custom program to create a sequence of waypoints and implement the navigation through all the points: 
    - Initialize an action client. <br> 
       ```
       import actionlib, rospy
@@ -448,8 +448,8 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
       # this command to wait for the server to start listening for goals.
       client.wait_for_server()   
       ```
-   - Create a function to publish waypoints to PoseArray Display element in RViz. <br> 
-     ```
+   - Convert the waypoints to PoseArray to visualize them in RViz. <br> 
+     ``` 
        def PublishToRViz(custom_waypoints_list):
           poses = PoseArray()
           poses.header.frame_id = 'map'
@@ -470,11 +470,18 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
                     self.client.wait_for_result()
                  return 'success'
         ```  
+      
    - Publish custom waypoints to path_ready topic. 
        ```
-        client = actionlib.SimpleActionClient('action_move_base',MoveBaseAction) 
-        # this command to wait for the server to start listening for goals.
-        client.wait_for_server()
+        # we publish empty custom waypoints(PoseArray) to initialize the path
+        custom_waypoints_list= []
+        self.poseArray_publisher.publish(PublishToRViz(custom_waypoints_list))
+        # our custom waypoints 
+        custom_waypoints_topic = rospy.get_param('~custom_waypointstopic','/my_waypoints_list')
+        pose = rospy.wait_for_message(custom_waypoints_topic, PoseWithCovarianceStamped, timeout=1)
+        custom_waypoints_list.append(pose)
+        poseArray_publisher = rospy.Publisher('/waypoints', PoseArray, queue_size=1)
+        
       ```
 
 
