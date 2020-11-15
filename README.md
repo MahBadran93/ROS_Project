@@ -341,7 +341,7 @@ Task 3: Path Planning
           GoalSender(pub)
         ``` 
 
-      The **MoveBaseActionGoal** has a **goal** parameter of type **MoveBaseGoal.msg** which has the **target_pose** parameter of type **geometry_msgs/PoseStamped.msg**.= that will allow us to create a goal.
+      The **MoveBaseActionGoal** has a **goal** parameter of type **MoveBaseGoal.msg** which has the **target_pose** parameter of type **geometry_msgs/PoseStamped.msg** that will allow us to create a goal.
       
 - To send goals using **SimpleActionServer**. 
    - We create a node and import the necessary packages like actionlib. 
@@ -402,7 +402,7 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
   ```roslaunch <our navigation package> <our launch file.launch>```
 - Now we launch **follow_waypoints**: <br> 
   ```roslaunch follow_waypoints follow_waypoints.launch```  <br> 
-- The waypoint server listen to **initialpose** (**amcl** and **follow_waypoints** subscribe to this topic) that is used to initialize the robot with message type    ```geometry_msgs/PoseWithCovarianceStamped```. The server will store all the waypoints (got waypoints position information from **initialpose** topic) and then will provide it to **move_base** node to start navigating through all the specified waypoints. 
+- The waypoint server listen to **initialpose** (**amcl** and **follow_waypoints** subscribe to this topic) that is used to initialize the robot with message type    ```geometry_msgs/PoseWithCovarianceStamped```. The server will store all the waypoints and then will provide it to **move_base** node to start navigating through all the specified waypoints. 
 - After launching all the necessary packages, we can start creating waypoints using **Rviz** and we add **PoseArray** display element(see Figure below) and we add **waypoints** topic to this display. We run **Rviz** tool with already implemented configuration this time .<br> 
    ```rosrun rviz rviz -d `rospack find turtlebot3_navigation`/rviz/turtlebot3_nav.rviz```. <br> 
     <p align="center">
@@ -448,51 +448,33 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
       We can get these coordinates by using Rviz tool. Press the 2D Nav Goal button and click on the location of the waypoint we want. The coorinates will be displayed on the terminal. 
       
       
-   - Initialize an action client. <br> 
+   - Subscribe to move_base action server. <br> 
       ```
       import actionlib, rospy
       from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
-      from geometry_msgs.msg import PoseWithCovarianceStamped, PoseArray
-
-      client = actionlib.SimpleActionClient('action_move_base',MoveBaseAction) 
+      from geometry_msgs.msg import PoseWithCovarianceStamped, PoseArray,Pose,Quaternion,,Twist
+      # subscribe to action server 
+      client = actionlib.SimpleActionClient('move_base',MoveBaseAction) 
       # this command to wait for the server to start listening for goals.
       client.wait_for_server()   
       ```
-   - Convert the waypoints to PoseArray to visualize them in RViz. <br> 
-     ``` 
-       def PublishToRViz(custom_waypoints_list):
-          poses = PoseArray()
-          poses.header.frame_id = 'map'
-          poses.poses = [pose.pose.pose for pose in custom_waypoints_list]
-          return poses 
-      ```
-    - Create a function to iterate over all the custom waypoints. 
+   - Create a variable to hold the initial position of the robot w.r.t the map.<br> 
+     ```initial_pose = PoseWithCovarianceStamped()```
+     
+     ```
+      # This line of code is used when to get the initial position using RViz (The user needs to click on the map) 
+      rospy.wait_for_message('initialpose', PoseWithCovarianceStamped)
+      self.last_location = Pose()
+     ```
+   - Subscribe to **initialpose** with callback function called **update_initialpose_callback** to update the initial_pose variable with the current initial pose. 
         ```
-            def execute(custom_waypoints_list):
-                # Iterate over all the custom waypoints
-                for waypoint in custom_waypoints_list:
-                    # Create a goal(MoveBaseGoal) to be publushed to move_base 
-                    goal = MoveBaseGoal()
-                    goal.target_pose.header.frame_id = rospy.get_param('~goal_frame_id','map')
-                    goal.target_pose.pose.position = custom_waypoints_list.pose.pose.position
-                    goal.target_pose.pose.orientation = custom_waypoints_list.pose.pose.orientation
-                    self.client.send_goal(goal)
-                    self.client.wait_for_result()
-                 return 'success'
+        # Subscribe to initialpose topic 
+        rospy.Subscriber('initialpose', PoseWithCovarianceStamped,update_initialpose_callback)
+        # callback function to update the initial_pose vaule to the current initial pose. 
+        def update_initialpose_callback(self, initial_pose):
+          initial_pose = initial_pose
         ```  
-      
-   - Publish custom waypoints to path_ready topic (we need to check the status of the topic). 
-       ```
-        # we publish empty custom waypoints(PoseArray) to initialize the path
-        custom_waypoints_list= []
-        self.poseArray_publisher.publish(PublishToRViz(custom_waypoints_list))
-        # our custom waypoints 
-        custom_waypoints_topic = rospy.get_param('~custom_waypointstopic','/my_waypoints_list')
-        pose = rospy.wait_for_message(custom_waypoints_topic, PoseWithCovarianceStamped, timeout=1)
-        custom_waypoints_list.append(pose)
-        poseArray_publisher = rospy.Publisher('/waypoints', PoseArray, queue_size=1)
-        
-      ```
+
   - The custom waypoints program is not a fully complete code, or a correct program. but a sample of how we could implement the process. 
 
   
