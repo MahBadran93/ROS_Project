@@ -402,7 +402,7 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
   ```roslaunch <our navigation package> <our launch file.launch>```
 - Now we launch **follow_waypoints**: <br> 
   ```roslaunch follow_waypoints follow_waypoints.launch```  <br> 
-- The waypoint server listen to **initialpose** (**amcl** and **follow_waypoints** subscribe to this topic) that is used to initialize the robot with message type    ```geometry_msgs/PoseWithCovarianceStamped```. The server will store all the specified waypoints (got waypoints position information from **initialpose** topic) and then will provide it to **move_base** node to start navigating through all the specified waypoints. 
+- The waypoint server listen to **initialpose** (**amcl** and **follow_waypoints** subscribe to this topic) that is used to initialize the robot with message type    ```geometry_msgs/PoseWithCovarianceStamped```. The server will store all the waypoints (got waypoints position information from **initialpose** topic) and then will provide it to **move_base** node to start navigating through all the specified waypoints. 
 - After launching all the necessary packages, we can start creating waypoints using **Rviz** and we add **PoseArray** display element(see Figure below) and we add **waypoints** topic to this display. We run **Rviz** tool with already implemented configuration this time .<br> 
    ```rosrun rviz rviz -d `rospack find turtlebot3_navigation`/rviz/turtlebot3_nav.rviz```. <br> 
     <p align="center">
@@ -471,7 +471,7 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
                  return 'success'
         ```  
       
-   - Publish custom waypoints to path_ready topic. 
+   - Publish custom waypoints to path_ready topic (we need to check the status of the topic). 
        ```
         # we publish empty custom waypoints(PoseArray) to initialize the path
         custom_waypoints_list= []
@@ -483,15 +483,8 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
         poseArray_publisher = rospy.Publisher('/waypoints', PoseArray, queue_size=1)
         
       ```
+  - The custom waypoints program is not a fully complete code, or a correct program. but a sample of how we could implement the process. 
 
-
-   
-
-
-
-
-
-    
   
 
 ## Conclusion
