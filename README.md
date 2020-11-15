@@ -318,7 +318,7 @@ Task 3: Path Planning
 - We can create a goal by directly publishing to the goal topic. By executing this command: 
    -  ```rostopic pub /move_base/goal/ move_base_msgs/MoveBaseActionGoal```
    
-- Another way we can create our goal is by creating an action client program(node) that send a goal to move_base **SimpleActionServer**.
+- Another way we can create our goal is by creating an action client program(node) that send a goal to move_base. 
    - Initalize the node and create Publisher to publish the goal to **move_base** node. 
       ```
         rospy.init_node("GoalSender")
@@ -340,9 +340,47 @@ Task 3: Path Planning
           GoalSender(pub)
         ``` 
 
-      The **MoveBaseActionGoal** has a **goal** parameter of type **MoveBaseGoal.msg** which has **target_pose** parameter of type **geometry_msgs/PoseStamped.msg** so we can change the target position parameters as we see in the code above.    
-
+      The **MoveBaseActionGoal** has a **goal** parameter of type **MoveBaseGoal.msg** which has the **target_pose** parameter of type **geometry_msgs/PoseStamped.msg**.= that will allow us to create a goal.
       
+- To send goals using **SimpleActionServer**. 
+   - We create a node and import the necessary packages like actionlib. 
+      ``` 
+          import actionlib
+          from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
+       ```   
+   - Create an action server. So we Initialize a client parameter from **SimpleActionClient** named **action_move_base** for example. <br> 
+      ```
+      client = actionlib.SimpleActionClient('action_move_base',MoveBaseAction) 
+      # this command to wait for the server to start listening for goals.
+      client.wait_for_server()
+      ```
+   - Create a goal to send to the server. <br> 
+      ```
+          # Create a goal with the MoveBaseGoal directly
+          goal = MoveBaseGoal()
+
+          # Configure the parameters 
+          goal.target_pose.header.frame_id = "map"
+
+          goal.target_pose.header.stamp = rospy.Time.now()
+
+          # Translate 0.8 meters along the x axis w.r.t. map reference frame 
+          goal.target_pose.pose.position.x = 0.8
+
+          # No rotation of the mobile base frame w.r.t. map reference frame
+          goal.target_pose.pose.orientation.w = 1.0
+        ```
+      
+   - Send the goal to the action server we created.  
+     ```
+        # Sends the goal to our action server.
+        client.send_goal(goal)
+        # Waits for the server till the end of the process.
+        wait = client.wait_for_result()
+       ```
+  
+   
+
 - Now Turtlebot3 is able to navigate through the environment and follow a safe path without any obstacle collisions.<br><br>
 
 ``` 
@@ -361,7 +399,7 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
    Now, we have **follow_waypoints** package ready. 
 - To start the waypoint server, we first start the navigation task process we implemented before: <br> 
   ```roslaunch <our navigation package> <our launch file.launch>```
-- Now we launch **follw_waypoints**: <br> 
+- Now we launch **follow_waypoints**: <br> 
   ```roslaunch follow_waypoints follow_waypoints.launch```  <br> 
 - The waypoint server listen to **initialpose** (**amcl** adn **follow_waypoints** subscribe to this topic) that is used to initialize the robot with message type    ```geometry_msgs/PoseWithCovarianceStamped```. The server will store all the specified waypoints (got waypoints position information from **initialpose** topic) and then will provide it to **move_base** node to start navigating through all the specified waypoints. 
 - After launching all the necessary packages, we can start creating waypoints using **Rviz** and we add **PoseArray** display element(see Figure below) and we add **waypoints** topic to this display. We run **Rviz** tool with already implemented configuration this time .<br> 
