@@ -390,7 +390,7 @@ Task 4 : Create WayPoints
 <br>
 <h4 align="center"> <ins> WayPoints  </ins> </h4>
 
-If we want the robot to pass multiple waypoints(goals) before reaching its destination, we need to use a package called **follow_waypoints** where it will be responsible for storing these waypoints. This package will publish the stored waypoints to **move_base** node as a sequence and then the robot will reach the goal by navigating through all the waypoints.
+If we want the robot to pass through multiple waypoints(goals) before reaching its destination, we can use a package called **follow_waypoints** where it will be responsible for storing these waypoints. This package will publish the stored waypoints to **move_base** node as a sequence and then the robot will reach the goal by navigating through all the waypoints.
 
 - To install this package, we need to clone its [GITHUB](https://github.com/danielsnider/follow_waypoints) repository into our catkin src folder : <br> 
    ```git clone https://github.com/danielsnider/follow_waypoints.git``` <br>
@@ -437,7 +437,17 @@ If we want the robot to pass multiple waypoints(goals) before reaching its desti
  ```rostopic pub /path_ready std_msgs/Empty -1```    
   After that, our Robot will start following the created waypoints. 
   
-- To create a custom program to create a sequence of waypoints and implement the navigation through all the points: 
+- If we want to create our own custom sequence of waypoints and implement the navigation through all the points autonomously, let's execute the following: 
+   - First, we set up waypoints locations. So, what we need is a coordinates of the waypoints with respect to map reference frame. To implement that, we create a list or a dictionary of our waypoint coordinates.
+      ```
+      locations = Dict() 
+      locations['waypoint1'] = Pose(Point(0.5, 4.0, 0.000), Quaternion(0.000, 0.000, 0.223, 0.975))
+      locations['waypoint2'] = Pose(Point(-1.3, 2.382, 0.000),Quaternion(0.000, 0.000, -0.670, 0.743))
+      locations['waypoint13'] = Pose(Point(-3.756, 6.401, 0.100), Quaternion(0.000, 0.000, 0.733, 0.680))
+      ```
+      We can get these coordinates by using Rviz tool. Press the 2D Nav Goal button and click on the location of the waypoint we want. The coorinates will be displayed on the terminal. 
+      
+      
    - Initialize an action client. <br> 
       ```
       import actionlib, rospy
