@@ -54,7 +54,7 @@ The project goal is to apply the learned **ROS** techniques and pakages to apply
 - Construct a map of the whole environment. We need to fully occupy the whole environment, then we need to localize the Robot. <br>
 - Path planning, we need to publish a goal to move base navigation system in which Turtlebot3 can reach
 that goal without colliding with any obstacles. <br> 
-- Create a waypoints that allows the Turtlebot3 to navigate within the environment. 
+- Create waypoints that allows Turtlebot3 to navigate within the environment. 
 
 ## Analysis OF Studied Techniques
 
@@ -440,7 +440,9 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
 - If we want to create our own custom sequence of waypoints and implement the navigation through all the points autonomously, let's execute the following: 
    - First, we set up waypoints locations. So, what we need is a coordinates of the waypoints with respect to map reference frame. To implement that, we create a list or a dictionary of our waypoint coordinates.
       ```
+      # Create the dictionary 
       locations = Dict() 
+      # add our waypoint names and values. 
       locations['waypoint1'] = Pose(Point(0.5, 4.0, 0.000), Quaternion(0.000, 0.000, 0.223, 0.975))
       locations['waypoint2'] = Pose(Point(-1.3, 2.382, 0.000),Quaternion(0.000, 0.000, -0.670, 0.743))
       locations['waypoint13'] = Pose(Point(-3.756, 6.401, 0.100), Quaternion(0.000, 0.000, 0.733, 0.680))
@@ -459,23 +461,40 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
       client.wait_for_server()   
       ```
    - Create a variable to hold the initial position of the robot w.r.t the map.<br> 
-     ```initial_pose = PoseWithCovarianceStamped()```
+     ```
+      # With msg type PoseWithCovarianceStamped. 
+      initial_pose = PoseWithCovarianceStamped()
+      ```
      
      ```
       # This line of code is used when to get the initial position using RViz (The user needs to click on the map) 
       rospy.wait_for_message('initialpose', PoseWithCovarianceStamped)
-      self.last_location = Pose()
      ```
-   - Subscribe to **initialpose** with callback function called **update_initialpose_callback** to update the initial_pose variable with the current initial pose. 
+   - Subscribe to **initialpose** topic with callback function called **update_initialpose_callback** to update the initial_pose variable with the current initial pose. 
         ```
         # Subscribe to initialpose topic 
         rospy.Subscriber('initialpose', PoseWithCovarianceStamped,update_initialpose_callback)
         # callback function to update the initial_pose vaule to the current initial pose. 
-        def update_initialpose_callback(self, initial_pose):
+        def update_initialpose_callback(initial_pose):
           initial_pose = initial_pose
         ```  
+   - Start the process of sending goals(waypoints) to move_base action server. We take a sequence of waypoint locations from the dictionary we created and then we iterate over the sequence to navigate through all waypoints. 
+     ```
+       # Set up a goal location
+       goal = MoveBaseGoal()
+       #location = ['waypoint1', 'waypoint2', 'waypoint3']
+       goal.target_pose.pose = locations[location]
+       goal.target_pose.header.frame_id = 'map'
+      
+       # For the user, to know where the robot is moving (to which waypoint)
+        rospy.loginfo("Going to: " + str(location))
 
-  - The custom waypoints program is not a fully complete code, or a correct program. but a sample of how we could implement the process. 
+        # Send the goal(current waypoint) to move_base action server 
+        client.send_goal(goal)
+        ```  
+   
+
+  - The custom waypoints program is not a fully complete code, or a correct program. but a sample of how we could implement the process. See reference [3]. 
 
   
 
@@ -484,4 +503,5 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
 ## References
   - [WIKI ROS](http://wiki.ros.org/)
   - [The Construct Platform](http://theconstructsim.com)
+  - ROS By Example, A Do-It-Yourself Guide to the Robot Operating System, VOLUME 1, A PI ROBOT PRODUCTION, R. PATRICK GOEBEL. Section 8.5.3 [Book](https://drive.google.com/file/d/1aZ8jmMl6UAiN0Qi_xSbD2nOgiCnx72y3/view)
 
