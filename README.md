@@ -280,14 +280,15 @@ Task 3: Path Planning
    -  To launch the node:<br>
    ```  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">" ```
    - Load the required files (local & global costmaps | local & global planners). All the required parameters are included in these yaml files: 
-   ```  <!-- rosparam is used to load parameters from yaml file-->
-        <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
-        <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
-        <rosparam file="$(find t3_navigation)/param/local_costmap_params.yaml" command="load" />
-        <rosparam file="$(find t3_navigation)/param/global_costmap_params.yaml" command="load" />
-        <rosparam file="$(find t3_navigation)/param/move_base_params.yaml" command="load" />
-        <rosparam file="$(find t3_navigation)/param/dwa_local_planner_params.yaml" command="load" />
-        ```
+     ``` 
+     <!-- rosparam is used to load parameters from yaml file-->
+          <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
+          <rosparam file="$(find t3_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
+          <rosparam file="$(find t3_navigation)/param/local_costmap_params.yaml" command="load" />
+          <rosparam file="$(find t3_navigation)/param/global_costmap_params.yaml" command="load" />
+          <rosparam file="$(find t3_navigation)/param/move_base_params.yaml" command="load" />
+          <rosparam file="$(find t3_navigation)/param/dwa_local_planner_params.yaml" command="load" />
+       ```
         
 - To create a goal, we can use Rviz. <br> 
    - Launch move_base node. The map should be created and the robot localized. (Turtlebot3)  
@@ -317,22 +318,30 @@ Task 3: Path Planning
 - We can create a goal by directly publishing to the goal topic. By executing this command: 
    -  ```rostopic pub /move_base/goal/ move_base_msgs/MoveBaseActionGoal```
    
-- Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. 
-   - Create a program file to perform client operation to send a goal. and we do the following: 
-      - Import all the move base package messages. Execute the following: 
-        ```from move_base_msgs.msg import``` 
-      - Create a function to send the goals. Inside the function we initalize a goal object from **MoveBaseActionGoal** and then we configure the goal parameters(position). See below: 
+- Another way we can create our goal is by creating an action client program(node) that send a goal to move_base **SimpleActionServer**.
+   - Initalize the node and create Publisher to publish the goal to **move_base** node. 
+      ```
+        rospy.init_node("GoalSender")
+        pub = rospy.Publisher("move_base/goal", MoveBaseActionGoal)
+        ```
+          
+    - Import all the move base package messages. Execute the following: <br> 
+      ```from move_base_msgs.msg import ``` 
+      
+    - Create a function to send the goals. Inside the function we initalize a goal object from **MoveBaseActionGoal** and then we configure the goal parameters (position). Finally, we call the function to publish the goal. See below: 
+      ``` 
+          def GoalSender(publisher):
+            goal = MoveBaseActionGoal()
+            goal.goal.target_pose.header.frame_id = "map"
+            goal.goal.target_pose.pose.orientation.w = 1.0
+            goal.goal.target_pose.pose.position.x = 0
+            goal.goal.target_pose.pose.position.y = -5
+            publisher.publish(goal)
+          GoalSender(pub)
         ``` 
-            def GoalSender(publisher):
-              goal = MoveBaseActionGoal()
-              goal.goal.target_pose.header.frame_id = "map"
-              goal.goal.target_pose.pose.orientation.w = 1.0
-              goal.goal.target_pose.pose.position.x = 0
-              goal.goal.target_pose.pose.position.y = -5
-              publisher.publish(goal)
-            ```  
-          The **MoveBaseActionGoal** has a **goal** parameter of type **MoveBaseGoal.msg** which has *target_pose* parameter of msg type *geometry_msgs/PoseStamped.msg*   
-        
+
+      The **MoveBaseActionGoal** has a **goal** parameter of type **MoveBaseGoal.msg** which has **target_pose** parameter of type **geometry_msgs/PoseStamped.msg** so we can change the target position parameters as we see in the code above.    
+
       
 - Now Turtlebot3 is able to navigate through the environment and follow a safe path without any obstacle collisions.<br><br>
 
