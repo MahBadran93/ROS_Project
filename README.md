@@ -318,6 +318,21 @@ Task 3: Path Planning
    -  ```rostopic pub /move_base/goal/ move_base_msgs/MoveBaseActionGoal```
    
 - Another way we can create our goal is by creating an action client that send a goal to move_base **SimpleActionServer**. 
+   - Create a program file to perform client operation to send a goal. and we do the following: 
+      - Import all the move base package messages. Execute the following: 
+        ```from move_base_msgs.msg import``` 
+      - Create a function to send the goals. Inside the function we initalize a goal object from **MoveBaseActionGoal** and then we configure the goal parameters(position). See below: 
+        ``` 
+            def GoalSender(publisher):
+              goal = MoveBaseActionGoal()
+              goal.goal.target_pose.header.frame_id = "map"
+              goal.goal.target_pose.pose.orientation.w = 1.0
+              goal.goal.target_pose.pose.position.x = 0
+              goal.goal.target_pose.pose.position.y = -5
+              publisher.publish(goal)
+            ```  
+        
+      
 - Now Turtlebot3 is able to navigate through the environment and follow a safe path without any obstacle collisions.<br><br>
 
 ``` 
