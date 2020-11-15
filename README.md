@@ -186,7 +186,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
        - **file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. If we download the file and open it, it will look like this: 
       <p align="center">
       <p align = "center">
-         <img  src = "resources/mahmap.png" width=600> <br>
+         <img  src = "resources/mahmap.png" width=350> <br>
         <em>Each cell ranges from 0 to 100 integer value where 0 means completely free and not occupied, 100 is completely occupied</em>
       </p>
       </p>
