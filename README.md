@@ -24,8 +24,8 @@ Students: <br>
   </p>
 </p>
 
-[![Generic badge](https://img.shields.io/badge/Report-50-red.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/Development-20-red.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Report-100%-green.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Development-30%-red.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/Ros-kinetic-green.svg)](http://wiki.ros.org/kinetic/Installation)
 [![Generic badge](https://img.shields.io/badge/Platform-IgniteAcademy-blue.svg)](https://www.theconstructsim.com/)
 
