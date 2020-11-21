@@ -1,0 +1,8 @@
+prefix=/home/user/catkin_ws/devel
+
+Name: t3_navigation
+Description: Description of t3_navigation
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

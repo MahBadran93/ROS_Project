@@ -1,0 +1,8 @@
+prefix=/home/user/catkin_ws/install
+
+Name: exercise_1_4
+Description: Description of exercise_1_4
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,2 @@
+Task1:follow_waypoints:t3_navigation
+-DCATKIN_DEVEL_PREFIX=/home/user/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/user/catkin_ws/install -G Unix Makefiles
