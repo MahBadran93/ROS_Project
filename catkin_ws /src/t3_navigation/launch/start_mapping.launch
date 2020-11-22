@@ -7,7 +7,7 @@
     <param name="base_frame" value="base_footprint"/>
     <param name="odom_frame" value="odom"/>
     <param name="map_update_interval" value="2.0"/>
-    <param name="maxUrange" value="0.4"/>
+    <param name="maxUrange" value="5.0"/>
     <param name="minimumScore" value="100"/>
     <param name="linearUpdate" value="0.2"/>
     <param name="angularUpdate" value="0.2"/>
