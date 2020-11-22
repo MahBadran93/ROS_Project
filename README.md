@@ -182,12 +182,12 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
     </p> 
 - The map can be saved using **map_server** package, it includes **map_savor** node  which will allow us to access the map data. 
     Execute this command : <br> 
-    - ``` rosrun map_server map_savor -f <file_name> ```
+    - ``` rosrun map_server map_saver -f <file_name> ```
  After executing it will generate two files: <br><br>
        - **file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. If we download the file and open it, it will look like this: 
       <p align="center">
       <p align = "center">
-         <img  src = "resources/mahmap.png" width=350> <br>
+         <img  src = "resources/testmapbarcelonaFinal.png" width=350> <br>
         <em>Each cell ranges from 0 to 100 integer value where 0 means completely free and not occupied, 100 is completely occupied</em>
       </p>
       </p>
