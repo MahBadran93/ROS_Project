@@ -166,7 +166,7 @@ In order to construct a map : <br> <br>
 To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
     <p align="center">
     <p align = "center">
-       <img  src = "resources/screen.png" width=600>
+       <img  src = "resources/barcelonaMapRviz.png" width=600>
     </p>
     </p>
 - You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are:
@@ -187,7 +187,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
        - **file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. If we download the file and open it, it will look like this: 
       <p align="center">
       <p align = "center">
-         <img  src = "resources/testmapbarcelonaFinal.png" width=350> <br>
+         <img  src = "resources/testmapbarcelonaFinal.png" width=400> <br>
         <em>Each cell ranges from 0 to 100 integer value where 0 means completely free and not occupied, 100 is completely occupied</em>
       </p>
       </p>
