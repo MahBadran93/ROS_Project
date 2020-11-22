@@ -177,7 +177,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
   ```roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch ```.<br> After moving the robot around all the places needed we should see the map fully occupied in **Rvis**<br>
     <p align="center">
     <p align = "center">
-       <img  src = "resources/screen2.png" width=600>
+       <img  src = "resources/mapbarcelonadoneRviz.png" width=600>
     </p>
     </p> 
 - The map can be saved using **map_server** package, it includes **map_savor** node  which will allow us to access the map data. 
