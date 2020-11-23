@@ -229,13 +229,22 @@ After creating the map, the next step is to locate the robot in the environment 
 
         <p align="center">
         <p align = "center">
-        <img  src = "resources/particles.png" width=500> <br>
+        <img  src = "resources/particlecloudbarcelonamap.png" width=500> <br>
         <em> Generated Particles</em>
 
         </p>
         </p>
         
      - We use Rviz **2D Pose Estimate** button to send the navigation system an initial pose of the robot. After that, the amcl node will create large number of guesses(estimations where the robot position and orientation is w.r.t the environment) as you can see in the previous figure. The last thing is to start moving the robot around the environment by using **turtlebot3_teleop** package, until we see the guesses started to decrease and be concentrated . <br><br>  
+        <p align="center">
+        <p align = "center">
+        <img  src = "resources/localcostmapbarcelona.png" width=400> <br>
+           <img  src = "resources/particlecloudbarcelonaMap2.png" width=400> <br>
+        <em> Generated Particles</em>
+
+        </p>
+        </p>
+        As you can see in the above figure. When we move the robot, the guesses are getting more concentrated because of the wrong guesses are getting excluded by amcl. 
       
 ``` 
 Task 3: Path Planning
