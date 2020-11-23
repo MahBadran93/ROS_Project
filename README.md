@@ -25,7 +25,7 @@ Students: <br>
 </p>
 
 [![Generic badge](https://img.shields.io/badge/Report-100-green.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/Development-30-red.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Development-45-red.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/Ros-kinetic-green.svg)](http://wiki.ros.org/kinetic/Installation)
 [![Generic badge](https://img.shields.io/badge/Platform-IgniteAcademy-blue.svg)](https://www.theconstructsim.com/)
 
@@ -238,7 +238,7 @@ After creating the map, the next step is to locate the robot in the environment 
      - We use Rviz **2D Pose Estimate** button to send the navigation system an initial pose of the robot. After that, the amcl node will create large number of guesses(estimations where the robot position and orientation is w.r.t the environment) as you can see in the previous figure. The last thing is to start moving the robot around the environment by using **turtlebot3_teleop** package, until we see the guesses started to decrease and be concentrated . <br><br>  
         <p align="center">
         <p align = "center">
-        <img  src = "resources/localcostmapbarcelona.png" width=400> 
+        <img  src = "resources/moveParticlecloudBarcelonaMap.png" width=400> 
            <img  src = "resources/particlecloudbarcelonaMap2.png" width=400> <br>
         <em> Generated Particles</em>
 
@@ -280,8 +280,8 @@ Task 3: Path Planning
    - **Costmap paremeters (local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global costmap is a static map used to store information about the whole map to be used for global planning where local costmap is used to store local information (the small area surrounding the robot position) to be used for local planning. 
      <p align="center">
     <p align = "center">
-       <img  src = "resources/globalcostmap.png" width=400> 
-       <img  src = "resources/localcostmap.png" width=400> <br>
+       <img  src = "resources/globalcostmapbarcelona.png" width=400> 
+       <img  src = "resources/localcostmapbarcelona.png" width=400> <br>
        <em>Global Costmap - Local Costmap</em>
   </p>
   </p>
