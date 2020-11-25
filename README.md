@@ -312,13 +312,13 @@ Task 3: Path Planning
      ```rostopic echo /move-base/goal```
      <p align="center">
         <p align = "center">
-           <img  src = "initalizeRobotPoseInBarcelonaMap.png" width=350>
+           <img  src = "resources/initalizeRobotPoseInBarcelonaMap.png" width=350>
            <em>Initialize Robot Pose Using 2D Pose Estimate </em>
         </p>
       </p>
        <p align="center">
         <p align = "center">
-           <img  src = "setAGoalInbarcelonamap.png" width=350>
+           <img  src = "resources/setAGoalInbarcelonamap.png" width=350>
           <em>Set A Goal Using 2D Nav Goal And Start Moving Toward The Goal </em>
         </p>
       </p>
@@ -390,6 +390,9 @@ Task 3: Path Planning
    
 
 - Now Turtlebot3 is able to navigate through the environment and follow a safe path without any obstacle collisions.<br><br>
+  See the link below to see how the robot is moving toward a goal. <br> 
+  https://www.loom.com/share/62228958230144acb1ecae976b3dfa28
+  
 
 ``` 
 Task 4 : Create WayPoints  
