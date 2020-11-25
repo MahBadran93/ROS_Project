@@ -1,18 +1,18 @@
 <launch>
   <arg name="model" default="burger" doc="model type [burger, waffle]"/>
 
-  <!-- Turtlebot3 -->
+  <!-- launch Turtlebot3 -->
   <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />
 
-  <!-- Map server -->
-  <arg name="map_file" default="$(find t3_navigation)/maps/map-badran.yaml"/>
+  <!-- launch Map server and add our map -->
+  <arg name="map_file" default="$(find t3_navigation)/maps/testmapbarcelonaFinal.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
   </node>
 
-  <!-- AMCL -->
+  <!-- start the AMCL package using our localization launch file -->
   <include file="$(find t3_navigation)/launch/start_localization.launch"/>
 
-  <!-- move_base -->
+  <!-- setup the move_base package -->
   <arg name="cmd_vel_topic" default="/cmd_vel" />
   <arg name="odom_topic" default="odom" />
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">

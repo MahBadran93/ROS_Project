@@ -1,8 +1,9 @@
 <launch>
 
-  <!-- <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />  -->
-  <!-- <arg name="map_file" default="$(find t3_navigation)/maps/map-badran.yaml"/> -->
-  <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /> -->
+<!-- <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" /> -->
+<!-- <arg name="map_file" default="$(find t3_navigation)/maps/testmapbarcelonaFinal.yaml"/>-->
+<!--  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />-->
+
 <arg name="scan_topic"     default="scan"/>
 <arg name="initial_pose_x" default="0.0"/>
 <arg name="initial_pose_y" default="0.0"/>

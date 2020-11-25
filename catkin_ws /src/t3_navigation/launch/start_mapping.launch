@@ -1,8 +1,8 @@
 <launch>
-  <!-- Turtlebot3 -->
+  <!-- Run Turtlebot3 application -->
   <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />
 
-  <!-- Gmapping -->
+  <!-- Run Gmapping and add its parameters  -->
   <node pkg="gmapping" type="slam_gmapping" name="turtlebot3_slam_gmapping" output="screen">
     <param name="base_frame" value="base_footprint"/>
     <param name="odom_frame" value="odom"/>
