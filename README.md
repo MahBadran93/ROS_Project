@@ -312,13 +312,13 @@ Task 3: Path Planning
      ```rostopic echo /move-base/goal```
      <p align="center">
         <p align = "center">
-           <img  src = "resources/initalizeRobotPoseInBarcelonaMap.png" width=350>
+           <img  src = "resources/initalizeRobotPoseInBarcelonaMap.png" width=350> <br>
            <em>Initialize Robot Pose Using 2D Pose Estimate </em>
         </p>
       </p>
        <p align="center">
         <p align = "center">
-           <img  src = "resources/setAGoalInbarcelonamap.png" width=350>
+           <img  src = "resources/setAGoalInbarcelonamap.png" width=350> <br>
           <em>Set A Goal Using 2D Nav Goal And Start Moving Toward The Goal </em>
         </p>
       </p>
