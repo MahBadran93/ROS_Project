@@ -441,7 +441,7 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
  - Now that we added our waypoints . We should start the **path_ready** topic (**follow_waypoints** subscribes to this topic to initaize the process to follow our waypoint), then it will start sending the waypoints we created to move_base node. This topic has message of type ```std_msgs/Empty```. To start the **path_ready topic**, we execute: <br> 
  ```rostopic pub /path_ready std_msgs/Empty -1```    
   After that, our Robot will start following the created waypoints. See the video bellow: <br><br>
-   <p align="center">
+  <p align="center">
   https://www.loom.com/share/150f75325a8c46789f8fdde45a46e514
   </p>
   
