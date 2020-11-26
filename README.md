@@ -427,19 +427,13 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
        <br> 
        <p align="center">
         <p align = "center">
-           <img  src = "resources/initRobotPose_WayPoint1.png" width=250>
-          <img  src = "resources/waypoint2.png" width=250><br>
-           <em> Initial Pose Of the Robot | WayPoint 1</em>
+           <img  src = "resources/waypointsBarcelona.png" width=250>
+          <img  src = "resources/waypointsBarcelona2.png" width=250><br>
+           <img  src = "resources/3waypointsBarcelona.png" width=350><br>
+           <em> Setting the required waypoints(red arrows) for the robot to follow </em>
         </p>
       </p>
-       <p align="center">
-        <p align = "center">
-           <img  src = "resources/waypoint3.png" width=250>
-          <img  src = "resources/waypoint5.png" width=250><br>
-          <em> WayPoint 2 | WayPoint 3(The last waypoint we choose should be in the same position as the initial Robot pose) </em>
-        </p>
-      </p>
-      
+
        
       
  - Now that we added our waypoints . We should start the **path_ready** topic (**follow_waypoints** subscribes to this topic to initaize the process to follow our waypoint), then it will start sending the waypoints we created to move_base node. This topic has message of type ```std_msgs/Empty```. To start the **path_ready topic**, we execute: <br> 
