@@ -312,15 +312,13 @@ Task 3: Path Planning
      ```rostopic echo /move-base/goal```
      <p align="center">
         <p align = "center">
-           <img  src = "resources/1.png" width=350>
-          <img  src = "resources/2.png" width=350><br>
+           <img  src = "resources/initalizeRobotPoseInBarcelonaMap.png" width=350> <br>
            <em>Initialize Robot Pose Using 2D Pose Estimate </em>
         </p>
       </p>
        <p align="center">
         <p align = "center">
-           <img  src = "resources/3.png" width=350>
-          <img  src = "resources/4.png" width=350><br>
+           <img  src = "resources/setAGoalInbarcelonamap.png" width=350> <br>
           <em>Set A Goal Using 2D Nav Goal And Start Moving Toward The Goal </em>
         </p>
       </p>
@@ -392,6 +390,9 @@ Task 3: Path Planning
    
 
 - Now Turtlebot3 is able to navigate through the environment and follow a safe path without any obstacle collisions.<br><br>
+  See the link below to see how the robot is moving toward a goal. <br> 
+  https://www.loom.com/share/62228958230144acb1ecae976b3dfa28
+  
 
 ``` 
 Task 4 : Create WayPoints  
@@ -422,8 +423,7 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
       </p>
    
     
-   - Use **2D pose Estimate** to localize the Robot. 
-   - Use **2D Nav Goal** to add goals (waypoints). 
+   - Use **2D pose Estimate** to create waypoints. 
        <br> 
        <p align="center">
         <p align = "center">
@@ -444,7 +444,8 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
       
  - Now that we added our waypoints . We should start the **path_ready** topic (**follow_waypoints** subscribes to this topic to initaize the process to follow our waypoint), then it will start sending the waypoints we created to move_base node. This topic has message of type ```std_msgs/Empty```. To start the **path_ready topic**, we execute: <br> 
  ```rostopic pub /path_ready std_msgs/Empty -1```    
-  After that, our Robot will start following the created waypoints. 
+  After that, our Robot will start following the created waypoints. See the video bellow: <br> 
+  https://www.loom.com/share/150f75325a8c46789f8fdde45a46e514
   
 - If we want to create our own custom sequence of waypoints and implement the navigation through all the points autonomously, let's execute the following: 
    - First, we set up waypoints locations. So, what we need is a coordinates of the waypoints with respect to map reference frame. To implement that, we create a list or a dictionary of our waypoint coordinates.
