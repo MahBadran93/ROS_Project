@@ -1,4 +1,0 @@
-<launch>
-    <node pkg="t3_navigation" type="sendGoal.py" name="sendGoal" output="screen">       
-    </node>
-</launch>

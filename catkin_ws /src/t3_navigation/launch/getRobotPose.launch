@@ -1,4 +1,0 @@
-<launch>
-    <node pkg="t3_navigation" type="getRobotPose.py" name="geRobotPose" output="screen">       
-    </node>
-</launch>

@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="task_navigation" type="getRobotPose.py" name="geRobotPose" output="screen">       
+    </node>
+</launch>
