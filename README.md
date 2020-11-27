@@ -448,32 +448,31 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
 - If we want to create our own custom sequence of waypoints and implement the navigation through all the points autonomously, let's execute the following: 
    - First, we set up waypoints locations. So, what we need is a coordinates of the waypoints with respect to map reference frame. To implement that, we create a list or a dictionary of our waypoint coordinates.
       ```
-      # Create the dictionary 
-      locations = Dict() 
-      # add our waypoint names and values. 
-      locations['waypoint1'] = Pose(Point(0.5, 4.0, 0.000), Quaternion(0.000, 0.000, 0.223, 0.975))
-      locations['waypoint2'] = Pose(Point(-1.3, 2.382, 0.000),Quaternion(0.000, 0.000, -0.670, 0.743))
-      locations['waypoint13'] = Pose(Point(-3.756, 6.401, 0.100), Quaternion(0.000, 0.000, 0.733, 0.680))
+      def CustomWayPoints():
+        # Create the dictionary 
+        locations = dict()
+        # add our waypoint names and values. 
+        locations['waypoint1'] = Pose(Point(-9.583, 0.973, 0.000), Quaternion(0.000, 0.000, -0.717, 0.697))
+        locations['waypoint2'] = Pose(Point(-11.841, 0.827, 0.000),Quaternion(0.000, 0.000, -0.707, 0.708))
+        locations['waypoint3'] = Pose(Point(8.489, -3.809, 0.000), Quaternion(0.000, 0.000, -0.016, 1.000))
+        return locations
       ```
       We can get these coordinates by using Rviz tool. Press the 2D Nav Goal button and click on the location of the waypoint we want. The coorinates will be displayed on the terminal. 
       
       
    - Subscribe to move_base action server. <br> 
       ```
-      import actionlib, rospy
-      from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
-      from geometry_msgs.msg import PoseWithCovarianceStamped, PoseArray,Pose,Quaternion,,Twist
       # subscribe to action server 
-      client = actionlib.SimpleActionClient('move_base',MoveBaseAction) 
+      client = actionlib.SimpleActionClient('move_base',MoveBaseAction)
       # this command to wait for the server to start listening for goals.
-      client.wait_for_server()   
+      client.wait_for_server()
+  
       ```
    - Create a variable to hold the initial position of the robot w.r.t the map.<br> 
      ```
       # With msg type PoseWithCovarianceStamped. 
       initial_pose = PoseWithCovarianceStamped()
-      ```
-     
+      ```  
      ```
       # This line of code is used when to get the initial position using RViz (The user needs to click on the map) 
       rospy.wait_for_message('initialpose', PoseWithCovarianceStamped)
@@ -481,24 +480,32 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
    - Subscribe to **initialpose** topic with callback function called **update_initialpose_callback** to update the initial_pose variable with the current initial pose. 
         ```
         # Subscribe to initialpose topic 
-        rospy.Subscriber('initialpose', PoseWithCovarianceStamped,update_initialpose_callback)
+        rospy.Subscriber('initialpose', PoseWithCovarianceStamped,update_initial_pose)
         # callback function to update the initial_pose vaule to the current initial pose. 
-        def update_initialpose_callback(initial_pose):
+        def update_initial_pose(initial_pose):
           initial_pose = initial_pose
         ```  
    - Start the process of sending goals(waypoints) to move_base action server. We take a sequence of waypoint locations from the dictionary we created and then we iterate over the sequence to navigate through all waypoints. 
      ```
-       # Set up a goal location
-       goal = MoveBaseGoal()
-       #location = ['waypoint1', 'waypoint2', 'waypoint3']
-       goal.target_pose.pose = locations[location]
-       goal.target_pose.header.frame_id = 'map'
-      
-       # For the user, to know where the robot is moving (to which waypoint)
-        rospy.loginfo("Going to: " + str(location))
+      # Iterate over all the waypoits, follow the path 
+      for key, value in waypoints.items():
+          goal = MoveBaseGoal()
+          goal.target_pose.header.frame_id = "map"
+          goal.target_pose.header.stamp = rospy.Time.now()
 
-        # Send the goal(current waypoint) to move_base action server 
-        client.send_goal(goal)
+          goal.target_pose.pose.position.x = waypoints[key].position.x
+          goal.target_pose.pose.position.y = waypoints[key].position.y
+          goal.target_pose.pose.position.z = waypoints[key].position.z
+          # Goal Orientation
+          goal.target_pose.pose.orientation.x = waypoints[key].orientation.x
+          goal.target_pose.pose.orientation.y = waypoints[key].orientation.y
+          goal.target_pose.pose.orientation.w = waypoints[key].orientation.z
+          goal.target_pose.pose.orientation.z = waypoints[key].orientation.w
+
+          client.send_goal(goal)
+          wait = client.wait_for_result()        
+      rospy.loginfo('The waypoints path is complete')
+      
         ```  
    
 
