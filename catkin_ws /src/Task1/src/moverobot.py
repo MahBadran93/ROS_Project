@@ -40,6 +40,7 @@ class MoveRob:
             time.sleep(0.9)
             self.msgTwistObj.linear.x = 0.5
             
+            
         
 obj1 = MoveRob()
 obj1.moveRob()
