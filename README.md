@@ -507,6 +507,12 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
       rospy.loginfo('The waypoints path is complete')
       
         ```  
+       
+       See the video below to follow the process: <br><br>
+         <p align="center">
+          https://www.loom.com/share/c9699d2f21214a4485b9492f9f72eb3f
+         </p>
+  
    
 
   - The custom waypoints program is not a fully complete code, or a correct program. but a sample of how we could implement the process. See reference [3]. 
