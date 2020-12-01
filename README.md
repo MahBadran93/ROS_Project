@@ -184,7 +184,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
     Execute this command : <br> 
     - ``` rosrun map_server map_saver -f <file_name> ```
  After executing it will generate two files: <br><br>
-       - **file_name.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. If we download the file and open it, it will look like this: 
+       - **testmapbarcelonaFinal.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. If we download the file and open it, it will look like this: 
       <p align="center">
       <p align = "center">
          <img  src = "resources/testmapbarcelonaFinal.png" width=400> <br>
@@ -192,7 +192,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
       </p>
       </p>
       
-       - **file_name.yaml:** This file contains the meta data of the generated map which contains these parametrs, image,resoulution, origin, occupied_thresh, free_thresh,negate. 
+       - **testmapbarcelonaFinal.yaml:** This file contains the meta data of the generated map which contains these parametrs, image,resoulution, origin, occupied_thresh, free_thresh,negate. 
  
 --- 
  
