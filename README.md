@@ -407,7 +407,8 @@ Task 3: Path Planning
   https://www.loom.com/share/62228958230144acb1ecae976b3dfa28
   </p>
   
-- To launch **move_base** with its required parameters, we created a launch file called [start_navigation](https://github.com/MahBadran93/ROS_Project/blob/main/catkin_ws%20/src/task_navigation/launch/start_navigation.launch). This launch file will also launch the **start_localization** file and will import the map files and the required parameters. Those parameters are stored in [param](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/param) folder.
+- To see our implementation, we created a launch file called [start_navigation](https://github.com/MahBadran93/ROS_Project/blob/main/catkin_ws%20/src/task_navigation/launch/start_navigation.launch) that will be responsible for launching **move_base** package. This launch file will also launch the **start_localization** file and will import the map files with the **move-base** required parameters. Those parameters are stored in [param](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/param) folder.<br> 
+We also created a node called [sendGoal](https://github.com/MahBadran93/ROS_Project/blob/main/catkin_ws%20/src/task_navigation/src/sendGoal.py) in the [src](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/src) folder of the [task_navigation](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation) package that will be responsible making the robot navigate to a specific goal
 
 ``` 
 Task 4 : Create WayPoints  
@@ -458,7 +459,7 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
   https://www.loom.com/share/150f75325a8c46789f8fdde45a46e514
   </p>
   
-- If we want to create our own custom sequence of waypoints and implement the navigation through all the points autonomously, let's execute the following: 
+- If we want to create our own custom sequence of waypoints and implement the navigation through all the points autonomously, we've done the following: 
    - First, we set up waypoints locations. So, what we need is a coordinates of the waypoints with respect to map reference frame. To implement that, we create a list or a dictionary of our waypoint coordinates.
       ```
       def CustomWayPoints():
@@ -490,7 +491,7 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
       # This line of code is used when to get the initial position using RViz (The user needs to click on the map) 
       rospy.wait_for_message('initialpose', PoseWithCovarianceStamped)
      ```
-   - Subscribe to **initialpose** topic with callback function called **update_initialpose_callback** to update the initial_pose variable with the current initial pose. 
+   - Subscribe to **initialpose** topic with callback function called **update_initial_pose** to update the initial_pose variable with the current initial pose. 
         ```
         # Subscribe to initialpose topic 
         rospy.Subscriber('initialpose', PoseWithCovarianceStamped,update_initial_pose)
@@ -526,7 +527,7 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
           https://www.loom.com/share/c9699d2f21214a4485b9492f9f72eb3f
          </p>
   
-   
+   - We created a node called 
 
   - The custom waypoints program is not a fully complete code, or a correct program. but a sample of how we could implement the process. See reference [3]. 
 
