@@ -134,7 +134,7 @@ By executing this command, we can see all the topics provide by the environment.
         ```self.laserMsg = msg```<br>   
     ```self.laserMsg.ranges```   <br> 
    So, whenever the robot moves, the variable **laserMasg** will be updated. One of the useful information we can obtain from **laserMsg** is the **ranges** parameter. we use **ranges** parameter to know the distance between the robot and an object in the environment. <br> 
-   See the Figure below. It shows different frames of the robot after launching the node that is responsible for moving the robot. **Explain More About Ranges**
+   See the Figure below. It shows different frames of the robot after launching the node that is responsible for moving the robot. 
 
 <p align="center">
   <p align = "center">
@@ -187,7 +187,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
     </p> 
 - The map can be saved using **map_server** package, it includes **map_savor** node  which will allow us to access the map data. 
     Execute this command : <br> 
-    - ``` rosrun map_server map_saver -f <file_name> ```
+    - ``` rosrun map_server map_saver -f testmapbarcelonaFinal ```
  After executing it will generate two files: <br><br>
        - **testmapbarcelonaFinal.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. If we download the file and open it, it will look like this: 
       <p align="center">
