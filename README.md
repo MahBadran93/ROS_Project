@@ -25,7 +25,7 @@ Students: <br>
 </p>
 
 [![Generic badge](https://img.shields.io/badge/Report-100-green.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/Development-45-red.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Development-90-red.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/Ros-kinetic-green.svg)](http://wiki.ros.org/kinetic/Installation)
 [![Generic badge](https://img.shields.io/badge/Platform-IgniteAcademy-blue.svg)](https://www.theconstructsim.com/)
 
@@ -33,12 +33,12 @@ Students: <br>
 
 
 
-## Project Management (Technical Report)
+## Technical Documentation 
 
 - [Introduction](#introduction)
 - [Project Tasks](#Project-Tasks)
 - [Analysis OF Studied Techniques](#Analysis-OF-Studied-Techniques)
-- [Work Plan](#Work-Plan)
+- [Implementation](#Implementation)
 - [Conclusion](#Conclusion)
 - [References](#References)
 
@@ -93,7 +93,7 @@ that goal without colliding with any obstacles. <br>
     - An important command needed to be running before start working with any ROS project called **roscore**. It contains all the necessary files for any ROS system.
       
 
-## Work Plan
+## Implementation
 
 ```
 Task 1: Robot Control
