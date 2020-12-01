@@ -185,7 +185,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
        <img  src = "resources/mapbarcelonadoneRviz.png" width=600>
     </p>
     </p> 
-- The map can be saved using **map_server** package, it includes **map_savor** node  which will allow us to access the map data. 
+- The map can be saved using **map_server** package, it includes **map_saver** node  which will allow us to access the map data. 
     Execute this command : <br> 
     - ``` rosrun map_server map_saver -f testmapbarcelonaFinal ```
  After executing it will generate two files: <br><br>
@@ -199,7 +199,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
       
        - **testmapbarcelonaFinal.yaml:** This file contains the meta data of the generated map which contains these parametrs, image,resoulution, origin, occupied_thresh, free_thresh,negate. <br>
        
-       For the implementation of Task 2, we created a package called [task_navigation](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation). In the [launch folder](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/launch), we created a [launch file](https://github.com/MahBadran93/ROS_Project/blob/main/catkin_ws%20/src/task_navigation/launch/start_mapping.launch) called **start_mapping** that will launch the **slam_gmapping** node. <br>
+       For the implementation of Task 2, we created a package called [task_navigation](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation). In the [launch folder](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/launch), we created a launch file called [start_mapping](https://github.com/MahBadran93/ROS_Project/blob/main/catkin_ws%20/src/task_navigation/launch/start_mapping.launch)  that will launch the **slam_gmapping** node. <br>
        Also in this package we created [maps](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/maps) folder that will contains the map files.
        
        
