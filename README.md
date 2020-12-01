@@ -407,6 +407,7 @@ Task 3: Path Planning
   https://www.loom.com/share/62228958230144acb1ecae976b3dfa28
   </p>
   
+- To launch **move_base** with its required parameters, we created a launch file called [start_navigation](https://github.com/MahBadran93/ROS_Project/blob/main/catkin_ws%20/src/task_navigation/launch/start_navigation.launch). This launch file will also launch the **start_localization** file and will import the map files and the required parameters. Those parameters are stored in [param](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/param) folder.
 
 ``` 
 Task 4 : Create WayPoints  
