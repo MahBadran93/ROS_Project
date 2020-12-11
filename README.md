@@ -45,11 +45,11 @@ Students: <br>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Introduction
-Robotics Operating System (ROS), is a middleware, low level framework, to write robotic softwares. It can be cosidered as an API to make the process of developing a robotic related projects more flexible, and simplified. There will be no need for an extensive knowledge of the hardware in which it saves much effort and time in the development phase. It includes many libraries and tools which connects and control the robot manipulators, handle the communication between multiple devices in a a working space. <br>
-ROS is supported by many operating systems like ubunto, windows. Ubunto is the more stable operating system working with ROS. However, for the development of this project we are using the construct web plaform, which is an online robotics working environmant. The platform uses ubunto as the main operating system with ROS kinetic and uses the **Gazebo** as real world simulator with many robot model simulations like turtlebot 3. The platform will enable us to learn some of ROS basic techniques to be able to apply Robot Control, Mapping, Robot Localization, Path planning and setting up some goals to navigate through the environment.  
+Robotics Operating System (ROS), is a middleware, low level framework, to write robotic softwares. It can be considered as an API to make the process of developing a robotic related projects more flexible, and simplified. There will be no need for an extensive knowledge of the hardware in which it saves much effort and time in the development phase. It includes many libraries and tools which connects and control the robot manipulators, handle the communication between multiple devices in a a working space. <br>
+ROS is supported by many operating systems like ubuntu, windows. Ubuntu is the more stable operating system working with ROS. However, for the development of this project we are using the construct web platform, which is an online robotics working environment. The platform uses ubuntu as the main operating system with ROS kinetic and uses the **Gazebo** as real world simulator with many robot model simulations like turtlebot 3. The platform will enable us to learn some of ROS basic techniques to be able to apply Robot Control, Mapping, Robot Localization, Path planning and setting up some goals to navigate through the environment.  
 
 ## Project Tasks 
-The project goal is to apply the learned **ROS** techniques and pakages to apply the navigation task on Turtlebot3:  
+The project goal is to apply the learned **ROS** techniques and packages to apply the navigation task on Turtlebot3:  
 - Moving the robot around the environment using **/cmd_vel** topic. <br>
 - Construct a map of the whole environment. We need to fully occupy the whole environment, then we need to localize the Robot. <br>
 - Path planning, we need to publish a goal to move base navigation system in which Turtlebot3 can reach
@@ -61,7 +61,7 @@ that goal without colliding with any obstacles. <br>
 - Important concepts that have been studied and will be important in developing the project : <br><br>
    - **Nodes**: One of the most important concepts in ROS. We can describe nodes as a program (python, c++) to enable ROS to make communication tasks. A node can subscribe or publish to a topic, which will be explained. <br><br>
    - **Topic**: The process of transmitting data between nodes. Some nodes are responsible for publishing some data to a specific topic where other nodes (subscribers) will be able to request these data ( messages ) from the topic.<br><br>
-   - **Messages** : Data structure which describes the data that ROS nodes publish or recieve. the nodes communicate, send messages, receive messages through topics.<br><br>
+   - **Messages** : Data structure which describes the data that ROS nodes publish or receive. the nodes communicate, send messages, receive messages through topics.<br><br>
    - **Services** : another way to transmit the data between nodes. it is a synchronous operation where the robot has to stop processing while waiting for a service response.<br><br>
 
   <p align="center">
@@ -71,7 +71,7 @@ that goal without colliding with any obstacles. <br>
   </p>
   
 - ROS Packages & Basic Commands : <br>
-   - A package in ROS is a working directory which contains all the necessary ROS files like executable python and cpp files, configuration and combilation files and launch files. 
+   - A package in ROS is a working directory which contains all the necessary ROS files like executable python and cpp files, configuration and compilation files and launch files. 
    - The structure of the package directory:<br> 
       - **src** folder which contains all the executable files 
       - **launch** folder which contains all the launch files
@@ -83,7 +83,7 @@ that goal without colliding with any obstacles. <br>
     - ROS programs(nodes) can be executed using launch files, with launch files we can run multiple nodes in one file. A launch file can be run using **roslaunch**  command: <br> 
     ```roslaunch <package_name> <launch_file>```
     - If we want to create a package in the working space **catkin_ws**, we use this command: <br>
-      ``` catkin_create_pkg <package_name> <package_dependecies> ```
+      ``` catkin_create_pkg <package_name> <package_dependencies> ```
     - If we want to know some information about a specific node, we use this **rosnode** command: <br> 
       ``` rosnode info <node_name>``` 
     - If we want to know some information about a specific topic, we use this **rostopic** command: <br> 
@@ -99,7 +99,7 @@ that goal without colliding with any obstacles. <br>
 Task 1: Robot Control
 ```
 We use TurtleBot3, which is a mobile robot with small size and low price but still have the same quality that other mobile robots have.
-- First of all, it is necesseary to start and launch our turtlebot3. It is done using the **turtlebot3_bringup** package and starting **turtlebot3_remote.launch**. file. <br> 
+- First of all, it is necessary to start and launch our turtlebot3. It is done using the **turtlebot3_bringup** package and starting **turtlebot3_remote.launch**. file. <br> 
  ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />``` <br> 
 - One important command we can use to know what are the topics that got published by the environment. <br> 
 ```rostopic list``` <br> 
@@ -107,7 +107,7 @@ By executing this command, we can see all the topics provide by the environment.
 
 - With this topic we can publish velocity information to the robot. if we want to know more information about this topic we can execute this command: <br> 
    - ```rostopic info /cmd_vel ``` <br> 
-       After running the command we can see that this topic uses **Twist** type messages. So, this topic recieves data of type Twist (angular and linear         velocities ,(x,y,z)). To know more information about the message we execute this command: <br> 
+       After running the command we can see that this topic uses **Twist** type messages. So, this topic receives data of type Twist (angular and linear         velocities ,(x,y,z)). To know more information about the message we execute this command: <br> 
        ```rosmsg show geometry_msgs/Twist``` <br> 
        See the Figure below : <br> 
        <p align="center">
@@ -125,11 +125,11 @@ By executing this command, we can see all the topics provide by the environment.
    ```self.msgTwistObj = Twist()``` <br> 
    ```self.msgTwistObj.linear.x = 0.2 ```<br> 
    ```self.pubNode.publish(self.msgTwistObj)``` <br> 
-   Here, we create a vairable called **pubNode** that is responsible for publishing Twist information to **cmd_vel** topic. And another variable called **msgTwistObj** that holds Twist message values. As you can see in the last command , we added 0.2 value to the x linear position of the robot.The last command, we used 'publish()' function to publish the new updated message values. <br> 
+   Here, we create a variable called **pubNode** that is responsible for publishing Twist information to **cmd_vel** topic. And another variable called **msgTwistObj** that holds Twist message values. As you can see in the last command , we added 0.2 value to the x linear position of the robot.The last command, we used 'publish()' function to publish the new updated message values. <br> 
 - Another topic we use is **/scan** topic, we use this topic to get the laser information, readings from the robot. For example, the distance between the robot and a wall in the environment. The message used is of type **LaserScan**. See the commands below:<br> 
 ```self.subNode = rospy.Subscriber('/scan', LaserScan, self.callback)```<br> 
 ```self.laserMsg = LaserScan()```<br> 
-    In our node, we create another variable called **subNode** to subsicribe to **/scan** topic. And another variable called **laserMsg** which holds a laser information and readings.  The **callback** parameter in the Subscriber function is a function that have the updated laser information. see command bellow:<br> 
+    In our node, we create another variable called **subNode** to subscribe to **/scan** topic. And another variable called **laserMsg** which holds a laser information and readings.  The **callback** parameter in the Subscriber function is a function that have the updated laser information. see command bellow:<br> 
     ```def callback(self, msg):```<br>
         ```self.laserMsg = msg```<br>   
     ```self.laserMsg.ranges```   <br> 
@@ -157,17 +157,17 @@ Task 2: Mapping & localization
 <br>
 <h4 align="center"> <ins> Mapping </ins> </h4>
 
-To start the autonomus navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plann trajectories through environment. <br> 
+To start the autonomous navigation process, the robot must have a map of the environment to be able to recognize objects, walls where it will allow the robot to plan trajectories through environment. <br> 
 In order to construct a map : <br> <br>
 
 
 - Launch TurtleBot3 (Explained in Task1) 
 - To start of the mapping process we need to use **gmapping** package that provides **slam_gmapping** node. 
-    This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data, in which it will be transformed to an Occumaoncy Grid Map (OGM) data format (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free). <br>
+    This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data, in which it will be transformed to an occupancy Grid Map (OGM) data format (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free). <br>
     Start the mapping process by adding this command to the launch file: <br>
     ```   <node pkg="gmapping" type="slam_gmapping" name="turtlebot3_slam_gmapping" output="screen">``` <br><br>
     
-- In the mapping process, an important tool is used called **RViz**. It will help us in visulising th map creation process, it will allow us to see what the robot is covoring from the environment. <br>   
+- In the mapping process, an important tool is used called **RViz**. It will help us in visualizing th map creation process, it will allow us to see what the robot is covering from the environment. <br>   
 To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
     <p align="center">
     <p align = "center">
@@ -175,10 +175,10 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
     </p>
     </p>
 - You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are:
-    - **Map**: visulize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, ```nav_msgs/OccupancyGrid.msg ```  <br> 
-    - **LaserScreen**:  visualze what the Lazer on the robot is detecting. Topic is **/scan**<br>
+    - **Map**: visualize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, ```nav_msgs/OccupancyGrid.msg ```  <br> 
+    - **LaserScreen**:  visualize what the Laser on the robot is detecting. Topic is **/scan**<br>
     - **RobotModel**:  localize the Robot on the map.<br><br>
-- After launnching **slam_gmapping** and **RViz**, we can start moving the robot by executing Kerbord control command:<br> 
+- After launching **slam_gmapping** and **RViz**, we can start moving the robot by executing Keyboard control command:<br> 
   ```roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch ```.<br> After moving the robot around all the places needed we should see the map fully occupied in **Rvis**<br>
     <p align="center">
     <p align = "center">
@@ -189,7 +189,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
     Execute this command : <br> 
     - ``` rosrun map_server map_saver -f testmapbarcelonaFinal ```
  After executing it will generate two files: <br><br>
-       - **testmapbarcelonaFinal.pgm:** PGM stands for Prtable Gray Map where it contains the Occupancy Grid Map(OGM) data. If we download the file and open it, it will look like this: 
+       - **testmapbarcelonaFinal.pgm:** PGM stands for Portable Gray Map where it contains the Occupancy Grid Map(OGM) data. If we download the file and open it, it will look like this: 
       <p align="center">
       <p align = "center">
          <img  src = "resources/testmapbarcelonaFinal.png" width=400> <br>
@@ -197,7 +197,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
       </p>
       </p>
       
-       - **testmapbarcelonaFinal.yaml:** This file contains the meta data of the generated map which contains these parametrs, image,resoulution, origin, occupied_thresh, free_thresh,negate. <br>
+       - **testmapbarcelonaFinal.yaml:** This file contains the meta data of the generated map which contains these parameters, image,resolution, origin, occupied_thresh, free_thresh,negate. <br>
        
 - For the implementation of Task 2, we created a package called [task_navigation](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation). In the [launch folder](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/launch), we created a launch file called [start_mapping](https://github.com/MahBadran93/ROS_Project/blob/main/catkin_ws%20/src/task_navigation/launch/start_mapping.launch)  that will launch the **slam_gmapping** node. <br>
        Also in this package we created [maps](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/maps) folder that will contains the map files.
@@ -210,10 +210,10 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
 
 After creating the map, the next step is to locate the robot in the environment (created map). We can define localization as the process of finding the location of the robot in respect with the environment. For now, we have the map of the environment created, and we have sensors located on the robot which will observe the environment then we do localization to estimate the coordinates and angles of where the robot is located in the environment. 
 
-- To apply localization, we use **AMCL (Adaptive Monte Carlo Localization)** package which provides **amcl** node. It is a localization system that implements Kullback-Leibler(Monte Carlo) algorithm which uses an adaptive practicale filters to track the position of the robot in repect with the environment. <bR> 
+- To apply localization, we use **AMCL (Adaptive Monte Carlo Localization)** package which provides **amcl** node. It is a localization system that implements Kullback-Leibler(Monte Carlo) algorithm which uses an adaptive particle filters to track the position of the robot w.r.t the environment. <bR> 
   
     **What is Monte Carlo Algorithm ?** <br>
-    An algorithm which is responsible for generating many future guesses (Particles) of the robot expected movements in the environment. When the robot starts moving, the algorithm starts generating Particles and then uses the obtained sensor information (**/scan**) to create an optimised robot movement ( make all the created Particles head to the right direction). See below Table which describes the topics subscribed and published by AMCL.<br><br> 
+    An algorithm which is responsible for generating many future guesses (Particles) of the robot expected movements in the environment. When the robot starts moving, the algorithm starts generating Particles and then uses the obtained sensor information (**/scan**) to create an optimized robot movement ( make all the created Particles head to the right direction). See below Table which describes the topics subscribed and published by AMCL.<br><br> 
     Subscribed Topics (message type) | published Topics (message type) 
     ------------ | -------------
     **map** (``` nav_msgs/OccupancyGrid```) | **amcl_pose** (```geometry_msgs/PoseWithCovarianceStamped```)
@@ -222,9 +222,9 @@ After creating the map, the next step is to locate the robot in the environment 
     
      <br>
      
-    - **map:** amcl subscribe to map topic to get the map data (OGM), to used it for localization. 
+    - **map:** amcl subscribes to map topic to get the map data (OGM), to used it for localization. 
     - **scan:** To have the updated scan readings. 
-    - **tf:** Transform topic which is necessery to provide the relationship between different reference frames. For example, translate from the base_laser (reference frame of the laser) coordinate frame to base_link(reference frame for the center of the robot) coordinate frame. 
+    - **tf:** Transform topic which is necessary to provide the relationship between different reference frames. For example, translate from the base_laser (reference frame of the laser) coordinate frame to base_link(reference frame for the center of the robot) coordinate frame. 
     - **amcl_pose:** amcl node publishes the position of the robot in the environment to the amcl_pose topic.
     - **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. see the figure below (red arrows displayed using Rviz,add **PoseArray** display which subscribe to **PointCloud** topic). <br>
 - To launch amcl and start the localization process, we create a launch file which includes:
@@ -271,24 +271,24 @@ Task 3: Path Planning
   </p>
   </p>
   
- - The figure shows how the **move_base** node interact with other system compnents. The node implements **SimpleActionServer** from **actionlib** package with message of type **gemetry_msgs/PoseStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. See table below to see description of some topics move_base node subscribe to and publishes. <br><br>
+ - The figure shows how the **move_base** node interact with other system components. The node implements **SimpleActionServer** from **actionlib** package with message of type **geometry_msgs/PoseStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. See table below to see description of some topics move_base node subscribe to and publishes. <br><br>
 
   
      Topics | Message |Description  
     ------------ | ------------ | -------------
     **move_base/goal** (``` subscribed```)|  ```move_base_msgs/MoveBaseActionGoal ``` |  Provide goal position using **SimpleActionServer** which will allow us to track the current goal position status. 
-    **move_base_simple/goal** (``` subscribed```) |   ``` gemetry_msgs/PoseStamped```  | Provide goal position to **/move_base** node directly without using **SimpleActionServer**.
+    **move_base_simple/goal** (``` subscribed```) |   ``` geometry_msgs/PoseStamped```  | Provide goal position to **/move_base** node directly without using **SimpleActionServer**.
     **/cmd_vel** (```published```) | ``` geometry_msgs/Twist```  |  Publish velocity information to the robot (base controller to make transformation). 
     <br> 
 - **SimpleActionServer** provides topics like goal(**move_base_simple/goal**), Feedback (**/move_base/feedback**), Result(**/move_base/result**). 
-    - **FeedBack**: Keeps updating the server about the current information of the robot along the path (current position, laser information).For example, if we create a goal and the robot start to move toward the goal. If we display the message from the FeedBack topic we will see real time updated information in the teminal. Execute this command. <br> 
+    - **FeedBack**: Keeps updating the server about the current information of the robot along the path (current position, laser information).For example, if we create a goal and the robot start to move toward the goal. If we display the message from the FeedBack topic we will see real time updated information in the terminal. Execute this command. <br> 
       ```rostopic echo move_base/feedback```
     - **Result**: It is sent only once, a final pose of the robot is sent by the server to the move_base node When the robot reaches the goal.
        
    
 - As you can see in the Navigation Task Figure above, there are parameters required to be loaded to the **/move_base** node: 
-   - **Global Planner:** The new goal, when recieved by move_base node, will be sent to the Global Planner. It will be responsible for building a safe plan for the robot to avoid collisions, obstacles along the way to the goal. It is called global because it starts planing the path from the begining for the whole map and it doesn't depend on the current laser information provided by the robot. <br> 
-   - **Local Planner:** The local planner uses only the information currently prvided by the robot sensor reaings and plans a path within a small area surrounding the robot position. When the next set of information come in it plans a new piece of the path. 
+   - **Global Planner:** The new goal, when received by move_base node, will be sent to the Global Planner. It will be responsible for building a safe plan for the robot to avoid collisions, obstacles along the way to the goal. It is called global because it starts planing the path from the beginning for the whole map and it doesn't depend on the current laser information provided by the robot. <br> 
+   - **Local Planner:** The local planner uses only the information currently provided by the robot sensor readings and plans a path within a small area surrounding the robot position. When the next set of information come in it plans a new piece of the path. 
    - **Costmap paremeters (local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global costmap is a static map used to store information about the whole map to be used for global planning where local costmap is used to store local information (the small area surrounding the robot position) to be used for local planning. 
      <p align="center">
     <p align = "center">
@@ -319,7 +319,7 @@ Task 3: Path Planning
    - To visualize the **local plan**, **global plan**, we add two **Path** display elements and attach them to **/move_base/DWAPlannerROS/local_plan** and **/move_base/NavfnROS/plan** topics respectively.  
    - In Rviz, we choose **2D Pose Estimate** button to initialize the robot pose. Then we choose the **2D Nav Goal** button and click on the position where we want our turtlebot3 robot to move (goal). 
    - After creating a goal, a goal message (**gemetry_msgs/PoseStamped**) will be published to **/move_base/goal** topic. 
-   - The goal message we published to **/move_base/goal** topic will be recieved by **SimpleActionServer** which is implemented in the move-base node. So, the      goal information will be recieved by the move_base node with goal topic provided by **SimpleActionServer** with message type **move_base_msgs/MoveBaseActionGoal** 
+   - The goal message we published to **/move_base/goal** topic will be received by **SimpleActionServer** which is implemented in the move-base node. So, the      goal information will be received by the move_base node with goal topic provided by **SimpleActionServer** with message type **move_base_msgs/MoveBaseActionGoal** 
    - We can run this command to see what has been published to goal topic: <br> 
      ```rostopic echo /move-base/goal```
      <p align="center">
@@ -339,7 +339,7 @@ Task 3: Path Planning
    -  ```rostopic pub /move_base/goal/ move_base_msgs/MoveBaseActionGoal```
    
 - Another way we can create our goal is by creating an action client program(node) that send a goal to move_base. 
-   - Initalize the node and create Publisher to publish the goal to **move_base** node. 
+   - Initialize the node and create Publisher to publish the goal to **move_base** node. 
       ```
         rospy.init_node("GoalSender")
         pub = rospy.Publisher("move_base/goal", MoveBaseActionGoal)
@@ -348,7 +348,7 @@ Task 3: Path Planning
     - Import all the move base package messages. Execute the following: <br> 
       ```from move_base_msgs.msg import ``` 
       
-    - Create a function to send the goals. Inside the function we initalize a goal object from **MoveBaseActionGoal** and then we configure the goal parameters (position). Finally, we call the function to publish the goal. See below: 
+    - Create a function to send the goals. Inside the function we initialize a goal object from **MoveBaseActionGoal** and then we configure the goal parameters (position). Finally, we call the function to publish the goal. See below: 
       ``` 
           def GoalSender(publisher):
             goal = MoveBaseActionGoal()
