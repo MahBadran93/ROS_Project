@@ -146,7 +146,12 @@ By executing this command, we can see all the topics provided by the environment
 </p>
 <br><br><br>
 
-- To see our implementation for this task, in the [src](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src) folder of our [catkin_ws](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20) working space we created a package called [Task1](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/Task1) and inside this package src folder we created a node called [moverobot](https://github.com/MahBadran93/ROS_Project/blob/main/catkin_ws%20/src/Task1/src/moverobot.py).
+- To see our implementation for this task, in the [src](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src) folder of our [catkin_ws](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20) working space we created a package called [Task1](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/Task1) and inside this package src folder we created a node called [moverobot](https://github.com/MahBadran93/ROS_Project/blob/main/catkin_ws%20/src/Task1/src/moverobot.py). See the video below: <br> 
+
+  <p align="center">
+    https://www.loom.com/share/371bdcc391644447821d75b8f7618a67
+  </p>
+  
 
 
 
@@ -174,7 +179,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
        <img  src = "resources/barcelonaMapRviz.png" width=600>
     </p>
     </p>
-- You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are:
+- The figure above is the **Rviz** tool. In the left, we can see the displays which can be addded by us. we are interested in three displays which are:
     - **Map**: visualize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, ```nav_msgs/OccupancyGrid.msg ```  <br> 
     - **LaserScreen**:  visualize what the Laser on the robot is detecting. Topic is **/scan**<br>
     - **RobotModel**:  localize the Robot on the map.<br><br>
@@ -200,7 +205,10 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
        - **testmapbarcelonaFinal.yaml:** This file contains the meta data of the generated map which contains these parameters, image,resolution, origin, occupied_thresh, free_thresh,negate. <br>
        
 - For the implementation of Task 2, we created a package called [task_navigation](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation). In the [launch folder](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/launch), we created a launch file called [start_mapping](https://github.com/MahBadran93/ROS_Project/blob/main/catkin_ws%20/src/task_navigation/launch/start_mapping.launch)  that will launch the **slam_gmapping** node. <br>
-       Also in this package we created [maps](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/maps) folder that will contains the map files.
+       Also in this package we created [maps](https://github.com/MahBadran93/ROS_Project/tree/main/catkin_ws%20/src/task_navigation/maps) folder that will contains the map files. You can see the video below to see the mapping process: <br>
+       <p align="center"> 
+         https://www.loom.com/share/5d1d2c1d36ac4455acd27cd427ae112b
+       </p>
        
        
  
