@@ -174,7 +174,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
        <img  src = "resources/barcelonaMapRviz.png" width=600>
     </p>
     </p>
-- You can see in the figure above **Rviz**. In the left, we can see the displays which can be addded by us. we are interested in three displays which are:
+- The figure above is the **Rviz** tool. In the left, we can see the displays which can be addded by us. we are interested in three displays which are:
     - **Map**: visualize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, ```nav_msgs/OccupancyGrid.msg ```  <br> 
     - **LaserScreen**:  visualize what the Laser on the robot is detecting. Topic is **/scan**<br>
     - **RobotModel**:  localize the Robot on the map.<br><br>
