@@ -98,12 +98,12 @@ that goal without colliding with any obstacles. <br>
 ```
 Task 1: Robot Control
 ```
-We use TurtleBot3, which is a mobile robot with small size and low price but still have the same quality that other mobile robots have.
-- First of all, it is necessary to start and launch our turtlebot3. It is done using the **turtlebot3_bringup** package and starting **turtlebot3_remote.launch**. file. <br> 
+As been explained in the introduction, we are going to work with a simulated Gazebo world with the  Turtlebot3 model.
+- First of all, it is necessary to start and launch our turtlebot3. It is done using the **turtlebot3_bringup** package and by starting **turtlebot3_remote.launch** file. <br> 
  ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />``` <br> 
 - One important command we can use to know what are the topics that got published by the environment. <br> 
 ```rostopic list``` <br> 
-By executing this command, we can see all the topics provide by the environment. One of the topics that should be provided to move the robot is **/cmd_vel**:   
+By executing this command, we can see all the topics provided by the environment. One of the topics that should be provided to move the robot is **/cmd_vel**:   
 
 - With this topic we can publish velocity information to the robot. if we want to know more information about this topic we can execute this command: <br> 
    - ```rostopic info /cmd_vel ``` <br> 
