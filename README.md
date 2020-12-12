@@ -5,6 +5,7 @@
 University Of Burgundy (VIBOT)
   <p align="center">
       <img src = "vibot.png" width=60>
+      <img src = "ub.png" width=70>
   </p>
 </p>
 
