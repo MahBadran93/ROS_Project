@@ -10,7 +10,7 @@ University Of Burgundy (VIBOT)
 
 <h3 align="center">                       
 Supervisors: <br>  
- Ralph SEULIN
+Raphael DUVERNE, Daniel BRAUN & Ralph SEULIN
 </h3>
 <h4 align="center">                       
 Students: <br>  
@@ -25,7 +25,7 @@ Students: <br>
 </p>
 
 [![Generic badge](https://img.shields.io/badge/Report-100-green.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/Development-90-red.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Development-100-green.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/Ros-kinetic-green.svg)](http://wiki.ros.org/kinetic/Installation)
 [![Generic badge](https://img.shields.io/badge/Platform-IgniteAcademy-blue.svg)](https://www.theconstructsim.com/)
 
