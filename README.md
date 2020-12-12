@@ -9,13 +9,14 @@ University Of Burgundy (VIBOT)
 </p>
 
 <h3 align="center">                       
-Supervisors: <br>  
-Raphael DUVERNE, Daniel BRAUN & Ralph SEULIN
+Supervisors: 
 </h3>
+<p align='center'> Raphael DUVERNE, Daniel BRAUN & Ralph SEULIN <p>
 <h4 align="center">                       
-Students: <br>  
- Mahmoud Badran,  Arsalan Khawaja
+Students:
 </h4>
+ <p align='center'> Mahmoud Badran, Muhammad Arsalan Khawaja <p>
+
 <p align="center">
   <p align = "center">
      <img  src = "https://www.ros.org/news/2016/05/23/kinetic.png" width=400>
