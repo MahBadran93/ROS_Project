@@ -4,8 +4,8 @@
 <p align="center">
 University Of Burgundy (VIBOT)
   <p align="center">
-      <img src = "vibot.png" width=60>
-      <img src = "ub.png" width=70>
+      <img src = "resources/vibot.png" width=60>
+      <img src = "resources/ub.png" width=70>
   </p>
 </p>
 
@@ -69,7 +69,7 @@ that goal without colliding with any obstacles. <br>
 
   <p align="center">
     <p align = "center">
-       <img  src = "XCndTVvlwmaG.png" width=700>
+       <img  src = "resources/ROS.png" width=700>
     </p>
   </p>
   
