@@ -540,26 +540,27 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
   
 
 ## Conclusion
-The simulation was run on Gazebo in 'The Construct'. The project is divided into four tasks which are
-Robot Control, Mapping and Localization, Path Planning (Obstacle Avoidance)
+The simulation was run on Gazebo in 'The Construct'. The project is divided into four tasks which are Robot Control, Mapping and Localization, Path Planning (Obstacle Avoidance)
 and Way Point Navigation. The three most important and useful packages are
 gmapping, amcl and move_base. We tested Navigation tutorials on multiple
 Maps provided by 'The Construct' in multiple courses. The Construct courses
 were really helpful and guiding in understanding the problem and implementing
-the solution. With the evidence of working simulations and visualizations, we applied our knowledge obtained during the course and what we have planned before on the  simulated map of Costa Coee at Barcelona provided in the project description document.We were able to make the Robot navigate in the environment, use multiple waypoints before reaching a specific goal. We are open to any new ideas
+the solution. With the evidence of working simulations and visualizations, we applied our knowledge obtained during the course on the  simulated map of Costa Coffee at Barcelona provided in the project description document. We were successfully  able to make the Robot navigate in the environment, using multiple waypoints before reaching a specific goal.<br> 
+We are open to any new ideas
 and we intend to learn, relish making mistakes and gain expertise in Robotics.
 We are convinced that ROS is a very powerful tool in robotics however it is
 not easy to gain expertise. It is a universe of information in itself. We felt a lot
 of pressure for our tight schedules and the constraint of timing was felt gravely.
 We tried our best to practice and learn and what we have is a birds eye view of
 ROS. We recommend that the course of ROS be taught in two semesters keeping
-the intensity of work less. The Construct is a wonderful platform and it makes
-learning of ROS quite smooth and ecient. However, it has some fundamental
+the intensity of work less.<br>
+The Construct is a wonderful platform and it makes
+learning of ROS quite smooth and efficient. However, it has some fundamental
 issues that make it less compatible. The Construct has stability issues. It is slow
 and sometimes it crashes. It is unstable, not trust-able regarding the privilege
-of saving progress. The Construct consumes a lot of Data and it is very dicult
+of saving progress. The Construct consumes a lot of Data and it is very difficult
 to use it on limited internet packages. We recommend them that there is a lot
-of room for improvement in computation and stability of website.
+of room for improvement in computation and stability of website.<br>
 Due to COVID-19, we are working from home and do not have any access
 to real robots and we understand that. But, It is certain that we might not
 be able to gain expertise in working with real robots and we surely miss that
