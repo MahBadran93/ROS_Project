@@ -281,7 +281,7 @@ Task 3: Path Planning
   </p>
   </p>
   
- - The figure shows how the **move_base** node interact with other system components. The node implements **SimpleActionServer** from **actionlib** package with message of type **geometry_msgs/PoseStamped**. Tha Action server provides **/goal** topic that will provide the **move_base** node with goal position. See table below to see description of some topics move_base node subscribe to and publishes. <br><br>
+ - The figure shows how the **move_base** node interact with other system components. The node implements **SimpleActionServer** from **actionlib** package with message of type **geometry_msgs/PoseStamped**. Action server provides **/goal** topic that will provide the **move_base** node with goal position. See table below to see description of some topics move_base node subscribe to and publishes. <br><br>
 
   
      Topics | Message |Description  
