@@ -107,7 +107,7 @@ As been explained in the introduction, we are going to work with a simulated Gaz
 ```rostopic list``` <br> 
 By executing this command, we can see all the topics provided by the environment. One of the topics that should be provided to move the robot is **/cmd_vel**:   
 
-- With this topic we can publish velocity information to the robot. if we want to know more information about this topic we can execute this command: <br> 
+- With this topic we can publish velocity information to the robot. If we want to know more information about this topic we can execute this command: <br> 
    - ```rostopic info /cmd_vel ``` <br> 
        After running the command we can see that this topic uses **Twist** type messages. So, this topic receives data of type Twist (angular and linear         velocities ,(x,y,z)). To know more information about the message we execute this command: <br> 
        ```rosmsg show geometry_msgs/Twist``` <br> 
@@ -135,7 +135,7 @@ By executing this command, we can see all the topics provided by the environment
     ```def callback(self, msg):```<br>
         ```self.laserMsg = msg```<br>   
     ```self.laserMsg.ranges```   <br> 
-   So, whenever the robot moves, the variable **laserMasg** will be updated. One of the useful information we can obtain from **laserMsg** is the **ranges** parameter. we use **ranges** parameter to know the distance between the robot and an object in the environment. <br> 
+   So, whenever the robot moves, the variable **laserMasg** will be updated. One of the useful information we can obtain from **laserMsg** is the **ranges** parameter. We use **ranges** parameter to know the distance between the robot and an object in the environment. <br> 
    See the Figure below. It shows different frames of the robot after launching the node that is responsible for moving the robot. 
 
 <p align="center">
@@ -169,19 +169,19 @@ In order to construct a map : <br> <br>
 
 
 - Launch TurtleBot3 (Explained in Task1) 
-- To start of the mapping process we need to use **gmapping** package that provides **slam_gmapping** node. 
+- To start the mapping process, we need to use **gmapping** package that provides **slam_gmapping** node. 
     This node is implementing the gmapping **SLAM** algorithm. It creates a 2D map of the environment using the data the Robot is providing during movement like       laser data, in which it will be transformed to an occupancy Grid Map (OGM) data format (**nav_msgs/OccupancyGrid.msg**) where it represents a 2-D grid map and each cell of the grid represents the occupancy ( if the cell is completely occupied or completely free). <br>
     Start the mapping process by adding this command to the launch file: <br>
     ```   <node pkg="gmapping" type="slam_gmapping" name="turtlebot3_slam_gmapping" output="screen">``` <br><br>
     
-- In the mapping process, an important tool is used called **RViz**. It will help us in visualizing th map creation process, it will allow us to see what the robot is covering from the environment. <br>   
+- In the mapping process, an important tool is used called **RViz**. It will help us in visualizing the map creation process, it will allow us to see what the robot is covering from the environment. <br>   
 To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
     <p align="center">
     <p align = "center">
        <img  src = "resources/barcelonaMapRviz.png" width=600>
     </p>
     </p>
-- The figure above is the **Rviz** tool. In the left, we can see the displays which can be addded by us. we are interested in three displays which are:
+- The figure above is the **Rviz** tool. In the left, we can see the displays which can be added by us. we are interested in three displays which are:
     - **Map**: visualize the map. Topic is **/map** where it has message of type Occupancy Grid Map **OGM**, ```nav_msgs/OccupancyGrid.msg ```  <br> 
     - **LaserScreen**:  visualize what the Laser on the robot is detecting. Topic is **/scan**<br>
     - **RobotModel**:  localize the Robot on the map.<br><br>
@@ -218,7 +218,7 @@ To launch Rviz. Execute this command: ``` rosrun rviz rviz ```
  
 <h4 align="center">  <ins> Localization </ins> </h4>
 
-After creating the map, the next step is to locate the robot in the environment (created map). We can define localization as the process of finding the location of the robot in respect with the environment. For now, we have the map of the environment created, and we have sensors located on the robot which will observe the environment then we do localization to estimate the coordinates and angles of where the robot is located in the environment. 
+After creating the map, the next step is to locate the robot in the environment (created map). We can define localization as the process of finding the location of the robot with respect to the environment. For now, we have the map of the environment created, sensors located on the robot that will observe the environment. Now we start the localization process to estimate the coordinates and angles of where the robot is located in the environment. 
 
 - To apply localization, we use **AMCL (Adaptive Monte Carlo Localization)** package which provides **amcl** node. It is a localization system that implements Kullback-Leibler(Monte Carlo) algorithm which uses an adaptive particle filters to track the position of the robot w.r.t the environment. <bR> 
   
@@ -232,11 +232,11 @@ After creating the map, the next step is to locate the robot in the environment 
     
      <br>
      
-    - **map:** amcl subscribes to map topic to get the map data (OGM), to used it for localization. 
+    - **map:** amcl subscribes to map topic to get the map data (OGM), to use it for localization. 
     - **scan:** To have the updated scan readings. 
     - **tf:** Transform topic which is necessary to provide the relationship between different reference frames. For example, translate from the base_laser (reference frame of the laser) coordinate frame to base_link(reference frame for the center of the robot) coordinate frame. 
     - **amcl_pose:** amcl node publishes the position of the robot in the environment to the amcl_pose topic.
-    - **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. see the figure below (red arrows displayed using Rviz,add **PoseArray** display which subscribe to **PointCloud** topic). <br>
+    - **particlecloud:** amcl publishes the particle cloud of arrows created by the system to measure the uncertainty of the robot current position. See the figure below (red arrows displayed using Rviz by adding the **PoseArray** display which subscribes to **PointCloud** topic). <br>
 - To launch amcl and start the localization process, we create a launch file which includes:
 
     - Launch TurtleBot3 applications: <br> ```<include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />```
@@ -255,7 +255,7 @@ After creating the map, the next step is to locate the robot in the environment 
         </p>
         </p>
         
-     - We use Rviz **2D Pose Estimate** button to send the navigation system an initial pose of the robot. After that, the amcl node will create large number of guesses(estimations where the robot position and orientation is w.r.t the environment) as you can see in the previous figure. The last thing is to start moving the robot around the environment by using **turtlebot3_teleop** package, until we see the guesses started to decrease and be concentrated . <br><br>  
+     - We use Rviz **2D Pose Estimate** button to send the navigation system an initial pose of the robot. After that, the amcl node will create large number of guesses(estimations where the robot position and orientation is w.r.t the environment) as you can see in the previous figure. The last thing is to start moving the robot around the environment by using **turtlebot3_teleop** package until we see the guesses started to decrease and be concentrated . <br><br>  
         <p align="center">
         <p align = "center">
         <img  src = "resources/moveParticlecloudBarcelonaMap.png" width=400> 
