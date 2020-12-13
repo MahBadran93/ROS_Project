@@ -4,7 +4,7 @@
 <p align="center">
 University Of Burgundy (VIBOT)
   <p align="center">
-      <img src = "resources/vibot.png" width=60>
+    <a href="https://www.vibot.org/"> <img src = "resources/vibot.png" width=60> </a>
       <img src = "resources/ub.png" width=70>
   </p>
 </p>
@@ -16,8 +16,7 @@ Supervisors:
 <h4 align="center">                       
 Students:
 </h4>
- <p align='center'> Mahmoud Badran, Muhammad Arsalan Khawaja <p>
-  
+ <p align='center'> Mahmoud Badran, <a href="https://github.com/akhawaja2014"> Muhammad Arsalan Khawaja </a> :octocat: <p>
 
 <p align="center">
   <p align = "center">
