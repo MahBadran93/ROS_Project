@@ -297,7 +297,7 @@ Task 3: Path Planning
        
    
 - As you can see in the Navigation Task Figure above, there are parameters required to be loaded to the **/move_base** node: 
-   - **Global Planner:** The new goal, when received by move_base node, will be sent to the Global Planner. It will be responsible for building a safe plan for the robot to avoid collisions, obstacles along the way to the goal. It is called global because it starts planing the path from the beginning for the whole map and it doesn't depend on the current laser information provided by the robot. <br> 
+   - **Global Planner:** The new goal, when received by move_base node, will be sent to the Global Planner. It will be responsible for building a safe plan for the robot to avoid collisions, obstacles along the way to the goal. It is called global because it starts planning the path from the beginning for the whole map and it doesn't depend on the current laser information provided by the robot. <br> 
    - **Local Planner:** The local planner uses only the information currently provided by the robot sensor readings and plans a path within a small area surrounding the robot position. When the next set of information come in it plans a new piece of the path. 
    - **Costmap paremeters (local & global):** the costmap parameters are responsible for storing the information related to obstacles in the environment(map). The global costmap is a static map used to store information about the whole map to be used for global planning where local costmap is used to store local information (the small area surrounding the robot position) to be used for local planning. 
      <p align="center">
@@ -430,7 +430,7 @@ If we want the robot to pass through multiple waypoints(goals) before reaching i
 
 - To install this package, we need to clone its [GITHUB](https://github.com/danielsnider/follow_waypoints) repository into our catkin src folder : <br> 
    ```git clone https://github.com/danielsnider/follow_waypoints.git``` <br>
-   After installing the package we need to be build our catkin_ws working space again, so we change the current directory to catkin_ws and then we execute: 
+   After installing the package we need to build our catkin_ws working space again, so we change the current directory to catkin_ws and then we execute: 
    ```catkin_make```
    ```source /devel/setup.bash``` <br> 
    Now, we have **follow_waypoints** package ready. 
