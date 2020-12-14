@@ -393,12 +393,17 @@ Task 3: Path Planning
           goal.target_pose.header.frame_id = "map"
 
           goal.target_pose.header.stamp = rospy.Time.now()
-
-          # Translate 0.8 meters along the x axis w.r.t. map reference frame 
-          goal.target_pose.pose.position.x = 0.8
-
-          # No rotation of the mobile base frame w.r.t. map reference frame
-          goal.target_pose.pose.orientation.w = 1.0
+          
+          # Goal Translation
+          goal.target_pose.pose.position.x = -9.72207355499
+          goal.target_pose.pose.position.y = 1.0002155304
+          goal.target_pose.pose.position.z = 0
+          
+          # Goal Orientation
+          goal.target_pose.pose.orientation.x = 0
+          goal.target_pose.pose.orientation.y = 0
+          goal.target_pose.pose.orientation.w = 0.704986317927
+          goal.target_pose.pose.orientation.z = -0.70922090461
         ```
       
    - Send the goal to the action server we created.  
