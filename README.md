@@ -12,7 +12,7 @@ University Of Burgundy (VIBOT)
 </h3>
 <h4 align="center">                       
 By: <br>  
- Mahmoud Badran,  Arsalan Khawaja
+ Mahmoud Badran and  Arsalan Khawaja
 </h4>
 <p align="center">
   <p align = "center">
