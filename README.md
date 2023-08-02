@@ -9,11 +9,9 @@ University Of Burgundy (VIBOT)
 </p>
 
 <h3 align="center">                       
-Supervisors: <br>  
- Ralph SEULIN
 </h3>
 <h4 align="center">                       
-Students: <br>  
+By: <br>  
  Mahmoud Badran,  Arsalan Khawaja
 </h4>
 <p align="center">
