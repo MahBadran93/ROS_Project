@@ -2,7 +2,7 @@
 <h1 align="center"> Robotics Project </h1> <br>
 <h3 align="center"> Planning, Developing, Learning ROS </h3> <br>
 <p align="center">
-University Of Burgundy (VIBOT)
+(VIBOT)
   <p align="center">
       <img src = "vibot.png" width=60>
   </p>
