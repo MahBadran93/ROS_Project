@@ -12,7 +12,7 @@
 </h3>
 <h4 align="center">                       
 By: <br>  
- Mahmoud Badran and  Arsalan Khawaja
+ Arsalan Khawaja
 </h4>
 <p align="center">
   <p align = "center">
