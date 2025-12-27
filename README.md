@@ -14,9 +14,8 @@ Supervisors:
 </h3>
 <p align='center'> Raphael DUVERNE, Daniel BRAUN & Ralph SEULIN <p>
 <h4 align="center">                       
-By: <br>  
- Arsalan Khawaja and Mahmood Badran
-Students:
+
+By:
 </h4>
  <p align='center'> Mahmoud Badran, <a href="https://github.com/akhawaja2014"> Muhammad Arsalan Khawaja </a> :octocat: <p>
 
