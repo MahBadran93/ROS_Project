@@ -1,0 +1,32 @@
+<launch>
+  <arg name="model" default="burger" doc="model type [burger, waffle]"/>
+
+  <!-- launch Turtlebot3 -->
+  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch" />
+
+  <!-- launch Map server and add our map -->
+  <arg name="map_file" default="$(find task_navigation)/maps/testmapbarcelonaFinal.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+  </node>
+
+  <!-- start the AMCL package using our localization launch file -->
+  <include file="$(find task_navigation)/launch/start_localization.launch"/>
+
+  <!-- setup the move_base package -->
+  <arg name="cmd_vel_topic" default="/cmd_vel" />
+  <arg name="odom_topic" default="odom" />
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <!-- param is used to set node parameters-->
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <!-- rosparam is used to load parameters from yaml file-->
+    <rosparam file="$(find task_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find task_navigation)/param/costmap_common_params_$(arg model).yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find task_navigation)/param/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find task_navigation)/param/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find task_navigation)/param/move_base_params.yaml" command="load" />
+    <rosparam file="$(find task_navigation)/param/dwa_local_planner_params.yaml" command="load" />
+
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+    <remap from="odom" to="$(arg odom_topic)"/>
+  </node>
+</launch>

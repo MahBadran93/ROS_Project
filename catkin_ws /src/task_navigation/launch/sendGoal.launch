@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="task_navigation" type="sendGoal.py" name="sendGoal" output="screen">       
+    </node>
+</launch>
