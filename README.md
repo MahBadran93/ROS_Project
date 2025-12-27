@@ -2,7 +2,7 @@
 <h1 align="center"> Robotics Project </h1> <br>
 <h3 align="center"> Planning, Developing, Learning ROS </h3> <br>
 <p align="center">
-University Of Burgundy (VIBOT)
+(VIBOT)
   <p align="center">
     <a href="https://www.vibot.org/"> <img src = "resources/vibot.png" width=60> </a>
       <img src = "resources/ub.png" width=70>
@@ -14,6 +14,8 @@ Supervisors:
 </h3>
 <p align='center'> Raphael DUVERNE, Daniel BRAUN & Ralph SEULIN <p>
 <h4 align="center">                       
+By: <br>  
+ Arsalan Khawaja and Mahmood Badran
 Students:
 </h4>
  <p align='center'> Mahmoud Badran, <a href="https://github.com/akhawaja2014"> Muhammad Arsalan Khawaja </a> :octocat: <p>
